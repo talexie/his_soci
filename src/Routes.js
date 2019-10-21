@@ -6,6 +6,8 @@ import { RouteWithLayout,Main as MainLayout, Minimal as MinimalLayout } from 'co
 import {
   Dashboard as DashboardView,
   HisSetup as HisSetupView,
+  NotFound as NotFoundView,
+
 } from './views';
 
 const Routes = () => {

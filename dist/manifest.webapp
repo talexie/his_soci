@@ -1,0 +1,24 @@
+{
+  "short_name": "HIS_SOCI",
+  "version": "1.0.0-beta",
+  "name": "HIS SOCI toll",
+  "icons": {
+    "48":"static/images/hisengine2.png","16":"static/images/hisengine2.png","128":"static/images/hisengine2.png"
+  },
+  "developer": {
+    "url": "",
+    "name": "Alex Tumwesigye",
+    "email": "atumwesigye@gmail.com"
+  },
+  "launch_path": "index.html?v=1.0",
+  "default_locale": "en",
+  "activities": {
+    "dhis": {
+      "href": "*"
+    }
+  },
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

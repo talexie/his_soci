@@ -3,14 +3,8 @@ import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 
 import {
-  Budget,
-  TotalUsers,
-  TasksProgress,
-  TotalProfit,
-  LatestSales,
-  UsersByDevice,
-  LatestProducts,
-  LatestOrders
+  HSVisualizer,
+  HSTabular
 } from '.';
 
 const useStyles = makeStyles(theme => ({
@@ -35,7 +29,7 @@ const Dashboard = () => {
           xl={3}
           xs={12}
         >
-          <Budget />
+          Total Assessments
         </Grid>
         <Grid
           item
@@ -44,7 +38,7 @@ const Dashboard = () => {
           xl={3}
           xs={12}
         >
-          <TotalUsers />
+          Current Assessments
         </Grid>
         <Grid
           item
@@ -53,7 +47,7 @@ const Dashboard = () => {
           xl={3}
           xs={12}
         >
-          <TasksProgress />
+          Progress
         </Grid>
         <Grid
           item
@@ -62,7 +56,7 @@ const Dashboard = () => {
           xl={3}
           xs={12}
         >
-          <TotalProfit />
+          Percentage Completion
         </Grid>
         <Grid
           item
@@ -71,7 +65,7 @@ const Dashboard = () => {
           xl={9}
           xs={12}
         >
-          <LatestSales />
+          Completed
         </Grid>
         <Grid
           item
@@ -80,7 +74,7 @@ const Dashboard = () => {
           xl={3}
           xs={12}
         >
-          <UsersByDevice />
+          <HSVisualizer/>
         </Grid>
         <Grid
           item
@@ -89,7 +83,7 @@ const Dashboard = () => {
           xl={3}
           xs={12}
         >
-          <LatestProducts />
+          Comments
         </Grid>
         <Grid
           item
@@ -98,7 +92,7 @@ const Dashboard = () => {
           xl={9}
           xs={12}
         >
-          <LatestOrders />
+          <HSTabular/>
         </Grid>
       </Grid>
     </div>

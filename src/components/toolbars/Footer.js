@@ -24,15 +24,15 @@ const Footer = props => {
         &copy;{' '}
         <Link
           component="a"
-          href="http://diteqafrica.com/"
+          href=""
           target="_blank" rel="noopener noreferrer"
         >
-          HISEngine Platform,
+          MEASURE EValuation,
         </Link>
         . 2019,  Powered By Devias Kit
       </Typography>
       <Typography variant="caption">
-        DiteqAfrica
+        MEASURE EValuation
       </Typography>
     </div>
   );

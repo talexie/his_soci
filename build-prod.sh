@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
- echo "Building the HISIEngine app"
- #yarn build
+ echo "Building the HIS SOCI app"
+ yarn build
  echo "Preparing the install app files"
  if [ -d "./build" ]; then
    cd build

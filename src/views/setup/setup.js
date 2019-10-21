@@ -38,6 +38,7 @@ const HisSetup = (props) => {
     formStatus = { 'open': false,'submitted':false };
     setValue(formStatus);
   };
+  
   const saveData = (event) => {
     formStatus = { 'open': true,'submitted':false };
     tableData.push(data.data);
@@ -54,34 +55,15 @@ const HisSetup = (props) => {
     let authString = `${username}:${password}`;
     headers.set('Authorization', 'Basic ' + btoa(authString));
     headers.set('Access-Control-Allow-Origin', '*');
-    /*fetch(url,
-      {
-        headers:  headers,
-      })
-      .then(res => res.json())
-      .then(
-        (result) => {
-            //data= result;
-            totalCount= result.length;
-            isLoaded= true;
-
-        },
-        (error) => {
-            isLoaded= true;
-            error = error;
-        }
-      );*/
+    /*
+    post data to DHIS2
+    */
   },[]);
 
-const columns = [{'title':'Type','field':'type'},{'title':'Ref','field':'ref'},{'title':'Property','field':'type.property'},{'title':'Opening Date','field':'openingDate'},{'title':'ID','field':'id'},{'title':'Name','field':'name'}];
   return (
     <div className={classes.root}>
-      <UsersToolbar title={ 'System Setup' } item="system" placeholder="Search" />
-      { value.open?
-        <div className={classes.content}>
-          <SimpleTable data={ tableData } url={ url } headers={ headers } title={'Connections'} columns = { columns }/>
-        </div>
-         :
+      <UsersToolbar title={ 'HIS SOCI Assessment' } item="Domains" placeholder="Search" />
+      {
         <div className={classes.content}>
           <HisJsonForm data={ { id:uuid()} } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
         </div>

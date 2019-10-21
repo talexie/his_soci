@@ -49,56 +49,10 @@ const Sidebar = props => {
       icon: <DashboardIcon />
     },
     {
-      title: 'Location',
-      href: '/lrs',
-      icon: <PeopleIcon />
-    },
-    {
-      title: 'Setup',
+      title: 'HIS SOCI',
       href: '/setup',
       icon: <PeopleIcon />
     },
-    {
-      title: 'Users',
-      href: '/users',
-      icon: <PeopleIcon />
-    },
-    {
-      title: 'Products',
-      href: '/products',
-      icon: <ShoppingBasketIcon />
-    },
-    {
-      title: 'Resource APIs',
-      type: 'external',
-      href: '//engine.diteqafrica.com:30232/api/lrs?dataType=json&serviceType=lrs',
-      icon: <PeopleIcon />
-    },
-    {
-      title: 'Authentication',
-      href: '/sign-in',
-      icon: <LockOpenIcon />
-    },
-    {
-      title: 'eLMIS',
-      href: '/elmis',
-      icon: <TextFieldsIcon />
-    },
-    {
-      title: 'eIDSR',
-      href: '/eidsr',
-      icon: <TextFieldsIcon />
-    },
-    {
-      title: 'Account',
-      href: '/account',
-      icon: <AccountBoxIcon />
-    },
-    {
-      title: 'Settings',
-      href: '/settings',
-      icon: <SettingsIcon />
-    }
   ];
 
   return (

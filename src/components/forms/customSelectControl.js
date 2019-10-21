@@ -19,7 +19,7 @@ import { withJsonFormsControlProps } from '@jsonforms/react';
 import { areEqual } from '@jsonforms/react';
 import merge from 'lodash/merge';
 
-const checkSelectControl = and(schemaMatches(schema => schema.hasOwnProperty('enum')),not(optionIs('custom','true')),not(optionIs('format','radio')));
+const checkSelectControl = and(optionIs('select','true'),optionIs('custom','true'));
 
 /**
  * Default tester for custom select controls.
