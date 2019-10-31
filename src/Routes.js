@@ -10,7 +10,7 @@ import {
 
 } from './views';
 
-const Routes = () => {
+const Routes = ( props ) => {
   return (
     <Switch>
       <Redirect

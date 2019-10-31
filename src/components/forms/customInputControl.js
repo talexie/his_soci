@@ -87,6 +87,9 @@ export class customInputControl extends Control<ControlProps , ControlState> {
             InputProps={{
               readOnly
             }}
+            multiline={ appliedUiSchemaOptions.multi }
+            rows={ appliedUiSchemaOptions.rows }
+            rowsMax={ appliedUiSchemaOptions.rows }
             value={ data  || ''}
             onChange={onChange}
           />

@@ -19,7 +19,7 @@ import { withJsonFormsControlProps } from '@jsonforms/react';
 import { areEqual } from '@jsonforms/react';
 import merge from 'lodash/merge';
 
-const checkSelectControl = and(optionIs('select','true'),optionIs('custom','true'));
+const checkSelectControl = optionIs('select',true);
 
 /**
  * Default tester for custom select controls.
@@ -57,7 +57,7 @@ export const CustomSelectControl = React.memo((props: EnumCellProps & WithClassn
     appliedUiSchemaOptions.showUnfocusedDescription
   );
   const onChange = (ev: any) => handleChange(path, ev.target.value);
-
+  console.log("enumSchema",enumSchema, "schema",schema, "label", label);
   return (
     <div
       style={{ paddingTop: '1.5em' }}
@@ -89,11 +89,16 @@ export const CustomSelectControl = React.memo((props: EnumCellProps & WithClassn
           disabled={!enabled}
           autoFocus={appliedUiSchemaOptions.focus}
         >
-          {enumSchema.map(option => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
+          {
+            enumSchema?(enumSchema.map(option => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))):
+              (<MenuItem key={ "Select " + label } value={"NoValue"}>
+                { "Select "+label }
+              </MenuItem>)
+         }
         </TextField>
       </Hidden>
     </div>

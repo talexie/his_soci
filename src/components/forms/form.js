@@ -16,7 +16,8 @@ import customInputControl, { customInputControlTester } from './customInputContr
 import CustomSelectControl, { CustomSelectControlTester } from './customSelectControl';
 import CustomRadioGroupControl, { CustomRadioGroupControlTester } from './customRadioGroupControl';
 import CustomMaterialArrayTableRenderer, { CustomMaterialArrayTableRendererTester } from './customMaterialArrayTableLayoutRenderer';
-
+import CustomGroupRenderer, { CustomGroupRendererTester } from './customGroupRenderer';
+import cMaterialArrayLayoutRenderer, { cMaterialArrayLayoutRendererTester } from './materialArrayLayoutRenderer';
 
 const styles = createStyles({
   container: {
@@ -65,7 +66,8 @@ class HisJsonForm extends Component {
     store.dispatch(Actions.registerRenderer(CustomSelectControlTester, CustomSelectControl));
     store.dispatch(Actions.registerRenderer(CustomRadioGroupControlTester, CustomRadioGroupControl));
     store.dispatch(Actions.registerRenderer(customInputFileControlTester, customInputFileControl));
-    store.dispatch(Actions.registerRenderer(CustomMaterialArrayTableRendererTester,CustomMaterialArrayTableRenderer));
+    store.dispatch(Actions.registerRenderer(CustomGroupRendererTester,CustomGroupRenderer));
+    store.dispatch(Actions.registerRenderer(cMaterialArrayLayoutRendererTester,cMaterialArrayLayoutRenderer));
     return(
       <Provider store={store}>
       <JsonFormsReduxContext>
