@@ -4,7 +4,10 @@ import { Grid } from '@material-ui/core';
 
 import {
   HSVisualizer,
-  HSTabular
+  HSTabular,
+  HSTasksProgress,
+  HSAssessmentCompletion,
+  HSTotalAssessments
 } from '.';
 
 const useStyles = makeStyles(theme => ({
@@ -29,7 +32,7 @@ const Dashboard = () => {
           xl={3}
           xs={12}
         >
-          Total Assessments
+          <HSAssessmentCompletion/>
         </Grid>
         <Grid
           item
@@ -38,7 +41,7 @@ const Dashboard = () => {
           xl={3}
           xs={12}
         >
-          Current Assessments
+          <HSTotalAssessments/>
         </Grid>
         <Grid
           item
@@ -47,7 +50,7 @@ const Dashboard = () => {
           xl={3}
           xs={12}
         >
-          Progress
+          <HSTasksProgress/>
         </Grid>
         <Grid
           item
@@ -65,7 +68,7 @@ const Dashboard = () => {
           xl={9}
           xs={12}
         >
-          Completed
+          <HSTabular/>
         </Grid>
         <Grid
           item
@@ -75,24 +78,6 @@ const Dashboard = () => {
           xs={12}
         >
           <HSVisualizer/>
-        </Grid>
-        <Grid
-          item
-          lg={4}
-          md={6}
-          xl={3}
-          xs={12}
-        >
-          Comments
-        </Grid>
-        <Grid
-          item
-          lg={8}
-          md={12}
-          xl={9}
-          xs={12}
-        >
-          <HSTabular/>
         </Grid>
       </Grid>
     </div>

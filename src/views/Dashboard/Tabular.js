@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
-import { StatusBullet, SimpleTable, ENGINE_ROOT_API } from 'components';
+import { StatusBullet, SimpleTable, } from 'components';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -43,17 +43,13 @@ const statusColors = {
 };
 
 const HSTabular = props => {
-  const { className,baseUrl, ...rest } = props;
+  const { className,baseUrl, d2,...rest } = props;
 
 
   const classes = useStyles();
 
   const [orders] = useState([]);
-      let url =`${ENGINE_ROOT_API}lrs?dataType=json&serviceType=lrs`;
-      let authString = `admin:district`;
-      let headers = new Headers();
-      headers.set('Authorization', 'Basic ' + btoa(authString));
-      let data = [];
+    let data = [];
     const columns = [{'title':'Name','field':'name'},{'title':'ID','field':'id'}];
 
   return (
@@ -71,13 +67,13 @@ const HSTabular = props => {
             New entry
           </Button>
         }
-        title="Location"
+        title="Assessment Results"
       />
       <Divider />
       <CardContent className={classes.content}>
         <PerfectScrollbar>
           <div className={classes.inner}>
-            <SimpleTable data={ data } url={ url} headers={headers} columns={columns} title={'Results'}/>
+            <SimpleTable data={ data } columns={columns} title={'Results'}/>
           </div>
         </PerfectScrollbar>
       </CardContent>

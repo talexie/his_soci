@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import { HisJsonForm ,UsersToolbar,HisConfigSchema, UserButton, SimpleTable, ENGINE_ROOT_API } from 'components';
+import { HisJsonForm ,UsersToolbar,HisConfigSchema, UserButton, SimpleTable } from 'components';
 import uuid from 'uuid/v1';
 
 const useStyles = makeStyles(theme => ({
@@ -14,13 +14,14 @@ const useStyles = makeStyles(theme => ({
 }));
 let tableData:any = [];
 
-const url =`${ENGINE_ROOT_API}lrs?dataType=json&serviceType=lrs`;
-const schema = HisConfigSchema.schemas.connections;
-const uiSchema = HisConfigSchema.setupUiSchema;
+
 
 const HisSetup = (props) => {
+  console.log("d2: ",props.d2);
   let formStatus = { 'open': true,'submitted':false };
-
+  const url =`${props.d2}lrs?dataType=json&serviceType=lrs`;
+  const schema = HisConfigSchema.properties.hisstages;
+  const uiSchema = HisConfigSchema.setupUiSchema;
   let data:any = [];
   let authString = `admin:district`;
   let headers = new Headers();
@@ -38,7 +39,7 @@ const HisSetup = (props) => {
     formStatus = { 'open': false,'submitted':false };
     setValue(formStatus);
   };
-  
+
   const saveData = (event) => {
     formStatus = { 'open': true,'submitted':false };
     tableData.push(data.data);

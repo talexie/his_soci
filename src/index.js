@@ -9,7 +9,7 @@ import { init, getUserSettings,config, getManifest, } from 'd2';
 /**
   Specify the api Engine Url for Integration
 **/
-const apiEngineUrl = process.env.ENGINE_ROOT_API;
+const apiEngineUrl = process.env.REACT_APP_ENGINE_ROOT_API;
 
 const configI18n = userSettings => {
     const uiLocale = userSettings.keyUiLocale;

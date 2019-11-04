@@ -39,27 +39,18 @@ const store = createStore(
        }
      }
 );
-const ajvV =(schema,refSchema)=>{
-  const ajv = createAjv();
-  ajv.addSchema(
-    schema,
-    refSchema,
-  );
-  return ajv;
-}
 class HisJsonForm extends Component {
   state={
     title: this.props.title,
     data:this.props.data,
     schema: this.props.schema,
     uiSchema: this.props.uiSchema,
-    refSchema: this.props.refSchema,
     getSubmittedData: this.props.getSubmittedData,
 
   }
 
   render() {
-    const { title,data,schema,uiSchema,refSchema,getSubmittedData} = this.state;
+    const { title,data,schema,uiSchema,getSubmittedData} = this.state;
     store.dispatch(Actions.init(data, schema, uiSchema));
     store.dispatch(Actions.registerRenderer(RatingControlTester, RatingControl));
     store.dispatch(Actions.registerRenderer(customInputControlTester, customInputControl));

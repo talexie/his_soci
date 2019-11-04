@@ -18,7 +18,7 @@ const App = (props) => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <Routes baseUrl={ props.baseUrl } />
+        <Routes baseUrl={ props.baseUrl }  d2= { props.d2 }/>
       </Router>
     </ThemeProvider>
   );

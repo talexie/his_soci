@@ -1,112 +1,197 @@
 //    '$schema': 'http://json-schema.org/draft-07/schema#',
 export const frsSchema = {
-  schemas:{
-    definitions:{
-      assessment:{
-        type:'object',
-        properties:{
-          evidence: { type:'string'},
-          comments: { type:'string'},
-          current: { type: 'string',
-          enum:['0 = Not Applicable', 
-            '1 = Emerging/Ad hoc',
-            '2 = Repeatable',
-            '3 = Defined',
-            '4 = Managed',
-            '5 = Optimized']},
-          future: { type: 'string',
-          enum:['0 = Not Applicable', 
-            '1 = Emerging/Ad hoc',
-            '2 = Repeatable',
-            '3 = Defined',
-            '4 = Managed',
-            '5 = Optimized']},
-        }
-      }
-    },
-    background:{
+  definitions:{
+    assessment:{
       type:'object',
       properties:{
-        hisType: { type: 'string'},
-        purpose: { type: 'string'},
-        mainChallenge: { type: 'string'},
-        coverage:{
-          type:'array',
-          items:{
-            type: 'object',
-            properties:{
-              level: { type: 'string', enum:['Region','District/Subcounty','Facility']},
-              totalNumber: { type: 'integer'},
-              hisCoverageNumber: { type: 'integer'},
-              hisStaff: { type: 'integer'},
-              comments: { type: 'string'}
-            }
-          }
-        },
-        stakeholders:{
-          type: 'array',
-          items: {
-            type: 'object',
-            properties:{
-              id:{ type: 'string'},
-              surname: { type: 'string'},
-              firstname: { type: 'string'},
-              organization: { type: 'string'},
-              domain: { type: 'string'},
-              comments: { type: 'string'}
-            }
-          }
-        }
+        evidence: { type:'string'},
+        comments: { type:'string'},
+        current: { type: 'string',
+        enum:['0 = Not Applicable', 
+          '1 = Emerging/Ad hoc',
+          '2 = Repeatable',
+          '3 = Defined',
+          '4 = Managed',
+          '5 = Optimized']},
+        future: { type: 'string',
+        enum:['0 = Not Applicable', 
+          '1 = Emerging/Ad hoc',
+          '2 = Repeatable',
+          '3 = Defined',
+          '4 = Managed',
+          '5 = Optimized']},
       }
-    },
+    }
+  },
+  type:'object',
+  properties:
+  {
     hisstages:{
       type: 'object',
       properties:{
-        tech1_evidence: { type:'string'},
-        tech1_comments: { type:'string'},
-        tech1_current: { type: 'string',
-        enum:['0 = Not Applicable', 
-          '1 = Emerging/Ad hoc',
-          '2 = Repeatable',
-          '3 = Defined',
-          '4 = Managed',
-          '5 = Optimized']},
-        tech1_future: { type: 'string',
-        enum:['0 = Not Applicable', 
-          '1 = Emerging/Ad hoc',
-          '2 = Repeatable',
-          '3 = Defined',
-          '4 = Managed',
-          '5 = Optimized']},
-        tech2_evidence: { type:'string'},
-        tech2_comments: { type:'string'},
-        tech2_current: { type: 'string',
-        enum:['0 = Not Applicable', 
-          '1 = Emerging/Ad hoc',
-          '2 = Repeatable',
-          '3 = Defined',
-          '4 = Managed',
-          '5 = Optimized']},
-        tech2_future: { type: 'string',
-        enum:['0 = Not Applicable', 
-          '1 = Emerging/Ad hoc',
-          '2 = Repeatable',
-          '3 = Defined',
-          '4 = Managed',
-          '5 = Optimized']},
+        background:{
+          type:'object',
+          properties:{
+            hisType: { type: 'string'},
+            purpose: { type: 'string'},
+            mainChallenge: { type: 'string'},
+            coverage:{
+              type:'array',
+              items:{
+                type: 'object',
+                properties:{
+                  level: { type: 'string', enum:['Region','District/Subcounty','Facility']},
+                  totalNumber: { type: 'integer'},
+                  hisCoverageNumber: { type: 'integer'},
+                  hisStaff: { type: 'integer'},
+                  comments: { type: 'string'}
+                }
+              }
+            },
+            stakeholders:{
+              type: 'array',
+              items: {
+                type: 'object',
+                properties:{
+                  id:{ type: 'string'},
+                  surname: { type: 'string'},
+                  firstname: { type: 'string'},
+                  organization: { type: 'string'},
+                  domain: { type: 'string'},
+                  comments: { type: 'string'}
+                }
+              }
+            }
+          }
+        },
+        me_plan:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        his_strategic_planning:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        his_policy_regulation:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        policy_compliance_enforcement:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        his_leadership_coordination:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        his_organization_structure_function:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        }
+
       },
-      me_plan:{
-        "$ref":"#/definitions/assessment"
-      },
-      his_strategic_planning:{
-        "$ref":"#/definitions/assessment"
-      },
-      his_policy_regulation:{
-        "$ref":"#/definitions/assessment"
-      },
-      policy_compliance_enforcement:{
-        "$ref":"#/definitions/assessment"
-      }
     },
   },
   setupUiSchema: {
@@ -124,7 +209,7 @@ export const frsSchema = {
           elements:[
             {
               type:'Control',
-              scope: '#/properties/hisType',
+              scope: '#/properties/background/properties/hisType',
               options:{
                 custom: true,
                 variant: 'outlined'
@@ -132,7 +217,7 @@ export const frsSchema = {
             },
             {
               type:'Control',
-              scope: '#/properties/purpose',
+              scope: '#/properties/background/properties/purpose',
               options:{
                 custom: true,
                 multi: true,
@@ -142,7 +227,7 @@ export const frsSchema = {
             },
             {
               type:'Control',
-              scope: '#/properties/mainChallenge',
+              scope: '#/properties/background/properties/mainChallenge',
               options:{
                 custom: true,
                 multi: true,
@@ -158,7 +243,7 @@ export const frsSchema = {
                   type:'Control',
                   label: false,
                   extraText: 'Please provide the following information regarding the area covered by the HIS to be assessed.Only complete the boxes that apply to this HIS.',
-                  scope:'#/properties/coverage',
+                  scope:'#/properties/background/properties/coverage',
                   options:{
                     tableLayout: false,
                     detail:{
@@ -212,7 +297,7 @@ export const frsSchema = {
                   type:'Control',
                   label: false,
                   extraText:"Identify key organizations and stakeholders that should be included in the assessment process (e.g., relevant ministries, donors, nongovernmental organizations [NGOs], etc.).Names of individuals will not be included in the final analysis or report.",
-                  scope:'#/properties/stakeholders',
+                  scope:'#/properties/background/properties/stakeholders',
                   options:{
                     tableLayout: false,
                     detail:{
@@ -299,7 +384,6 @@ export const frsSchema = {
                 label: "Current Status",
                 scope: '#/properties/his_strategic_planning/properties/current',
                 options:{
-                  custom: false,
                   select: true,
                   variant: 'outlined'
                 }
@@ -309,7 +393,6 @@ export const frsSchema = {
                 label: "Goal Status",
                 scope: '#/properties/his_strategic_planning/properties/future',
                 options:{
-                  custom: false,
                   select: true,
                   variant: 'outlined'
                 }
@@ -502,23 +585,46 @@ export const frsSchema = {
               {
                 type: 'HorizontalLayout',
                 elements: [
-                  {
-                    type: 'Control',
-                    scope: '#/properties/tech1_current',
-                    options:{
-                      select: true,
-                      variant: 'outlined'
-                    }
-                  },
-                  {
-                    type: 'Control',
-                    scope: '#/properties/tech1_future',
-                    options:{
-                      custom: true,
-                      variant: 'outlined'
-                    }
+                {
+                  type: 'Control',
+                  label: "Current Status",
+                  scope: '#/properties/his_leadership_coordination/properties/current',
+                  options:{
+                    select: true,
+                    variant: 'outlined'
                   }
-                ]
+                },
+                {
+                  type: 'Control',
+                  label: "Goal Status",
+                  scope: '#/properties/his_leadership_coordination/properties/future',
+                  options:{
+                    select: true,
+                    variant: 'outlined'
+                  }
+                },
+                {
+                  type: 'Control',
+                  label: "Evidence",
+                  scope: '#/properties/his_leadership_coordination/properties/evidence',
+                  options:{
+                    custom: true,
+                    variant: 'outlined',
+                    multi: true,
+                    rows: 2
+                  }
+                },
+                {
+                  type: 'Control',
+                  label:"Comments",
+                  scope: '#/properties/his_leadership_coordination/properties/comments',
+                  options:{
+                    custom: true,
+                    variant: 'outlined',
+                    multi: true,
+                    rows: 2,
+                  }
+                }]
               }]
             },
             {
@@ -528,23 +634,46 @@ export const frsSchema = {
               {
                 type: 'HorizontalLayout',
                 elements: [
-                  {
-                    type: 'Control',
-                    scope: '#/properties/tech2_current',
-                    options:{
-                      custom: true,
-                      variant: 'outlined'
-                    }
-                  },
-                  {
-                    type: 'Control',
-                    scope: '#/properties/tech2_future',
-                    options:{
-                      custom: true,
-                      variant: 'outlined'
-                    }
+                {
+                  type: 'Control',
+                  label: "Current Status",
+                  scope: '#/properties/his_organization_structure_function/properties/current',
+                  options:{
+                    select: true,
+                    variant: 'outlined'
                   }
-                ]
+                },
+                {
+                  type: 'Control',
+                  label: "Goal Status",
+                  scope: '#/properties/his_organization_structure_function/properties/future',
+                  options:{
+                    select: true,
+                    variant: 'outlined'
+                  }
+                },
+                {
+                  type: 'Control',
+                  label: "Evidence",
+                  scope: '#/properties/his_organization_structure_function/properties/evidence',
+                  options:{
+                    custom: true,
+                    variant: 'outlined',
+                    multi: true,
+                    rows: 2
+                  }
+                },
+                {
+                  type: 'Control',
+                  label:"Comments",
+                  scope: '#/properties/his_organization_structure_function/properties/comments',
+                  options:{
+                    custom: true,
+                    variant: 'outlined',
+                    multi: true,
+                    rows: 2,
+                  }
+                }]
               }]
             }]
         }]

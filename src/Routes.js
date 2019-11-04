@@ -11,6 +11,7 @@ import {
 } from './views';
 
 const Routes = ( props ) => {
+
   return (
     <Switch>
       <Redirect
@@ -22,12 +23,14 @@ const Routes = ( props ) => {
         component={DashboardView}
         exact
         layout={MainLayout}
+        d2={ props.d2 }
         path="/dashboard"
       />
       <RouteWithLayout
         component={HisSetupView}
         exact
         layout={MainLayout}
+        d2= { props.d2 }
         path="/setup"
       />
       <RouteWithLayout
