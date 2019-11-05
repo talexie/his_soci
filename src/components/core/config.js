@@ -316,6 +316,300 @@ export const frsSchema = {
               '5 = Optimized']},
           }
         },
+        networks_internet_connectivity:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        business_continuity_processes_policies:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        his_standard_guidelines:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        his_training_education:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        data_exchange_standards:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        master_facility_list:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        indicator_registry:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        terminology_management:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        unique_person_identity_management:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        enterprise_architecture:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        person_data_exchange:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        aggregate_data_exchange:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        commodity_management_data_exchange:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        data_security_exchange:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
       },
     },
   },
@@ -1419,111 +1713,706 @@ export const frsSchema = {
         elements:[
           {
             type: 'Group',
-            label: 'II.A HIS Workforce Capacity and Development',
+            label: 'IV.A Standards and Guidelines',
             elements:[
-            {
-              type:"Group",
-              label:"II.A.1 HIS competencies (knowledge, skills, and abilities)",
-              elements:[
-                {
-                  type: 'HorizontalLayout',
-                  elements: [
-                    {
-                      type: 'Control',
-                      label: "Current Status",
-                      scope: '#/properties/his_leadership_coordination/properties/current',
-                      options:{
-                        select: true,
-                        variant: 'outlined'
+              {
+                type:"Group",
+                label:"HIS standard guidelines",
+                code:"IV.A.1",
+                extraText:"Standards and guidelines to enable consistent and accurate definition, collection, and exchange of health information across HIS and services.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/his_standard_guidelines/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/his_standard_guidelines/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/his_standard_guidelines/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/his_standard_guidelines/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label: "Goal Status",
-                      scope: '#/properties/his_leadership_coordination/properties/future',
-                      options:{
-                        select: true,
-                        variant: 'outlined'
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Data set definitions (clinical and indicator)",
+                code:"IV.A.2",
+                extraText:"Common data sets, such as those defining clinical care, surveillance, and/or M&E programs, are defined along with distinct data elements.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/his_training_education/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/his_training_education/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/his_training_education/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/his_training_education/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label: "Evidence",
-                      scope: '#/properties/his_leadership_coordination/properties/evidence',
-                      options:{
-                        custom: true,
-                        variant: 'outlined',
-                        multi: true,
-                        rows: 2
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Data exchange standards",
+                code:"IV.A.3",
+                extraText:"A data exchange standard is a widely adopted model for organizing electronic information in a common format, such as XML, so that systems (e.g., databases, applications, etc.) not directly linked to one another can share information with others using the same model.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/data_exchange_standards/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/data_exchange_standards/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/data_exchange_standards/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/data_exchange_standards/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label:"Comments",
-                      scope: '#/properties/his_leadership_coordination/properties/comments',
-                      options:{
-                        custom: true,
-                        variant: 'outlined',
-                        multi: true,
-                        rows: 2,
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            type: 'Group',
+            label: 'IV.B HIS Core Services',
+            elements:[
+              {
+                type:"Group",
+                label:"Master facility lists",
+                code:"IV.B.1",
+                extraText:"A master facility list (MFL) is a complete list of health facilities (both public and private) in a country and comprises administrative information and information that identifies each facility (signature domain).",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/master_facility_list/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/master_facility_list/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/master_facility_list/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/master_facility_list/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              type:"Group",
-              label:"II.A.2 HIS training and education (includes continuous professional development)",
-              elements:[
-                {
-                  type: 'HorizontalLayout',
-                  elements: [
-                    {
-                      type: 'Control',
-                      label: "Current Status",
-                      scope: '#/properties/his_organization_structure_function/properties/current',
-                      options:{
-                        select: true,
-                        variant: 'outlined'
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Indicator registry",
+                code:"IV.B.2",
+                extraText:"A list of core health indicators helps track progress. Availability of indicators and information on definitions, data sources, and data collection methods are indicative of HIS performance and organization. Data should be comprehensive and cover all categories of health indicators: determinants, inputs, outputs, outcomes, and health status. A core list of indicators can be part of the health sector M&E plan.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/indicator_registry/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/indicator_registry/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/indicator_registry/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/indicator_registry/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label: "Goal Status",
-                      scope: '#/properties/his_organization_structure_function/properties/future',
-                      options:{
-                        select: true,
-                        variant: 'outlined'
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Terminology management",
+                code:"IV.B.3",
+                extraText:"The process through which clinical terminology is collected, managed, and stored.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/terminology_management/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/terminology_management/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/terminology_management/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/terminology_management/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label: "Evidence",
-                      scope: '#/properties/his_organization_structure_function/properties/evidence',
-                      options:{
-                        custom: true,
-                        variant: 'outlined',
-                        multi: true,
-                        rows: 2
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Unique person identity management",
+                code:"IV.B.4",
+                extraText:"The source of assigning identifiers to uniquely identify persons receiving or providing services in different programs.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/unique_person_identity_management/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/unique_person_identity_management/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/unique_person_identity_management/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/unique_person_identity_management/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label:"Comments",
-                      scope: '#/properties/his_organization_structure_function/properties/comments',
-                      options:{
-                        custom: true,
-                        variant: 'outlined',
-                        multi: true,
-                        rows: 2,
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Enterprise architecture",
+                code:"IV.B.5",
+                extraText:"The source of assigning identifiers to uniquely identify persons receiving or providing services in different programs.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/enterprise_architecture/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/enterprise_architecture/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/enterprise_architecture/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/enterprise_architecture/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
+                    ]
+                  }
+                ]
+              },
+            ]
+          }
+          ,
+          {
+            type: 'Group',
+            label: 'IV.C Interoperability (Data Exchange)',
+            elements:[
+              {
+                type:"Group",
+                label:"Person data exchange",
+                code:"IV.C.1",
+                extraText:"Standards-based patient data exchange between systems.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/person_data_exchange/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/person_data_exchange/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/person_data_exchange/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/person_data_exchange/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Aggregate data exchange",
+                code:"IV.C.2",
+                extraText:"Standards-based exchange of consolidated data between systems.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/aggregate_data_exchange/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/aggregate_data_exchange/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/aggregate_data_exchange/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/aggregate_data_exchange/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Commodity management data exchange",
+                code:"IV.C.3",
+                extraText:"Standards-based exchange of data on such healthcare commodities as medical supplies and medications.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/commodity_management_data_exchange/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/commodity_management_data_exchange/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/commodity_management_data_exchange/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/commodity_management_data_exchange/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Data security exchange",
+                code:"IV.C.4",
+                extraText:"Adherence to organizational policies, procedures, and best practices related to HIS, including standards for data exchange, messaging, and security. It also means adherence to applicable laws, relevant industry standards, and internal policies (e.g., codes of conduct).",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/data_security_exchange/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/data_security_exchange/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/data_security_exchange/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/data_security_exchange/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+            ]
           }
         ]
       },
