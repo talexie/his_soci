@@ -57,7 +57,6 @@ export const CustomSelectControl = React.memo((props: EnumCellProps & WithClassn
     appliedUiSchemaOptions.showUnfocusedDescription
   );
   const onChange = (ev: any) => handleChange(path, ev.target.value);
-  console.log("enumSchema",enumSchema, "schema",schema, "label", label);
   return (
     <div
       style={{ paddingTop: '1.5em' }}
