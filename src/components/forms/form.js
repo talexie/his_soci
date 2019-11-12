@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import { Actions, jsonformsReducer, createAjv,JsonFormsState } from '@jsonforms/core';
+import { Actions, jsonformsReducer, createAjv,JsonFormsState, getData, getDefaultData } from '@jsonforms/core';
 import { materialCells, materialRenderers } from '@jsonforms/material-renderers';
 import { JsonFormsDispatch,JsonFormsReduxContext } from '@jsonforms/react';
 import { Button } from '@material-ui/core';
@@ -26,7 +26,7 @@ const styles = createStyles({
 });
 const saveFormData = (state: JsonFormsState) => {
   let jsonFormState:any = state.getState();
-  return jsonFormState.jsonforms.core;
+  return { data: getData(state.getState()),defaultData: getDefaultData(state.getState()),errors: state.getState().jsonforms.core.errors,core:state.getState().jsonforms };
 };
 // create store for the form
 const store = createStore(

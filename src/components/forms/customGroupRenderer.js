@@ -20,6 +20,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import merge from 'lodash/merge';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -86,10 +87,15 @@ const CustomGroupRenderer = props => {
     uischema: uischema,
     renderers: renderers
   };
+  const appliedUiSchemaOptions = merge(
+    {},
+    uischema.options
+  );
+
   return (
     <Hidden xsUp={!visible}>
       {
-        uischema.options.grid?
+        appliedUiSchemaOptions.grid?
           (
             <Paper style={{ padding: 10 }}>
               <Grid container spacing ={3} alignItems='stretch' justify='space-between'>
@@ -116,7 +122,7 @@ const CustomGroupRenderer = props => {
             <ExpansionPanelSummary expandIcon={ uischema.level ==1 ?<ExpandMoreIcon />:"" }>
               <div className={ classes.label}>
                 <Typography className={ classes.heading} >{uischema.label}</Typography>
-                <Typography variant={'h7'}>{uischema.extraText===undefined?'':[uischema.extraText]}</Typography>
+                <Typography variant={'h6'}>{uischema.extraText===undefined?'':[uischema.extraText]}</Typography>
               </div>
               <div className={ classes.column}>
                 <Typography className={ classes.secondaryHeading}>
@@ -125,6 +131,7 @@ const CustomGroupRenderer = props => {
               </div>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
+              <div></div>
             </ExpansionPanelDetails>
           </ExpansionPanel>)
         }

@@ -610,6 +610,237 @@ export const frsSchema = {
               '5 = Optimized']},
           }
         },
+        data_quality_assurance_quality_control:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        data_management:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        data_use_availability_strategy:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        information_data_availability:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        data_use_competencies:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        user_stakeholder_engagement:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        data_synthesis_communication:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        reporting_analytics_features:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        data_use_impact:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        data_collection_alignment_workflow:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        decision_support_clinical_other:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
       },
     },
   },
@@ -2422,112 +2653,643 @@ export const frsSchema = {
         elements:[
           {
             type: 'Group',
-            label: 'II.A HIS Workforce Capacity and Development',
+            label: 'V.A Data Quality Assurance',
             elements:[
-            {
-              type:"Group",
-              label:"II.A.1 HIS competencies (knowledge, skills, and abilities)",
-              elements:[
-                {
-                  type: 'HorizontalLayout',
-                  elements: [
-                    {
-                      type: 'Control',
-                      label: "Current Status",
-                      scope: '#/properties/his_leadership_coordination/properties/current',
-                      options:{
-                        select: true,
-                        variant: 'outlined'
+              {
+                type:"Group",
+                label:"Data quality assurance and quality control",
+                code:"V.A.1",
+                extraText:"Efforts or activities aimed at ensuring that reported data and results accurately reflect actual health system outputs. This includes data quality assessments and data quality assurance practices.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/data_quality_assurance_quality_control/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/data_quality_assurance_quality_control/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/data_quality_assurance_quality_control/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/data_quality_assurance_quality_control/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label: "Goal Status",
-                      scope: '#/properties/his_leadership_coordination/properties/future',
-                      options:{
-                        select: true,
-                        variant: 'outlined'
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Data management",
+                code:"V.A.2",
+                extraText:"The existence and implementation of such processes as standard operating procedures for data collection, data management guidance, development and production of data collection tools, and supportive supervision procedures.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/data_management/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/data_management/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/data_management/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/data_management/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label: "Evidence",
-                      scope: '#/properties/his_leadership_coordination/properties/evidence',
-                      options:{
-                        custom: true,
-                        variant: 'outlined',
-                        multi: true,
-                        rows: 2
+                    ]
+                  }
+                ]
+              },
+            ]
+          },
+          {
+            type: 'Group',
+            label: 'V.B Data Use',
+            elements:[
+              {
+                type:"Group",
+                label:"Data use availability strategy",
+                code:"V.B.1",
+                extraText:"Based on information needs, includes procedures and policies for data reporting, data dissemination, and production of targeted information products for use in decision making and health sector planning.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/data_use_availability_strategy/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/data_use_availability_strategy/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/data_use_availability_strategy/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/data_use_availability_strategy/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label:"Comments",
-                      scope: '#/properties/his_leadership_coordination/properties/comments',
-                      options:{
-                        custom: true,
-                        variant: 'outlined',
-                        multi: true,
-                        rows: 2,
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Information/data availability",
+                code:"V.B.2",
+                extraText:"The process through which data are made accessible and through which platforms are able to support analysis and use of data to support decision making.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/information_data_availability/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/information_data_availability/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/information_data_availability/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/information_data_availability/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              type:"Group",
-              label:"II.A.2 HIS training and education (includes continuous professional development)",
-              elements:[
-                {
-                  type: 'HorizontalLayout',
-                  elements: [
-                    {
-                      type: 'Control',
-                      label: "Current Status",
-                      scope: '#/properties/his_organization_structure_function/properties/current',
-                      options:{
-                        select: true,
-                        variant: 'outlined'
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Data use competencies",
+                code:"V.B.3",
+                extraText:"A measurable pattern of knowledge, skills, abilities, behaviors, and other characteristics that a person needs to perform work roles or occupational functions related to the use of data.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/data_use_competencies/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/data_use_competencies/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/data_use_competencies/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/data_use_competencies/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label: "Goal Status",
-                      scope: '#/properties/his_organization_structure_function/properties/future',
-                      options:{
-                        select: true,
-                        variant: 'outlined'
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"User/stakeholder engagement",
+                code:"V.B.4",
+                extraText:"Guidance (methods, processes, and practices) for user engagement in data-based progress review and performance monitoring and assessments.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/user_stakeholder_engagement/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/user_stakeholder_engagement/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/user_stakeholder_engagement/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/user_stakeholder_engagement/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label: "Evidence",
-                      scope: '#/properties/his_organization_structure_function/properties/evidence',
-                      options:{
-                        custom: true,
-                        variant: 'outlined',
-                        multi: true,
-                        rows: 2
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Data synthesis and communication",
+                code:"V.B.5",
+                extraText:"Document outlining the purpose, type (e.g., technical report, policy brief, table, chart), target audience (level of health system), and intended result of information products and dissemination/feedback plans.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/data_synthesis_communication/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/data_synthesis_communication/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/data_synthesis_communication/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/data_synthesis_communication/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    },
-                    {
-                      type: 'Control',
-                      label:"Comments",
-                      scope: '#/properties/his_organization_structure_function/properties/comments',
-                      options:{
-                        custom: true,
-                        variant: 'outlined',
-                        multi: true,
-                        rows: 2,
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Reporting and analytics features",
+                code:"V.B.6",
+                extraText:"Established systems and guidelines to report against priority health indicators.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/reporting_analytics_features/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/reporting_analytics_features/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/reporting_analytics_features/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/reporting_analytics_features/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
                       }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-          }
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Data use impact",
+                code:"V.B.7",
+                extraText:"Clearly defined impact measurement parameters for data use.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/data_use_impact/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/data_use_impact/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/data_use_impact/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/data_use_impact/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Data collection alignment with workflow",
+                code:"V.B.8",
+                extraText:"The extent to which data collection processes and tools are aligned with the existing workflow. ",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/data_collection_alignment_workflow/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/data_collection_alignment_workflow/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/data_collection_alignment_workflow/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/data_collection_alignment_workflow/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type:"Group",
+                label:"Decision support (clinical or other)",
+                code:"V.B.9",
+                extraText:"Decision support (DS) provides program and resource managers, clinicians, staff, patients, or other people with knowledge and program-specific and/or person-specific information, intelligently filtered or presented at appropriate times, to enhance health and healthcare. DS encompasses a variety of tools to enhance decision making in the program and/or clinical workflow. These tools include computerized alerts and reminders to managers, care providers, and patients; clinical guidelines; condition-specific order sets; focused patient data reports and summaries; documentation templates; diagnostic support; and contextually relevant reference information, among other tools.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
+                elements:[
+                  {
+                    type: 'HorizontalLayout',
+                    elements: [
+                      {
+                        type: 'Control',
+                        label: "Current Status",
+                        scope: '#/properties/decision_support_clinical_other/properties/current',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Goal Status",
+                        scope: '#/properties/decision_support_clinical_other/properties/future',
+                        options:{
+                          select: true,
+                          variant: 'outlined'
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label: "Evidence",
+                        scope: '#/properties/decision_support_clinical_other/properties/evidence',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2
+                        }
+                      },
+                      {
+                        type: 'Control',
+                        label:"Comments",
+                        scope: '#/properties/decision_support_clinical_other/properties/comments',
+                        options:{
+                          custom: true,
+                          variant: 'outlined',
+                          multi: true,
+                          rows: 2,
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+            ]
+          },
         ]
       },
     ]

@@ -17,7 +17,6 @@ let tableData:any = [];
 
 
 const HisSetup = (props) => {
-  console.log("d2: ",props.d2);
   let formStatus = { 'open': true,'submitted':false };
   const url =`${props.d2}lrs?dataType=json&serviceType=lrs`;
   const schema = HisConfigSchema.properties.hisstages;
@@ -69,8 +68,8 @@ const HisSetup = (props) => {
           <HisJsonForm data={ { id:uuid()} } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
         </div>
       }
-      <UserButton color="primary" variant="contained" value="Add" getFormData={ handleChange }/>
-      <UserButton color="primary" variant="contained" value="Save" getFormData={ (ev)=>saveData(ev) }/>
+      <UserButton color="primary" variant="contained" value="Save" getFormData={ handleChange }/>
+      <UserButton color="primary" variant="contained" value="Complete" getFormData={ (ev)=>saveData(ev) }/>
     </div>
   );
 };
