@@ -9,7 +9,12 @@
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prestart": "npm run localize",
+    "pretest": "npm run localize",
+    "prebuild": "npm run localize",
+    "extract-pot": "d2-i18n-extract -p src/ -o i18n/",
+    "localize": "d2-i18n-generate -n hisengine-dashboard -p ./i18n/ -o ./src/locales/"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -27,6 +32,7 @@
     ]
   },
   "dependencies": {
+    "@dhis2/d2-i18n": "^1.0.6",
     "@jsonforms/core": "^2.3.1-alpha.0",
     "@jsonforms/material-renderers": "^2.3.1-alpha.0",
     "@jsonforms/react": "^2.3.1-alpha.0",
@@ -61,6 +67,8 @@
     "validate.js": "^0.13.1"
   },
   "devDependencies": {
+    "@dhis2/d2-i18n-extract": "^1.0.8",
+    "@dhis2/d2-i18n-generate": "^1.1.1",
     "eslint": "^6.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",

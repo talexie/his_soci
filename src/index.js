@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 
 import * as serviceWorker from './serviceWorker';
 import App from './App';
-import { ENGINE_ROOT_API } from 'components';
 import { init, getUserSettings,config, getManifest, } from 'd2';
-//import i18n from './locales'
+import i18n from './locales'
 /**
   Specify the api Engine Url for Integration
 **/
@@ -15,11 +14,11 @@ const configI18n = userSettings => {
     const uiLocale = userSettings.keyUiLocale;
 
     if (uiLocale && uiLocale !== 'en') {
-        //config.i18n.sources.add(`./i18n/i18n_module_${uiLocale}.properties`);
+        config.i18n.sources.add(`./i18n/i18n_module_${uiLocale}.properties`);
     }
 
-    //config.i18n.sources.add('./i18n/i18n_module_en.properties');
-    //i18n.changeLanguage(uiLocale);
+    config.i18n.sources.add('./i18n/i18n_module_en.properties');
+    i18n.changeLanguage(uiLocale);
 };
 
 const initApp = async () => {

@@ -49,16 +49,11 @@ const HisSetup = (props) => {
   useEffect(()=>{
     let isLoaded = false;
     let totalCount = 0;
-    let headers = new Headers();
-    let username = "admin";
-    let password = "district";
-    let authString = `${username}:${password}`;
-    headers.set('Authorization', 'Basic ' + btoa(authString));
-    headers.set('Access-Control-Allow-Origin', '*');
+
     /*
     post data to DHIS2
     */
-  },[]);
+  },[value]);
 
   return (
     <div className={classes.root}>

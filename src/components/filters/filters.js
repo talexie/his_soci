@@ -51,14 +51,14 @@ const getStyles =(name, personName, theme)=> {
         : theme.typography.fontWeightMedium,
   };
 }
-const MultipleSelect =(props,...rest)=> {
+const MultipleSelect =({ data, getData=(event)=>{},multiple,label,...rest })=> {
   const classes = useStyles();
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
-  const { data } = props;
+  const [selectOption, setSelectOption] = React.useState([]);
 
   const handleChange=(event)=> {
-    setPersonName(event.target.value);
+    setSelectOption(event.target.value);
+    getData(event.target.value);
   }
 
   const handleChangeMultiple=(event)=> {
@@ -69,48 +69,33 @@ const MultipleSelect =(props,...rest)=> {
         value.push(options[i].value);
       }
     }
-    setPersonName(value);
+    setSelectOption(value);
   }
-
+ const getSelected=(selected,multiple)=>{
+   if(multiple){
+     return selected.join(',');
+   }
+   else{
+     return [selected];
+   }
+ }
   return (
     <div className={classes.root}>
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="select-multiple-checkbox">Tag</InputLabel>
+        <InputLabel htmlFor="select-multiple-checkbox">{ label }</InputLabel>
         <Select
-          multiple
-          value={personName}
+          multiple={ multiple?'false':multiple }
+          variant="outlined"
+          value={selectOption}
           onChange={handleChange}
           input={<Input id="select-multiple-checkbox" />}
-          renderValue={selected => selected.join(', ')}
+          renderValue={selected => getSelected(selected,multiple)}
           MenuProps={MenuProps}
         >
           {data.map(name => (
             <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
+              <Checkbox checked={selectOption.indexOf(name) > -1} />
               <ListItemText primary={name} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="select-multiple-chip">Chip</InputLabel>
-        <Select
-          multiple
-          value={personName}
-          onChange={handleChange}
-          input={<Input id="select-multiple-chip" />}
-          renderValue={selected => (
-            <div className={classes.chips}>
-              {selected.map(value => (
-                <Chip key={value} label={value} className={classes.chip} />
-              ))}
-            </div>
-          )}
-          MenuProps={MenuProps}
-        >
-          {data.map(name => (
-            <MenuItem key={name} value={name} style={getStyles(name, personName, theme)}>
-              {name}
             </MenuItem>
           ))}
         </Select>

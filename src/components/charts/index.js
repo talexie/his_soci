@@ -1,1 +1,1 @@
-export { default } from './chart';
+export { default, Chart, changeChartType,changeChartTitle,addChartSeries } from './chart';
