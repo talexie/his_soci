@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import { HisJsonForm ,UsersToolbar,HisConfigSchema, UserButton, SimpleTable } from 'components';
+import { HisJsonForm ,UsersToolbar,HisConfigSchema, UserButton,createEvent, createDataValues, getDataStore,updateDataStore, } from 'components';
 import uuid from 'uuid/v1';
+import { UrlContext } from '../../App';
+import merge from 'lodash/merge';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,45 +16,55 @@ const useStyles = makeStyles(theme => ({
 }));
 let tableData:any = [];
 
-
-
 const HisSetup = (props) => {
+  const urlContextValue = useContext(UrlContext);
+  const d2 = urlContextValue.d2;
   let formStatus = { 'open': true,'submitted':false };
-  const url =`${props.d2}lrs?dataType=json&serviceType=lrs`;
+  const api = d2.Api.getApi();
+  const currentEvents = {
+    program:'EQnIPsQzZ8R',
+    programStage:'hKuDUonVytS',
+    orgUnit:'wMpIrpoib8b',
+  }
   const schema = HisConfigSchema.properties.hisstages;
   const uiSchema = HisConfigSchema.setupUiSchema;
   let data:any = [];
-  let authString = `admin:district`;
-  let headers = new Headers();
-  headers.set('Authorization', 'Basic ' + btoa(authString));
-
   const classes = useStyles();
   const [value,setValue] = useState(formStatus);
-  const [ddata,setDdata] = useState([]);
+  const [state,setState] = useState([]);
+  const [completed,setCompleted] = useState(false);
   const getSubmittedData =(dataSaved)=>{
     formStatus = { 'open': true,'submitted':false };
     data = dataSaved;
     return { data:data,formStatus:formStatus}
   }
-  const handleChange = event => {
+  const handleChange = useCallback(async(event) => {
     formStatus = { 'open': false,'submitted':false };
-    setValue(formStatus);
-  };
+    await setValue(formStatus);
+  },[]);
 
-  const saveData = (event) => {
+  const saveData = useCallback(async(event) => {
     formStatus = { 'open': true,'submitted':false };
     tableData.push(data.data);
-    console.log("Data",tableData);
-    setValue(formStatus);
-  };
+    await setState(tableData);
+    await setValue(formStatus);
+    /**
+    Creating Data Api
+    **/
+    const events = merge({},currentEvents,createEvent(tableData));
+    const dhis2Events = createDataValues({events:[]},events);
+    /*
+    post data to DHIS2
+    */
+    getDataStore(d2,'his_soci_tool','assessments');
+    updateDataStore(d2,'his_soci_tool','assessments',dhis2Events);
+    api.post('events',dhis2Events);
+  },[]);
 
   useEffect(()=>{
     let isLoaded = false;
     let totalCount = 0;
-
-    /*
-    post data to DHIS2
-    */
+    console.log("data",data);
   },[value]);
 
   return (

@@ -70,7 +70,6 @@ export const CustomGroupRendererTester = rankWith(Number.MAX_VALUE, optionIs('cu
 const CustomGroupRenderer = props => {
   const classes = useStyles();
   const { uischema, schema, path, visible, renderers } = props;
-  console.log("uischema",uischema);
   const [expanded, setExpanded] = useState(false);
   const [defaultExpanded, setDefaultExpanded] = useState(true);
 

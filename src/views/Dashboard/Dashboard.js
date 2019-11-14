@@ -21,63 +21,68 @@ const Dashboard = () => {
 
   return (
     <div className={classes.root}>
-      <Grid
-        container
-        spacing={4}
-      >
-        <Grid
-          item
-          lg={3}
-          sm={6}
-          xl={3}
-          xs={12}
-        >
-          <HSAssessmentCompletion/>
+      <Grid container spacing={4}>
+        <Grid item container spacing={4}>
+          <Grid
+            item
+            lg={3}
+            sm={6}
+            xl={3}
+            xs={12}
+          >
+            <HSAssessmentCompletion/>
+          </Grid>
+          <Grid
+            item
+            lg={3}
+            sm={6}
+            xl={3}
+            xs={12}
+          >
+            <HSTotalAssessments/>
+          </Grid>
+          <Grid
+            item
+            lg={3}
+            sm={6}
+            xl={3}
+            xs={12}
+          >
+            <HSTasksProgress/>
+          </Grid>
+          <Grid
+            item
+            lg={3}
+            sm={6}
+            xl={3}
+            xs={12}
+          >
+            Percentage Completion
+          </Grid>
         </Grid>
-        <Grid
-          item
-          lg={3}
-          sm={6}
-          xl={3}
-          xs={12}
-        >
-          <HSTotalAssessments/>
-        </Grid>
-        <Grid
-          item
-          lg={3}
-          sm={6}
-          xl={3}
-          xs={12}
-        >
-          <HSTasksProgress/>
-        </Grid>
-        <Grid
-          item
-          lg={3}
-          sm={6}
-          xl={3}
-          xs={12}
-        >
-          Percentage Completion
-        </Grid>
-        <Grid
-          item
-          lg={8}
-          md={12}
-          xl={9}
-          xs={12}
-        >
-          <HSTabular/>
-        </Grid>
-        <Grid
-          item
-          lg={4}
-          md={6}
-          xl={3}
-          xs={12}
-        >
-          <HSVisualizer/>
+        <Grid item container direction="column" spacing={4}>
+          <Grid item container spacing={4}>
+            <Grid
+              item
+              lg={12}
+              md={12}
+              xl={12}
+              xs={12}
+            >
+              <HSVisualizer/>
+            </Grid>
+          </Grid>
+          <Grid item container spacing={4}>
+            <Grid
+              item
+              lg={12}
+              md={12}
+              xl={12}
+              xs={12}
+            >
+               <HSTabular/>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </div>

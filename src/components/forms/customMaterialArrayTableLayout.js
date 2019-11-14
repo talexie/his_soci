@@ -65,8 +65,6 @@ export class CustomMaterialArrayLayout extends React.PureComponent<
       uischema,
       rootSchema
     );
-    console.log("data",childPath);
-    console.log("uischema",renderers, "found",foundUISchema);
     return (
       <Paper style={paperStyle}>
         <CustomArrayLayoutToolbar

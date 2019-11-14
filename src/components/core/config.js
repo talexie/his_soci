@@ -29,6 +29,17 @@ export const frsSchema = {
     hisstages:{
       type: 'object',
       properties:{
+        tracking:{
+          type:'object',
+          properties:{
+            id:{ type: 'string'},
+            status: { type: 'string'},
+            respondentType: { type: 'string', enum:['Self', 'Group']},
+            date: { type: 'string', format:'date'},
+            period:{  type: 'string'},
+            location: { type: 'string'},
+          }
+        },
         background:{
           type:'object',
           properties:{

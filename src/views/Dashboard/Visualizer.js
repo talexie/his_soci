@@ -8,7 +8,8 @@ import {
   CardContent,
   CardActions,
   Divider,
-  Button
+  Button,
+  Grid,
 } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
@@ -102,28 +103,52 @@ const HSVisualizer = ({ className, ...rest }) => {
   },[type,options,data]);
   return (
     <div>
-      <Card
-        className={clsx(classes.root, className)}
-      >
-        <CardHeader
-          action={
-            <>
-            <MultiFilter label={'Chart Type' } data={ filters } getData={ getFilter} />
-            <UserButton color="primary" variant="text" value="Update" getFormData={ handleChange }
+      <Grid container spacing={2} direction="row" justify="space-around" alignItems="center">
+        <Grid item lg={6} xs={12} md={6} xl={6}>
+          <Card className={clsx(classes.root, className)}>
+            <CardHeader
+              action={
+                <>
+                <MultiFilter label={'Chart Type' } data={ filters } getData={ getFilter} />
+                <UserButton color="primary" variant="text" value="Update" getFormData={ handleChange }
+                />
+                </>
+              }
+              title={ "HIS Current Status" }
             />
-            </>
-          }
-          title={ "HIS Goal Status" }
-        />
-        <Divider />
-        <CardContent>
-       <Chart data = { data } options= { options }  title={ "HIS Goal Status" } type={ type}/>
-      </CardContent>
-      <Divider />
-      <CardActions>
-        <div>{ description }</div>
-      </CardActions>
-     </Card>
+            <Divider />
+            <CardContent>
+              <Chart data = { data } options= { options }  title={ "HIS Current Status" } type={ type}/>
+            </CardContent>
+            <Divider />
+            <CardActions>
+              <div>{ description }</div>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid item lg={6} xs={12} md={6} xl={6}>
+          <Card className={clsx(classes.root, className)}>
+            <CardHeader
+              action={
+                <>
+                <MultiFilter label={'Chart Type' } data={ filters } getData={ getFilter} />
+                <UserButton color="primary" variant="text" value="Update" getFormData={ handleChange }
+                />
+                </>
+              }
+              title={ "HIS Goal Status" }
+            />
+            <Divider />
+            <CardContent>
+              <Chart data = { data } options= { options }  title={ "HIS Goal Status" } type={ type}/>
+            </CardContent>
+            <Divider />
+            <CardActions>
+              <div>{ description }</div>
+            </CardActions>
+          </Card>
+        </Grid>
+      </Grid>
     </div>
   );
 };

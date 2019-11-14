@@ -14,12 +14,23 @@ validate.validators = {
   ...validators
 };
 
-const App = (props) => {
+export const UrlContext = React.createContext({
+  d2: null,
+  apiEngineUrl:null
+});
+
+const App = ( props ) => {
+  let urls = {
+    d2: props.d2,
+    apiEngineUrl: props.apiEngineUrl
+  };
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <Routes baseUrl={ props.baseUrl }  d2= { props.d2 }/>
-      </Router>
+      <UrlContext.Provider value={ urls }>
+        <Router>
+          <Routes {...props } />
+        </Router>
+      </UrlContext.Provider>
     </ThemeProvider>
   );
 }

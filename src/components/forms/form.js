@@ -26,7 +26,7 @@ const styles = createStyles({
 });
 const saveFormData = (state: JsonFormsState) => {
   let jsonFormState:any = state.getState();
-  return { data: getData(state.getState()),defaultData: getDefaultData(state.getState()),errors: state.getState().jsonforms.core.errors,core:state.getState().jsonforms };
+  return { data: getData(state.getState()),defaultData: getDefaultData(state.getState()),errors: state.getState().jsonforms.core.errors,core:state.getState().jsonforms,schema:state.getState().jsonforms.core.schema,uischema:state.getState().jsonforms.core.uischema };
 };
 // create store for the form
 const store = createStore(
