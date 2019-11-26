@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
 import { init, getUserSettings,config, getManifest, } from 'd2';
-import i18n from './locales'
+import i18n from './locales';
+import { createDataStore,createUserDatastore } from 'components';
 /**
   Specify the api Engine Url for Integration
 **/
@@ -57,6 +58,13 @@ const initApp = async () => {
       d2 = await init(config);
       const userSettings = await getUserSettings();
       configI18n(userSettings);
+
+      // Create datastore if it does not exist
+      createDataStore(d2,'his_soci_tool','assessments');
+
+      // Create user datastore for user tracking
+      createUserDatastore(d2,'his_soci_tool','assessments');
+
       ReactDOM.render(
         <App baseUrl={baseUrl} d2={ d2 } apiEngineUrl
         ={ apiEngineUrl}/>, document.getElementById('root')

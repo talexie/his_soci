@@ -25,26 +25,26 @@ const checkSelectControl = optionIs('select',true);
  * Default tester for custom select controls.
  * @type {RankedTester}
  */
-export const CustomSelectControlTester: RankedTester =
+export const CustomSelectControlTester =
   rankWith(Number.MAX_VALUE, checkSelectControl );
 
 
-export const CustomSelectControl = React.memo((props: EnumCellProps & WithClassname) => {
-  const {
-    data,
-    id,
-    enabled,
-    uischema,
-    path,
-    handleChange,
-    config,
-    schema,
-    label,
-    required,
-    description,
-    errors,
-    visible,
-  } = props;
+export const CustomSelectControl = React.memo(( {
+  data,
+  id,
+  enabled,
+  uischema,
+  path,
+  handleChange,
+  config,
+  schema,
+  label,
+  required,
+  description,
+  errors,
+  visible,
+  isFocused,
+}) => {
   const isValid = errors.length === 0;
   const appliedUiSchemaOptions = merge({}, config, uischema.options);
   const enumSchema = schema.enum;
@@ -53,10 +53,10 @@ export const CustomSelectControl = React.memo((props: EnumCellProps & WithClassn
   const showDescription = !isDescriptionHidden(
     visible,
     description,
-    props.isFocused,
+    isFocused,
     appliedUiSchemaOptions.showUnfocusedDescription
   );
-  const onChange = (ev: any) => handleChange(path, ev.target.value);
+  const onChange = (ev) => handleChange(path, ev.target.value);
   return (
     <div
       style={{ paddingTop: '1.5em' }}

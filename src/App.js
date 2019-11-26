@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { HashRouter as Router} from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import validate from 'validate.js';

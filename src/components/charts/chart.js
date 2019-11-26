@@ -29,11 +29,7 @@ const useStyles = () => ({
     justifyContent: 'flex-end'
   }
 });
-const filters = [
-'Last 7 Days',
-'Last Week',
-'Last Month'
-];
+const filters = [];
 export const createChartCategories=(options,categories)=>{
   options.xAxis={}
   options.xAxis.categories= categories;
@@ -47,9 +43,10 @@ export const addChartSeries=(options,series,update)=>{
     }
   }
   else{
-    options.series = [];
-    options.series.push(series);
-    return options;
+    return {
+      ...options,
+      series:[series]
+    }
   }
 }
 export const changeChartType=(options,type)=>{
@@ -72,19 +69,12 @@ export const changeChartTitle=(options,title)=>{
   }
 }
 export const Chart = ({ options, title, type, data }) => {
-  const [state,setState] = useState(options);
-  const handleChange=useCallback(async ()=>{
-    await setState(options);
-  },[]);
-  useEffect(()=>{
-    handleChange();
-  },[state]);
   return (
     <HighchartsReact
-      { ...state }
+      { ...options }
       highcharts={Highcharts}
       constructorType={"chart"}
-      options={state}
+      options={ options }
       allowChartUpdate={true}
       updateArgs={[true, true, true]}
     />
@@ -93,17 +83,17 @@ export const Chart = ({ options, title, type, data }) => {
 const options = {
   polar: true,
   title: {
-    text: "Demo Chart",
+    text: "",
   },
   credits: {
     enabled: false
   },
   xAxis: {
-    categories: ['A', 'B', 'C'],
+    categories: [],
   },
   labels: {
     items: [{
-      html: 'Total consumption',
+      html: '',
       style: {
         left: '50px',
         top: '18px',
@@ -111,51 +101,7 @@ const options = {
       }
     }]
   },
-  series: [{
-      type: 'column',
-      name: 'Jane',
-      data: [3, 2, 1, 3, 4]
-    }, {
-      type: 'column',
-      name: 'John',
-      data: [2, 3, 5, 7, 6]
-    }, {
-      type: 'column',
-      name: 'Joe',
-      data: [4, 3, 3, 9, 0]
-    }, {
-      type: 'spline',
-      name: 'Average',
-      data: [3, 2.67, 3, 6.33, 3.33],
-      marker: {
-        lineWidth: 2,
-        lineColor: Highcharts.getOptions().colors[3],
-        fillColor: 'white'
-      }
-    },
-    {
-      type: 'pie',
-      name: 'Total consumption',
-      data: [{
-        name: 'Jane',
-        y: 13,
-        color: Highcharts.getOptions().colors[0] // Jane's color
-      }, {
-        name: 'John',
-        y: 23,
-        color: Highcharts.getOptions().colors[1] // John's color
-      }, {
-        name: 'Joe',
-        y: 19,
-        color: Highcharts.getOptions().colors[2] // Joe's color
-      }],
-      center: [100, 80],
-      size: 100,
-      showInLegend: false,
-      dataLabels: {
-        enabled: false
-      }
-    }],
+  series: [],
   plotOptions: {
     series: {
       point: {
@@ -170,6 +116,7 @@ class LineChart extends Component {
   state = {
     title: this.props.title,
     chartType: this.props.charttype,
+    series: this.props.series,
     // To avoid unnecessary update keep all options in the state.
     chartOptions:this.props.options? this.props.options:options,
     hoverData: null
@@ -181,9 +128,11 @@ class LineChart extends Component {
 
   updateSeries = (updates) => {
     // The chart is updated only with new options.
-    const { title, chartType } = this.state;
-    updates.series[0].type = chartType;
+    const { title, chartType, series } = this.state;
+    //updates.series[0].type = chartType;
+    updates.series = series;
     updates.title.text = title;
+    console.log("updates",updates);
     this.setState({
       chartOptions: updates
     });

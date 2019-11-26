@@ -23,7 +23,7 @@ or(optionIs('custom',true),scopeEndsWith('properties/id')));
  * Default tester for custom input controls.
  * @type {RankedTester}
  */
-export const customInputControlTester: RankedTester =
+export const customInputControlTester =
   rankWith(Number.MAX_VALUE, checkInputControl );
 
 

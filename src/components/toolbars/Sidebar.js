@@ -53,6 +53,11 @@ const Sidebar = props => {
       href: '/setup',
       icon: <PeopleIcon />
     },
+    {
+      title: 'HIS SOCI Setup',
+      href: '/admin',
+      icon: <SettingsIcon />
+    },
   ];
 
   return (

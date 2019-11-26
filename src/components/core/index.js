@@ -1,3 +1,3 @@
 export { frsSchema as HisConfigSchema } from './config';
 export { default as UserButton } from './button';
-export { createEvent, createDataValues, getDataStore,updateDataStore } from './dhis2';
+export { checkAssessmentByRespondent,sendMessage, createEvent, createDataValues, createDataStore,updateDataStore, getMappings,getDataStoreValue, getDataForChart, createUserDatastore,updateUserDataStore, getUserDataStoreValue } from './dhis2';

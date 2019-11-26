@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import { Actions, jsonformsReducer, createAjv,JsonFormsState, getData, getDefaultData } from '@jsonforms/core';
 import { materialCells, materialRenderers } from '@jsonforms/material-renderers';
-import { JsonFormsDispatch,JsonFormsReduxContext } from '@jsonforms/react';
+import { JsonFormsDispatch,JsonFormsReduxContext, JsonForms } from '@jsonforms/react';
 import { Button } from '@material-ui/core';
 import withStyles from "@material-ui/core/styles/withStyles";
 import createStyles from "@material-ui/core/styles/createStyles";
@@ -39,19 +39,30 @@ const store = createStore(
        }
      }
 );
+const ajv = createAjv({
+  useDefaults: true
+});
+
 class HisJsonForm extends Component {
   state={
     title: this.props.title,
-    data:this.props.data,
+    data:this.props.data || {},
     schema: this.props.schema,
     uiSchema: this.props.uiSchema,
     getSubmittedData: this.props.getSubmittedData,
 
   }
-
+  componentDidMount(){
+    this.setState(
+      {
+        data: this.state.data
+      },
+      (prevState)=>{}
+    );
+  }
   render() {
     const { title,data,schema,uiSchema,getSubmittedData} = this.state;
-    store.dispatch(Actions.init(data, schema, uiSchema));
+    store.dispatch(Actions.init(this.props.data, schema, uiSchema,ajv));
     store.dispatch(Actions.registerRenderer(RatingControlTester, RatingControl));
     store.dispatch(Actions.registerRenderer(customInputControlTester, customInputControl));
     store.dispatch(Actions.registerRenderer(CustomSelectControlTester, CustomSelectControl));
@@ -64,7 +75,7 @@ class HisJsonForm extends Component {
       <JsonFormsReduxContext>
         <div>
            {/* other markup... */}
-           { title }
+           <h3>{ title }</h3>
            <JsonFormsDispatch onChange={
              ()=>{
                getSubmittedData(saveFormData(store))

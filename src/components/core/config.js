@@ -26,23 +26,71 @@ export const frsSchema = {
   type:'object',
   properties:
   {
+    hissetup:{
+      type:'object',
+      properties:{
+        id:{ type: 'string',readOnly:true},
+        status: { type: 'string'},
+        date: { type: 'string', format:'date'},
+        period:{  type: 'string',enum:['2018','2019']},
+        location: { type: 'string',enum:['Uganda','Kenya','Rwanda','Burundi','Tanzania']},
+        hisType: { type: 'string'},
+        purpose: { type: 'string'},
+        mainChallenge: { type: 'string'},
+        respondentType: { type: 'string'},
+        respondents:{
+          type:'array',
+          items:{
+            type:'object',
+            properties:{
+              id:{ type: 'string'},
+              surname: { type: 'string'},
+              firstname: { type: 'string'},
+              emailAddress: { type: 'string'},
+              phoneNumber: { type: 'string'},
+              organization: { type: 'string'},
+              domain: { type: 'string'},
+              comments: { type: 'string'}
+            }
+          }
+        },            
+        coverage:{
+          type:'array',
+          items:{
+            type: 'object',
+            properties:{
+              level: { type: 'string', enum:['Region','District/Subcounty','Facility']},
+              totalNumber: { type: 'integer'},
+              hisCoverageNumber: { type: 'integer'},
+              hisStaff: { type: 'integer'},
+              comments: { type: 'string'}
+            }
+          }
+        },
+      },
+      required:['id','period','location','date','status']
+    },
     hisstages:{
       type: 'object',
       properties:{
         tracking:{
           type:'object',
           properties:{
-            id:{ type: 'string'},
+            id:{ type: 'string',readOnly:true},
             status: { type: 'string'},
-            respondentType: { type: 'string', enum:['Self', 'Group']},
+            username: { type: 'string'},
+            userid: { type: 'string'},
+            respondentType: { type: 'string', enum:['Self', 'Consensus'],default:"Self"},
             date: { type: 'string', format:'date'},
-            period:{  type: 'string'},
-            location: { type: 'string'},
+            period:{  type: 'string',enum:['2018','2019']},
+            location: { type: 'string',enum:['Uganda','Kenya','Rwanda','Burundi','Tanzania']},
           }
         },
         background:{
           type:'object',
           properties:{
+            event: { type: 'string'},
+            reference: { type: 'string'},
             hisType: { type: 'string'},
             purpose: { type: 'string'},
             mainChallenge: { type: 'string'},
@@ -67,6 +115,8 @@ export const frsSchema = {
                   id:{ type: 'string'},
                   surname: { type: 'string'},
                   firstname: { type: 'string'},
+                  emailAddress: { type: 'string'},
+                  phoneNumber: { type: 'string'},
                   organization: { type: 'string'},
                   domain: { type: 'string'},
                   comments: { type: 'string'}
@@ -181,6 +231,48 @@ export const frsSchema = {
           }
         },
         his_organization_structure_function:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        his_competencies:{
+          type:'object',
+          properties:{
+            evidence: { type:'string'},
+            comments: { type:'string'},
+            current: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+            future: { type: 'string',
+            enum:['0 = Not Applicable', 
+              '1 = Emerging/Ad hoc',
+              '2 = Repeatable',
+              '3 = Defined',
+              '4 = Managed',
+              '5 = Optimized']},
+          }
+        },
+        his_training_education:{
           type:'object',
           properties:{
             evidence: { type:'string'},
@@ -390,7 +482,7 @@ export const frsSchema = {
               '5 = Optimized']},
           }
         },
-        his_training_education:{
+        dataset_definitions:{
           type:'object',
           properties:{
             evidence: { type:'string'},
@@ -855,7 +947,220 @@ export const frsSchema = {
       },
     },
   },
-  setupUiSchema: {
+  setupUiSchema:          {
+    type:'VerticalLayout',
+    elements:[
+      {
+        type:'HorizontalLayout',
+        elements:[
+          {
+            type:'Control',
+            label:'Assessment ID',
+            scope: '#/properties/hissetup/properties/id',
+            options:{
+              custom: true,
+              generated: true,
+              readOnly:true,
+              variant: 'outlined'
+            }
+          },
+          {
+            type:'Control',
+            label:'Location',
+            scope: '#/properties/hissetup//properties/location',
+            options:{
+              select: true,
+              variant: 'outlined'
+            }
+          },
+          {
+            type:'Control',
+            label:'Period',
+            scope: '#/properties/hissetup/properties/period',
+            options:{
+              select: true,
+              variant: 'outlined'
+            }
+          },
+          {
+            type:'Control',
+            label:'Respondent',
+            scope: '#/properties/hissetup/properties/respondentType',
+            options:{
+              select: true,
+              variant: 'outlined'
+            },
+          }
+        ]
+      },
+      {
+        type:'Control',
+        label: 'Which HIS are you assessing?',
+        scope: '#/properties/hisetup/properties/hisType',
+        options:{
+          custom: true,
+          variant: 'outlined'
+        }
+      },
+      {
+        type:'Control',
+        label:'What is the purpose of the HIS you will assess (e.g., to monitor and review implementation of maternal and child health [MCH] services)?Please attach any supporting documentation describing the HIS purpose.',
+        scope: '#/properties/hissetup/properties/purpose',
+        options:{
+          custom: true,
+          multi: true,
+          rows:2,
+          variant: 'outlined'
+        }
+      },
+      {
+        type:'Control',
+        label:'What is the main challenge you hope to address with this assessment (e.g., to improve monitoring and review of MCH services)?',
+        scope: '#/properties/hissetup/properties/mainChallenge',
+        options:{
+          custom: true,
+          multi: true,
+          rows: 2,
+          variant: 'outlined'
+        }
+      },
+      {
+        type:'Group',
+        label:  false ,
+        elements:[
+          {
+            type:'Control',
+            label: false,
+            extraText: 'Please provide the following information regarding the area covered by the HIS to be assessed.Only complete the boxes that apply to this HIS.',
+            scope:'#/properties/hissetup/properties/coverage',
+            options:{
+              tableLayout: false,
+              detail:{
+                type:'HorizontalLayout',
+                elements:[
+                  {
+                    type:'Control',
+                    scope: '#/properties/level',
+                    options:{
+                      select: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    label:'Total Number in the Country',
+                    scope: '#/properties/totalNumber',
+                    options:{
+                      custom: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    label:'Approximate Number Covered by the HIS',
+                    scope: '#/properties/hisCoverageNumber',
+                    options:{
+                      custom: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    label:'Approximate Number of Staff* Associated with HIS at Each Level (as applicable)',
+                    scope: '#/properties/hisStaff',
+                    options:{
+                      custom: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    scope: '#/properties/comments',
+                    options:{
+                      custom: true,
+                      variant: 'outlined'
+                    }
+                  },
+                ]
+              }
+            }
+          },
+          {
+            type:'Control',
+            label: false,
+            extraText:"Identify key organizations and stakeholders that should be included in the assessment process (e.g., relevant ministries, donors, nongovernmental organizations [NGOs], etc.).Names of individuals will not be included in the final analysis or report.",
+            scope:'#/properties/hissetup/properties/respondents',
+            options:{
+              tableLayout: false,
+              detail:{
+                type:'HorizontalLayout',
+                elements:[
+                  {
+                    type:'Control',
+                    scope: '#/properties/surname',
+                    options:{
+                      custom: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    scope: '#/properties/firstname',
+                    options:{
+                      custom: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    scope: '#/properties/emailAddress',
+                    options:{
+                      custom: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    scope: '#/properties/phoneNumber',
+                    options:{
+                      custom: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    scope: '#/properties/organization',
+                    options:{
+                      custom: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    scope: '#/properties/domain',
+                    options:{
+                      custom: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    scope: '#/properties/comments',
+                    options:{
+                      custom: true,
+                      variant: 'outlined'
+                    }
+                  },
+                ]
+              }
+            }
+          }
+        ]
+      }
+
+    ]
+  },
+  assessmentUiSchema: {
     type: 'Categorization',
     options: {
       variant: 'stepper'
@@ -869,31 +1174,104 @@ export const frsSchema = {
             type:'VerticalLayout',
             elements:[
               {
+                type:'HorizontalLayout',
+                elements:[
+                  {
+                    type:'Control',
+                    label:'Assessment ID',
+                    scope: '#/properties/tracking/properties/id',
+                    options:{
+                      custom: true,
+                      generated: true,
+                      readOnly:true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    label:'Location',
+                    scope: '#/properties/tracking/properties/location',
+                    options:{
+                      select: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    label:'Period',
+                    scope: '#/properties/tracking/properties/period',
+                    options:{
+                      select: true,
+                      variant: 'outlined'
+                    }
+                  },
+                  {
+                    type:'Control',
+                    label:'Respondent',
+                    scope: '#/properties/tracking/properties/respondentType',
+                    options:{
+                      select: true,
+                      variant: 'outlined'
+                    },
+                  }
+                ]
+              },
+              {
                 type:'Control',
+                label: 'Which HIS are you assessing?',
                 scope: '#/properties/background/properties/hisType',
                 options:{
                   custom: true,
                   variant: 'outlined'
+                },
+                "rule": {
+                  "effect": "HIDE",
+                  "condition": {
+                    "scope": "#/properties/tracking/properties/respondentType",
+                    "schema": {
+                      "const": "Self"
+                    }
+                  }
                 }
               },
               {
                 type:'Control',
+                label:'What is the purpose of the HIS you will assess (e.g., to monitor and review implementation of maternal and child health [MCH] services)?Please attach any supporting documentation describing the HIS purpose.',
                 scope: '#/properties/background/properties/purpose',
                 options:{
                   custom: true,
                   multi: true,
                   rows:2,
                   variant: 'outlined'
+                },
+                "rule": {
+                  "effect": "HIDE",
+                  "condition": {
+                    "scope": "#/properties/tracking/properties/respondentType",
+                    "schema": {
+                      "const": "Self"
+                    }
+                  }
                 }
               },
               {
                 type:'Control',
+                label:'What is the main challenge you hope to address with this assessment (e.g., to improve monitoring and review of MCH services)?',
                 scope: '#/properties/background/properties/mainChallenge',
                 options:{
                   custom: true,
                   multi: true,
                   rows: 2,
                   variant: 'outlined'
+                },
+                "rule": {
+                  "effect": "HIDE",
+                  "condition": {
+                    "scope": "#/properties/tracking/properties/respondentType",
+                    "schema": {
+                      "const": "Self"
+                    }
+                  }
                 }
               },
               {
@@ -916,26 +1294,56 @@ export const frsSchema = {
                             options:{
                               select: true,
                               variant: 'outlined'
+                            },
+                            "rule": {
+                              "effect": "HIDE",
+                              "condition": {
+                                "scope": "#/properties/tracking/properties/respondentType",
+                                "schema": {
+                                  "const": "Self"
+                                }
+                              }
                             }
                           },
                           {
                             type:'Control',
+                            label:'Total Number in the Country',
                             scope: '#/properties/totalNumber',
                             options:{
                               custom: true,
                               variant: 'outlined'
+                            },
+                            "rule": {
+                              "effect": "HIDE",
+                              "condition": {
+                                "scope": "#/properties/tracking/properties/respondentType",
+                                "schema": {
+                                  "const": "Self"
+                                }
+                              }
                             }
                           },
                           {
                             type:'Control',
+                            label:'Approximate Number Covered by the HIS',
                             scope: '#/properties/hisCoverageNumber',
                             options:{
                               custom: true,
                               variant: 'outlined'
+                            },
+                            "rule": {
+                              "effect": "HIDE",
+                              "condition": {
+                                "scope": "#/properties/tracking/properties/respondentType",
+                                "schema": {
+                                  "const": "Self"
+                                }
+                              }
                             }
                           },
                           {
                             type:'Control',
+                            label:'Approximate Number of Staff* Associated with HIS at Each Level (as applicable)',
                             scope: '#/properties/hisStaff',
                             options:{
                               custom: true,
@@ -953,6 +1361,15 @@ export const frsSchema = {
                         ]
                       }
                     },
+                    "rule": {
+                      "effect": "HIDE",
+                      "condition": {
+                        "scope": "#/properties/tracking/properties/respondentType",
+                        "schema": {
+                          "const": "Self"
+                        }
+                      }
+                    }
                   },
                   {
                     type:'Control',
@@ -990,6 +1407,22 @@ export const frsSchema = {
                           },
                           {
                             type:'Control',
+                            scope: '#/properties/emailAddress',
+                            options:{
+                              custom: true,
+                              variant: 'outlined'
+                            }
+                          },
+                          {
+                            type:'Control',
+                            scope: '#/properties/phoneNumber',
+                            options:{
+                              custom: true,
+                              variant: 'outlined'
+                            }
+                          },
+                          {
+                            type:'Control',
                             scope: '#/properties/organization',
                             options:{
                               custom: true,
@@ -1013,6 +1446,15 @@ export const frsSchema = {
                             }
                           },
                         ]
+                      }
+                    },
+                    "rule": {
+                      "effect": "HIDE",
+                      "condition": {
+                        "scope": "#/properties/tracking/properties/respondentType",
+                        "schema": {
+                          "const": "Self"
+                        }
                       }
                     }
                   }
@@ -1377,7 +1819,13 @@ export const frsSchema = {
             elements:[
               {
                 type:"Group",
-                label:"II.A.1 HIS competencies (knowledge, skills, and abilities)",
+                code:"II.A.1",
+                label:"HIS competencies (knowledge, skills, and abilities)",
+                extraText:"Availability of adequate personnel with characteristics, attributes, and capabilities to perform a task/set of tasks to achieve clearly defined results.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
                 elements:[
                   {
                     type: 'HorizontalLayout',
@@ -1385,7 +1833,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Current Status",
-                        scope: '#/properties/his_leadership_coordination/properties/current',
+                        scope: '#/properties/his_competencies/properties/current',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -1394,7 +1842,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/his_leadership_coordination/properties/future',
+                        scope: '#/properties/his_competencies/properties/future',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -1403,7 +1851,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Evidence",
-                        scope: '#/properties/his_leadership_coordination/properties/evidence',
+                        scope: '#/properties/his_competencies/properties/evidence',
                         options:{
                           custom: true,
                           variant: 'outlined',
@@ -1414,7 +1862,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label:"Comments",
-                        scope: '#/properties/his_leadership_coordination/properties/comments',
+                        scope: '#/properties/his_competencies/properties/comments',
                         options:{
                           custom: true,
                           variant: 'outlined',
@@ -1428,7 +1876,13 @@ export const frsSchema = {
               },
               {
                 type:"Group",
-                label:"II.A.2 HIS training and education (includes continuous professional development)",
+                code:"II.A.2",
+                label:"HIS training and education (includes continuous professional development)",
+                extraText:"An organized activity with clear learning outcomes that aims to impart knowledge and skills, shape attitudes, and develop specific competencies and capabilities in personnel.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
                 elements:[
                   {
                     type: 'HorizontalLayout',
@@ -1436,7 +1890,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Current Status",
-                        scope: '#/properties/his_organization_structure_function/properties/current',
+                        scope: '#/properties/his_training_education/properties/current',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -1445,7 +1899,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/his_organization_structure_function/properties/future',
+                        scope: '#/properties/his_training_education/properties/future',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -1454,7 +1908,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Evidence",
-                        scope: '#/properties/his_organization_structure_function/properties/evidence',
+                        scope: '#/properties/his_training_education/properties/evidence',
                         options:{
                           custom: true,
                           variant: 'outlined',
@@ -1465,7 +1919,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label:"Comments",
-                        scope: '#/properties/his_organization_structure_function/properties/comments',
+                        scope: '#/properties/his_training_education/properties/comments',
                         options:{
                           custom: true,
                           variant: 'outlined',
@@ -1479,7 +1933,13 @@ export const frsSchema = {
               },
               {
                 type:"Group",
-                label:"II.A.3 HR policy",
+                code:"II.A.3",
+                label:"HR policy",
+                extraText:"A set of principles, guidelines, and norms that an organization adopts to help manage its employees.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
                 elements:[
                   {
                     type: 'HorizontalLayout',
@@ -1536,7 +1996,13 @@ export const frsSchema = {
             elements:[
               {
                 type:"Group",
-                label:"II.B.1 HIS financing plan",
+                code:"II.B.1",
+                label:"HIS financing plan",
+                extraText:"The legal and administrative systems and procedures in place that permit a government ministry and its agencies and organizations to conduct activities that ensure the correct use of public funds and that meet defined standards of probity and regularity. Activities include management and control of public expenditures, financial accounting, reporting, and asset management, in some cases.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
                 elements:[
                   {
                     type: 'HorizontalLayout',
@@ -1587,7 +2053,13 @@ export const frsSchema = {
               },
               {
                 type:"Group",
-                label:"II.B.2 Resource mobilization",
+                code:"II.B.2",
+                label:"Resource mobilization",
+                extraText:"All activities involved in securing new and additional financial resources for an organization (in this case, the HIS). It also involves making better use of and maximizing existing financial resources.",
+                options:{
+                  customGroup: true,
+                  grid:true
+                },
                 elements:[
                   {
                     type: 'HorizontalLayout',
@@ -2030,7 +2502,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Current Status",
-                        scope: '#/properties/his_training_education/properties/current',
+                        scope: '#/properties/dataset_definitions/properties/current',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2039,7 +2511,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/his_training_education/properties/future',
+                        scope: '#/properties/dataset_definitions/properties/future',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2048,7 +2520,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Evidence",
-                        scope: '#/properties/his_training_education/properties/evidence',
+                        scope: '#/properties/dataset_definitions/properties/evidence',
                         options:{
                           custom: true,
                           variant: 'outlined',
@@ -2059,7 +2531,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label:"Comments",
-                        scope: '#/properties/his_training_education/properties/comments',
+                        scope: '#/properties/dataset_definitions/properties/comments',
                         options:{
                           custom: true,
                           variant: 'outlined',
