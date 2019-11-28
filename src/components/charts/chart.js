@@ -40,9 +40,14 @@ export const addChartSeries=(options,series,update)=>{
       options.series.push(series);
       return options;
     }
+    else{
+      return options;
+    }
   }
   else{
+    console.log("not defined",options);
     return {
+      ...options,
       series:[series]
     }
   }

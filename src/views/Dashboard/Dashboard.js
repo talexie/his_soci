@@ -174,8 +174,9 @@ const Dashboard = () => {
         subTable: addChartSeries(changeChartType(updatedSubOptionsTable,'column'),subGoalStatusSeriesTable,true),
       };
     });
-    setDomainOptions( () => {
+    setDomainOptions( (prevDomainOptions) => {
       return {
+        ...prevDomainOptions,
         domainCurrent: addChartSeries(updatedDomainOptions,domainGoalStatusSeries,true),
         domainTable: addChartSeries(changeChartType(updatedDomainOptionsTable,'column'),domainGoalStatusSeriesTable,true),
       };

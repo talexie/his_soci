@@ -13,7 +13,7 @@ import {
 
 import { UrlContext } from '../../App';
 
-import {  Chart, UserButton, MultiFilter } from 'components';
+import {  Chart, UserButton, MultiFilter, changeChartType } from 'components';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -35,9 +35,8 @@ const HSVisualizer = ({ hisDomains, hisComponents,hisSubComponents, className, .
   const classes = useStyles();
   const filters = ['line','column','area','polar','spline'];
   const [type, setType]= useState('line');
-  const [updated, setUpdated] = useState(false);
   const description = "";
-
+  const domainChartOptions = changeChartType(hisDomains,'polar');
 
   const getFilter =useCallback((ev)=>{
     if(ev !== undefined){
@@ -54,17 +53,8 @@ const HSVisualizer = ({ hisDomains, hisComponents,hisSubComponents, className, .
     }
 
   },[]);
-  /**
-   * 
-   * @param {*} ev 
-   */
-  const updateChart=event=>{
-    if (type) {
-      setUpdated(true);
-    }
-    setUpdated(false);
-    event.preventDefault();
-  }
+
+ 
   /**
    * handleChange for chart re-drawing
    */
@@ -73,7 +63,7 @@ const HSVisualizer = ({ hisDomains, hisComponents,hisSubComponents, className, .
   }
   useEffect((ev)=>{
     drawChart(ev);
-  },[]);
+  },[hisDomains,hisSubComponents,hisComponents]);
   return (
     <div>
       <Grid container spacing={2} direction="column" justify="space-around" alignItems="center">
@@ -95,7 +85,7 @@ const HSVisualizer = ({ hisDomains, hisComponents,hisSubComponents, className, .
               />
               <Divider />
               <CardContent>
-                <Chart options= { hisDomains } />
+                <Chart options= { domainChartOptions } />
               </CardContent>
               <Divider />
               <CardActions>
