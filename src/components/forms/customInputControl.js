@@ -27,7 +27,7 @@ export const customInputControlTester =
   rankWith(Number.MAX_VALUE, checkInputControl );
 
 
-export class customInputControl extends Control<ControlProps , ControlState> {
+export class customInputControl extends Control {
 
   /**
    * @inheritDoc
@@ -52,9 +52,9 @@ export class customInputControl extends Control<ControlProps , ControlState> {
       config,
       this.props.uischema.options
     );
-    const onChange = (ev: any) => handleChange(path, ev.target.value);
+    const onChange = (ev) => handleChange(path, ev.target.value);
     const fieldType = schema.format === 'password'?'password':'text';
-    const readOnly = schema.readOnly;
+    const readOnly = schema.readOnly  || appliedUiSchemaOptions.readOnly;
     const maxLength = schema.maxLength;
 
     const showDescription = !isDescriptionHidden(

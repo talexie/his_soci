@@ -6,6 +6,7 @@ import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
 import { useLocation } from 'react-router-dom';
 import { generateUid } from 'd2/uid';
+import moment from 'moment';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,14 +33,16 @@ const HisSetup = (props) => {
   let userStore = {};
   let defaultData = { 
     tracking:{ 
-      id: query.get("id"),
-      reference: query.get("assessment"),
+      id: query.get("id"),      
       respondentType:"Self",
       location: "",
       period: "",
       status: 'STARTED',
+      date: moment().format('YYYY-MM-DD'),
       background:{
-        stakeholders:[]
+        reference: query.get("assessment"),
+        stakeholders: [],
+        coverage: []
       }
     }
   };
@@ -81,7 +84,7 @@ const HisSetup = (props) => {
     tableData.push(data.data);
     console.log("data",data);
     setState(data);
-    await setValue(formStatus);
+    setValue(formStatus);
 
     /**
     Creating Data Api
@@ -103,9 +106,6 @@ const HisSetup = (props) => {
   },[]);
     
   useEffect(()=>{
-    let isLoaded = false;
-    console.log("effect");
-    let totalCount = 0;
     const initializeForm=async()=>{
       setIsLoading(true);
       userStore = await getUserDataStoreValue(d2,'his_soci_tool','assessments'); 
@@ -116,20 +116,35 @@ const HisSetup = (props) => {
         defaultData = { 
           tracking:{ 
             id: userStore.current[0].id,
+            userid: userStore.current[0].userid,
+            username: userStore.current[0].username, 
             location: userStore.current[0].location,
             period: userStore.current[0].period,
             status: 'STARTED',
             respondentType: 'Consensus',
+            date: userStore.current[0].date,
           },
           background:{
+            event: userStore.current[0].event,
+            reference: userStore.current[0].reference,
+            hisType: userStore.current[0].hisType,
+            purpose: userStore.current[0].purpose,
+            mainChallenge: userStore.current[0].mainChallenge,
             stakeholders: userStore.current[0].respondents,
+            coverage: userStore.current[0].coverage,
           }
         };
       }
       else{
         defaultData.tracking.location = assessment.location;
         defaultData.tracking.period = assessment.period;
+        defaultData.background.hisType = assessment.hisType;
+        defaultData.background.purpose = assessment.purpose;
+        defaultData.background.mainChallenge = assessment.mainChallenge;
         defaultData.background.stakeholders = assessment.respondents;
+        defaultData.background.event = currentEvents.event;
+        defaultData.background.stakeholders = assessment.respondents;
+        defaultData.background.coverage = assessment.coverage;
       }
       userStore.defaultData = defaultData;
       setUstore(()=>{
@@ -149,8 +164,8 @@ const HisSetup = (props) => {
           <HisJsonForm title={ 'HIS SOCI Assessment' } data={ uStore.userStore.defaultData } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
         </div>
       }
-      <UserButton color="primary" variant="contained" value="Save Draft" getFormData={ handleChange }/>
-      <UserButton color="primary" variant="contained" value="Complete" getFormData={ (ev)=>save(ev) }/>
+      <UserButton disabled = { completed } color="primary" variant="contained" value="Save Draft" getFormData={ handleChange }/>
+      <UserButton disabled = { completed } color="primary" variant="contained" value="Complete" getFormData={ (ev)=>save(ev) }/>
     </div>
   );
 };

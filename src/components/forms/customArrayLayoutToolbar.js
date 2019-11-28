@@ -1,4 +1,4 @@
-import { Grid, Hidden, Tooltip } from '@material-ui/core';
+import { Grid, Tooltip } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -7,13 +7,12 @@ import { makeStyles } from '@material-ui/styles';
 
 import React, { useCallback, useState } from 'react';
 
-import { HisJsonForm, UserButton, SimpleTable } from 'components';
-import uuid from 'uuid/v1';
+import { UserButton } from 'components';
+import { merge } from 'lodash/merge';
 import {
   JsonFormsDispatch,
-  JsonFormsStateContext,
 } from '@jsonforms/react';
-import { Resolve, } from '@jsonforms/core';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,7 +26,6 @@ const useStyles = makeStyles(theme => ({
 export const CustomArrayLayoutToolbar = React.memo(
   ({
     label,
-    errors,
     addItem,
     path,
     data,
@@ -37,32 +35,30 @@ export const CustomArrayLayoutToolbar = React.memo(
     renderers,
     childPath,
     foundUISchema,
-    props,
-    ctx,
+    config,
   }) => {
-    let tableAddData:any = [];
-    let pdata:any = [];
+    let tableAddData = [];
+    let pdata = [];
     const classes = useStyles();
     const initalData = (path, createDefault());
     const [create,setCreate] = useState(false);
+    const appliedUiSchemaOptions = merge(
+      {},
+      config,
+      uischema.options
+    );
+    const readOnly = schema.readOnly  || appliedUiSchemaOptions.readOnly;
     const getData =(dataSaved)=>{
       pdata = dataSaved;
-      console.log("sdata",pdata);
       return data;
     }
     const addData = (event) => {
       tableAddData.push(pdata.data);
-      console.log("addData",tableAddData);
       setCreate(false);
     };
-    const addItemCb = useCallback((p: string, value: any) => {
+    const addItemCb = useCallback((p, value) => {
       setCreate(true);
-
-      console.log("call2",path);
-
-
-    }, [addItem,create]);
-    const columns = [{'title':'id','field':'id'},{'title':'source','field':'source'}]
+    }, []);
     return (
       <>
         <Toolbar>
@@ -77,13 +73,19 @@ export const CustomArrayLayoutToolbar = React.memo(
                     id='tooltip-add'
                     title={`Add to ${label}`}
                     placement='bottom'
+                    disableFocusListener = { readOnly }
+                    disableHoverListener = { readOnly }
+                    disableTouchListener = { readOnly }
                   >
-                    <IconButton
-                      aria-label={`Add to ${label}`}
-                      onClick={ addItemCb }
-                    >
-                      <AddIcon />
-                    </IconButton>
+                    <span>
+                      <IconButton
+                        aria-label={`Add to ${label}`}
+                        onClick={ addItemCb }
+                        disabled = { readOnly }
+                      >
+                        <AddIcon />
+                      </IconButton>
+                    </span>
                   </Tooltip>
                 </Grid>
               </Grid>
@@ -103,10 +105,10 @@ export const CustomArrayLayoutToolbar = React.memo(
               />
               <UserButton color="primary" variant="contained" value={ 'edit'+ label } getFormData={ (ev)=>addData(ev) }/>
             </>
-             )
-             :
+              )
+              :
             (
-             <p>No data</p>
+              <p>No data</p>
             )
           }
 

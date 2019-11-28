@@ -7,6 +7,7 @@ import {
   Dashboard as DashboardView,
   HisSetup as HisSetupView,
   HisAdmin as HisAdminView,
+  HisDocumentation as HisDocumentationView,
   NotFound as NotFoundView,
 
 } from './views';
@@ -40,6 +41,13 @@ const Routes = ( props ) => {
         layout={MainLayout}
         d2= { props.d2 }
         path="/admin"
+      />
+      <RouteWithLayout
+        component={HisDocumentationView}
+        exact
+        layout={MainLayout}
+        d2= { props.d2 }
+        path="/documentation"
       />
       <RouteWithLayout
         component={NotFoundView}

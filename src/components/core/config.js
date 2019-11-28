@@ -37,7 +37,7 @@ export const frsSchema = {
         hisType: { type: 'string'},
         purpose: { type: 'string'},
         mainChallenge: { type: 'string'},
-        respondentType: { type: 'string'},
+        respondentType: { type: 'string',readOnly:true,enum:['Consensus']},
         respondents:{
           type:'array',
           items:{
@@ -77,33 +77,33 @@ export const frsSchema = {
           type:'object',
           properties:{
             id:{ type: 'string',readOnly:true},
-            status: { type: 'string'},
-            username: { type: 'string'},
-            userid: { type: 'string'},
-            respondentType: { type: 'string', enum:['Self', 'Consensus'],default:"Self"},
-            date: { type: 'string', format:'date'},
-            period:{  type: 'string',enum:['2018','2019']},
-            location: { type: 'string',enum:['Uganda','Kenya','Rwanda','Burundi','Tanzania']},
+            status: { type: 'string',readOnly:true},
+            username: { type: 'string',readOnly:true},
+            userid: { type: 'string',readOnly:true},
+            respondentType: { type: 'string',readOnly:true, enum:['Self', 'Consensus'],default:"Self"},
+            date: { type: 'string', format:'date',readOnly:true},
+            period:{  type: 'string',readOnly:true,enum:['2018','2019']},
+            location: { type: 'string',readOnly:true,enum:['Uganda','Kenya','Rwanda','Burundi','Tanzania']},
           }
         },
         background:{
           type:'object',
           properties:{
-            event: { type: 'string'},
-            reference: { type: 'string'},
-            hisType: { type: 'string'},
-            purpose: { type: 'string'},
-            mainChallenge: { type: 'string'},
+            event: { type: 'string',readOnly:true},
+            reference: { type: 'string',readOnly:true},
+            hisType: { type: 'string',readOnly:true},
+            purpose: { type: 'string',readOnly:true},
+            mainChallenge: { type: 'string',readOnly:true},
             coverage:{
               type:'array',
               items:{
                 type: 'object',
                 properties:{
-                  level: { type: 'string', enum:['Region','District/Subcounty','Facility']},
-                  totalNumber: { type: 'integer'},
-                  hisCoverageNumber: { type: 'integer'},
-                  hisStaff: { type: 'integer'},
-                  comments: { type: 'string'}
+                  level: { type: 'string',readOnly:true, enum:['Region','District/Subcounty','Facility']},
+                  totalNumber: { type: 'integer',readOnly:true},
+                  hisCoverageNumber: { type: 'integer',readOnly:true},
+                  hisStaff: { type: 'integer',readOnly:true},
+                  comments: { type: 'string',readOnly:true}
                 }
               }
             },
@@ -112,14 +112,14 @@ export const frsSchema = {
               items: {
                 type: 'object',
                 properties:{
-                  id:{ type: 'string'},
-                  surname: { type: 'string'},
-                  firstname: { type: 'string'},
-                  emailAddress: { type: 'string'},
-                  phoneNumber: { type: 'string'},
-                  organization: { type: 'string'},
-                  domain: { type: 'string'},
-                  comments: { type: 'string'}
+                  id:{ type: 'string',readOnly:true},
+                  surname: { type: 'string',readOnly:true},
+                  firstname: { type: 'string',readOnly:true},
+                  emailAddress: { type: 'string',readOnly:true},
+                  phoneNumber: { type: 'string',readOnly:true},
+                  organization: { type: 'string',readOnly:true},
+                  domain: { type: 'string',readOnly:true},
+                  comments: { type: 'string',readOnly:true}
                 }
               }
             }
@@ -947,7 +947,7 @@ export const frsSchema = {
       },
     },
   },
-  setupUiSchema:          {
+  setupUiSchema:{
     type:'VerticalLayout',
     elements:[
       {
@@ -956,7 +956,7 @@ export const frsSchema = {
           {
             type:'Control',
             label:'Assessment ID',
-            scope: '#/properties/hissetup/properties/id',
+            scope: '#/properties/id',
             options:{
               custom: true,
               generated: true,
@@ -967,7 +967,7 @@ export const frsSchema = {
           {
             type:'Control',
             label:'Location',
-            scope: '#/properties/hissetup//properties/location',
+            scope: '#/properties/location',
             options:{
               select: true,
               variant: 'outlined'
@@ -976,7 +976,7 @@ export const frsSchema = {
           {
             type:'Control',
             label:'Period',
-            scope: '#/properties/hissetup/properties/period',
+            scope: '#/properties/period',
             options:{
               select: true,
               variant: 'outlined'
@@ -985,7 +985,7 @@ export const frsSchema = {
           {
             type:'Control',
             label:'Respondent',
-            scope: '#/properties/hissetup/properties/respondentType',
+            scope: '#/properties/respondentType',
             options:{
               select: true,
               variant: 'outlined'
@@ -996,7 +996,7 @@ export const frsSchema = {
       {
         type:'Control',
         label: 'Which HIS are you assessing?',
-        scope: '#/properties/hisetup/properties/hisType',
+        scope: '#/properties/hisType',
         options:{
           custom: true,
           variant: 'outlined'
@@ -1005,7 +1005,7 @@ export const frsSchema = {
       {
         type:'Control',
         label:'What is the purpose of the HIS you will assess (e.g., to monitor and review implementation of maternal and child health [MCH] services)?Please attach any supporting documentation describing the HIS purpose.',
-        scope: '#/properties/hissetup/properties/purpose',
+        scope: '#/properties/purpose',
         options:{
           custom: true,
           multi: true,
@@ -1016,7 +1016,7 @@ export const frsSchema = {
       {
         type:'Control',
         label:'What is the main challenge you hope to address with this assessment (e.g., to improve monitoring and review of MCH services)?',
-        scope: '#/properties/hissetup/properties/mainChallenge',
+        scope: '#/properties/mainChallenge',
         options:{
           custom: true,
           multi: true,
@@ -1032,7 +1032,7 @@ export const frsSchema = {
             type:'Control',
             label: false,
             extraText: 'Please provide the following information regarding the area covered by the HIS to be assessed.Only complete the boxes that apply to this HIS.',
-            scope:'#/properties/hissetup/properties/coverage',
+            scope:'#/properties/coverage',
             options:{
               tableLayout: false,
               detail:{
@@ -1089,7 +1089,7 @@ export const frsSchema = {
             type:'Control',
             label: false,
             extraText:"Identify key organizations and stakeholders that should be included in the assessment process (e.g., relevant ministries, donors, nongovernmental organizations [NGOs], etc.).Names of individuals will not be included in the final analysis or report.",
-            scope:'#/properties/hissetup/properties/respondents',
+            scope:'#/properties/respondents',
             options:{
               tableLayout: false,
               detail:{
@@ -1193,6 +1193,7 @@ export const frsSchema = {
                     scope: '#/properties/tracking/properties/location',
                     options:{
                       select: true,
+                      readOnly:true,
                       variant: 'outlined'
                     }
                   },
@@ -1202,6 +1203,7 @@ export const frsSchema = {
                     scope: '#/properties/tracking/properties/period',
                     options:{
                       select: true,
+                      readOnly:true,
                       variant: 'outlined'
                     }
                   },
@@ -1211,6 +1213,7 @@ export const frsSchema = {
                     scope: '#/properties/tracking/properties/respondentType',
                     options:{
                       select: true,
+                      readOnly:true,
                       variant: 'outlined'
                     },
                   }
@@ -1285,6 +1288,7 @@ export const frsSchema = {
                     scope:'#/properties/background/properties/coverage',
                     options:{
                       tableLayout: false,
+                      readOnly: true,
                       detail:{
                         type:'HorizontalLayout',
                         elements:[
@@ -1293,6 +1297,7 @@ export const frsSchema = {
                             scope: '#/properties/level',
                             options:{
                               select: true,
+                              readOnly:true,
                               variant: 'outlined'
                             },
                             "rule": {
@@ -1311,6 +1316,7 @@ export const frsSchema = {
                             scope: '#/properties/totalNumber',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             },
                             "rule": {
@@ -1329,6 +1335,7 @@ export const frsSchema = {
                             scope: '#/properties/hisCoverageNumber',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             },
                             "rule": {
@@ -1347,6 +1354,7 @@ export const frsSchema = {
                             scope: '#/properties/hisStaff',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             }
                           },
@@ -1355,6 +1363,7 @@ export const frsSchema = {
                             scope: '#/properties/comments',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             }
                           },
@@ -1378,6 +1387,7 @@ export const frsSchema = {
                     scope:'#/properties/background/properties/stakeholders',
                     options:{
                       tableLayout: false,
+                      readOnly: true,
                       detail:{
                         type:'HorizontalLayout',
                         elements:[
@@ -1386,6 +1396,7 @@ export const frsSchema = {
                             scope: '#/properties/id',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             }
                           },
@@ -1394,6 +1405,7 @@ export const frsSchema = {
                             scope: '#/properties/surname',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             }
                           },
@@ -1402,6 +1414,7 @@ export const frsSchema = {
                             scope: '#/properties/firstname',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             }
                           },
@@ -1410,6 +1423,7 @@ export const frsSchema = {
                             scope: '#/properties/emailAddress',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             }
                           },
@@ -1418,6 +1432,7 @@ export const frsSchema = {
                             scope: '#/properties/phoneNumber',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             }
                           },
@@ -1426,6 +1441,7 @@ export const frsSchema = {
                             scope: '#/properties/organization',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             }
                           },
@@ -1434,6 +1450,7 @@ export const frsSchema = {
                             scope: '#/properties/domain',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             }
                           },
@@ -1442,6 +1459,7 @@ export const frsSchema = {
                             scope: '#/properties/comments',
                             options:{
                               custom: true,
+                              readOnly:true,
                               variant: 'outlined'
                             }
                           },

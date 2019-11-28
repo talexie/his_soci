@@ -1,23 +1,17 @@
-import find from 'lodash/find';
 import map from 'lodash/map';
 import merge from 'lodash/merge';
 import React from 'react';
-import { ArrayControlProps, composePaths,findUISchema } from '@jsonforms/core';
-import { ResolvedJsonForms, JsonFormsDispatch,} from '@jsonforms/react';
+import { composePaths,findUISchema } from '@jsonforms/core';
+import { JsonFormsDispatch,} from '@jsonforms/react';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import { Grid, Hidden, Tooltip } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ValidationIcon from '@jsonforms/material-renderers/lib/complex/ValidationIcon';
-import CustomMaterialArrayTableRenderer from './customMaterialArrayTableLayoutRenderer';
 import { makeStyles } from '@material-ui/styles';
 
 
@@ -45,13 +39,12 @@ export const MaterialArrayLayout =
        config,
        rootSchema,
        renderers,
-       childLabel,
-       childPath,
        uischemas,
        visible,
        key,
      } = props;
     const appliedUiSchemaOptions = merge({}, config, uischema.options);
+    const readOnly = ( schema === undefined?false:schema.readOnly)  || (appliedUiSchemaOptions.readOnly ===undefined?false:appliedUiSchemaOptions.readOnly);
     const classes = useStyles();
     return (
       <Paper style={{ padding: 10 }}>
@@ -73,13 +66,22 @@ export const MaterialArrayLayout =
                     id='tooltip-add'
                     title={`Add to ${label}`}
                     placement='bottom'
+                    disableFocusListener = { readOnly }
+                    disableHoverListener = { readOnly }
+                    disableTouchListener = { readOnly }
                   >
-                    <IconButton
-                      aria-label={`Add to ${label}`}
-                      onClick={addItem(path, createDefaultValue())}
-                    >
-                      <AddIcon/>
-                    </IconButton>
+                    <span>
+                      <IconButton
+                        aria-label={`Add to ${label}`}
+                        onClick={
+                          
+                          addItem(path, createDefaultValue())
+                        }
+                        disabled = { readOnly }
+                      >
+                        <AddIcon/>
+                      </IconButton>
+                    </span>
                   </Tooltip>
                 </Grid>
               </Grid>
@@ -91,14 +93,14 @@ export const MaterialArrayLayout =
           {
             data ? map(data, (childData, index) => {
               const foundUISchema = findUISchema(
-                   uischemas,
-                   schema,
-                   uischema.scope,
-                   path,
-                   undefined,
-                   uischema,
-                   rootSchema
-                 );
+                  uischemas,
+                  schema,
+                  uischema.scope,
+                  path,
+                  undefined,
+                  uischema,
+                  rootSchema
+                );
               const childPath = composePaths(path, `${index}`);
               return (
                   <div key= { index }>
@@ -122,6 +124,7 @@ export const MaterialArrayLayout =
                         <IconButton
                           onClick={removeItems(path, [data[index]])}
                           style={{ float: 'right' }}
+                          disabled = { readOnly }
                         >
                           <DeleteIcon />
                         </IconButton>
@@ -134,6 +137,7 @@ export const MaterialArrayLayout =
               <IconButton
                 aria-label={`Add to ${label}`}
                 onClick={addItem(path, createDefaultValue())}
+                disabled = { readOnly }
               >
                 <AddIcon/>
               </IconButton> to add)

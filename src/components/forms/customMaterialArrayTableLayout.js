@@ -46,8 +46,6 @@ export class CustomMaterialArrayLayout extends React.PureComponent<
       required,
       rootSchema,
       config,
-      createDefault,
-      childPath,
       uischemas,
     } = this.props;
     const appliedUiSchemaOptions = merge(

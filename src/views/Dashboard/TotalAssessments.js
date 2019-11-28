@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const TotalAssessments = props => {
-  const { className, ...rest } = props;
+  const { className, total, ...rest } = props;
 
   const classes = useStyles();
 
@@ -64,7 +64,7 @@ const TotalAssessments = props => {
             >
               TOTAL ASSESSMENTS
             </Typography>
-            <Typography variant="h3">40</Typography>
+            <Typography variant="h3">{ total } </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
@@ -78,7 +78,7 @@ const TotalAssessments = props => {
             className={classes.differenceValue}
             variant="body2"
           >
-            16%
+            0%
           </Typography>
           <Typography
             className={classes.caption}

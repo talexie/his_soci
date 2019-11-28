@@ -1,13 +1,9 @@
 import React from 'react';
 
 import {
-  ArrayControlProps,
-  ControlElement,
   Helpers,
-  isObjectArrayWithNesting,
   mapDispatchToArrayControlProps,
   mapStateToArrayControlProps,
-  RankedTester,
   rankWith,
   or,
   optionIs,

@@ -34,6 +34,63 @@ export const checkAssessmentByRespondent=(assessments,assessmentId,respondentId)
   return newAssessment;
 }
 /**
+ * Filter current assessments from all assessments
+ * @param { string } assessmentId Assessment Id
+ * @returns { array }
+ */
+export const filterAssessment=(assessments,assessmentId)=>{
+  const currentAssessment = assessments.filter((assessment)=>{
+    if ( assessment.background !== undefined){
+      return (assessment.background.reference === assessmentId)
+    }    
+  });
+  return currentAssessment;
+}
+/**
+ * Filter data by parameter
+ * @param { array } data Data to search from
+ * @param { string } key Key used to do match
+ * @param { string } search Word to search
+ */
+export const filterData=(data,key,search)=>{
+  return data.filter((dv)=>{
+    return (dv[key] === search);
+  });
+}
+/**
+ * Generate tabular data for data entry analysis
+ * @param { object } assessment Can be current assessment or any
+ * @param { array } hisComponentSchema 
+ * @param { array } hisDomainSchema
+ * @returns { array } 
+ */
+export const generateTable=(assessment, hisComponentSchema, hisDomainSchema)=>{
+  let tableAssessments = [];
+  hisDomainSchema.forEach((domain,dIndex)=>{
+    tableAssessments.push({ 
+      name: domain.name,
+      current: filterData(assessment.domain.current,'name',domain.name),
+      goal: filterData(assessment.domain.goal,'name',domain.name),
+      subdomains:[]
+    });
+    hisComponentSchema.forEach((component,cIndex)=>{
+      tableAssessments[dIndex].subdomains.push({
+        name: component.name,
+        current: filterData(assessment.component.current,'name',component.name),
+        goal: filterData(assessment.component.goal,'name',component.name),
+        subcomponents:[]
+      });
+      component.items.forEach((item)=>{
+        tableAssessments[dIndex].subdomains[cIndex].subcomponents.push({
+          current: filterData(assessment.current,'key',item),
+          goal: filterData(assessment.goal,'key',item),
+        });
+      });
+    });
+  });
+  return tableAssessments;
+}
+/**
  Create events data payload for DHIS2 Event program without registration
 **/
 export const createDataValues=(currentData, event)=>{

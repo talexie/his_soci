@@ -20,13 +20,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const UserButton = ({ value,color,variant,getFormData=()=>{},children }) => {
+const UserButton = ({ disabled, value,color,variant,getFormData=()=>{},children }) => {
   const classes = useStyles();
   return (
     <Button className={ classes.button}
+      disabled = { disabled }
       color={ color }
       variant={ variant }
       onClick={ getFormData }
+
     >
       { value }
     </Button>

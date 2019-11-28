@@ -32,13 +32,13 @@ const HisAdmin = (props) => {
     status: 'ACTIVE'
   }
   const schema = HisConfigSchema.properties.hissetup;
-  const uiSchema = HisConfigSchema.properties.setupUiSchema;
+  const uiSchema = HisConfigSchema.setupUiSchema;
   let data = [];
   const defaultData = { 
     id: uuid(),
     date:moment().format("YYYY-MM-DD"),
     status:"NOT_STARTED", 
-    respondentType:'Consensus',
+    respondentType:"Consensus",
     respondents:[{ id: uuid() }] 
   };
   let initialAssessments = { 
@@ -59,16 +59,19 @@ const HisAdmin = (props) => {
     formStatus = { 'open': true,'submitted':false };
     tableData.push(data.data);
     setState(data);
-    await setValue(formStatus);
+    setValue(formStatus);
     tableData[0].respondentType = 'Consensus';
-    initialAssessments.tracking.event = currentEvents.event;
+    
     initialAssessments.tracking.userid = d2.currentUser.id;
     initialAssessments.tracking.username = d2.currentUser.username;
-    initialAssessments.tracking.status = 'NOT_STARTED';
-    initialAssessments.tracking.respondentType = 'Consensus';
-    initialAssessments.tracking.reference = defaultData.id;
+    initialAssessments.tracking.status = tableData[0].status;
+    initialAssessments.tracking.respondentType = tableData[0].respondentType;    
     initialAssessments.tracking.period = tableData[0].period;
     initialAssessments.tracking.location = tableData[0].location;
+    initialAssessments.tracking.date = tableData[0].date;
+
+    initialAssessments.background.event = currentEvents.event;
+    initialAssessments.background.reference = defaultData.id;
     initialAssessments.background.stakeholders = tableData[0].respondents;
     initialAssessments.background.coverage = tableData[0].coverage;
     initialAssessments.background.hisType = tableData[0].hisType;

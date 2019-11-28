@@ -1,19 +1,14 @@
 import React from 'react';
 import {
-  ControlProps,
-  ControlState,
   RankedTester,
   rankWith,
-  scopeEndsWith,
-  computeLabel,
   isDescriptionHidden,
-  isPlainLabel,
   or,
   optionIs,
   schemaMatches,
 } from '@jsonforms/core';
 import { Hidden } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
+
 import { DropzoneArea } from 'material-ui-dropzone';
 
 import merge from 'lodash/merge';
@@ -24,11 +19,11 @@ const checkInputFileControl = or(schemaMatches(schema => schema.hasOwnProperty('
  * Default tester for custom input controls.
  * @type {RankedTester}
  */
-export const customInputFileControlTester: RankedTester =
+export const customInputFileControlTester =
   rankWith(Number.MAX_VALUE, checkInputFileControl );
 
 
-export class customInputFileControl extends Control<ControlProps , ControlState> {
+export class customInputFileControl extends Control {
 
   /**
    * @inheritDoc
@@ -37,11 +32,9 @@ export class customInputFileControl extends Control<ControlProps , ControlState>
    const {
       id,
       errors,
-      label,
       schema,
       description,
       visible,
-      required,
       path,
       handleChange,
       data,
@@ -53,7 +46,7 @@ export class customInputFileControl extends Control<ControlProps , ControlState>
       config,
       this.props.uischema.options
     );
-    const onChange = (ev: any) => handleChange(path, ev);
+    const onChange = (ev) => handleChange(path, ev);
     const readOnly = schema.readOnly;
     const maxLength = schema.maxLength;
     const showDescription = !isDescriptionHidden(

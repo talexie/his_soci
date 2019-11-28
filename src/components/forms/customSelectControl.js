@@ -48,7 +48,7 @@ export const CustomSelectControl = React.memo(( {
   const isValid = errors.length === 0;
   const appliedUiSchemaOptions = merge({}, config, uischema.options);
   const enumSchema = schema.enum;
-  const readOnly = schema.readOnly;
+  const readOnly = schema.readOnly || appliedUiSchemaOptions.readOnly;
   const maxLength = schema.maxLength;
   const showDescription = !isDescriptionHidden(
     visible,
