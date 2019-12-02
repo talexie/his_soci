@@ -1,7 +1,7 @@
 import React from 'react';
 import isPlainObject from 'lodash/isPlainObject';
 import concat from 'lodash/concat';
-import merge from 'lodash/merge';
+import intersection from 'lodash/intersection';
 import isNull from 'lodash/isNull';
 
 /**
@@ -73,7 +73,8 @@ export const generateTable=(assessment, hisComponentSchema, hisDomainSchema)=>{
       goal: filterData(assessment.domain.goal,'name',domain.name),
       subdomains:[]
     });
-    hisComponentSchema.forEach((component,cIndex)=>{
+    const selectedSubDomains = getComponentsInDomain(domain.items,hisComponentSchema);
+    selectedSubDomains.forEach((component,cIndex)=>{
       tableAssessments[dIndex].subdomains.push({
         name: component.name,
         current: filterData(assessment.component.current,'name',component.name),
@@ -81,9 +82,12 @@ export const generateTable=(assessment, hisComponentSchema, hisDomainSchema)=>{
         subcomponents:[]
       });
       component.items.forEach((item)=>{
+        const current = filterData(assessment.current,'key',item);
+        const goal = filterData(assessment.goal,'key',item);
         tableAssessments[dIndex].subdomains[cIndex].subcomponents.push({
-          current: filterData(assessment.current,'key',item),
-          goal: filterData(assessment.goal,'key',item),
+          current: current,
+          goal: goal,
+          name: current[0].name
         });
       });
     });
@@ -91,6 +95,18 @@ export const generateTable=(assessment, hisComponentSchema, hisDomainSchema)=>{
   return tableAssessments;
 }
 /**
+ * Get components that belong to a certain domain
+ * @param {*} componentItems Assessment components in a subdomain
+ * @param {*} domainItems Assessment components in a domain
+ */
+export const getComponentsInDomain=(domainItems,subDomainSchema)=>{
+  return subDomainSchema.filter((subDomain)=>{
+    const matchedItems = intersection(domainItems,subDomain.items);
+    return ( matchedItems.length > 0);
+  })
+}
+/**
+ *
  Create events data payload for DHIS2 Event program without registration
 **/
 export const createDataValues=(currentData, event)=>{
@@ -123,7 +139,7 @@ const getValue=(value,key)=>{
   let objectArray= [];
   if(isPlainObject(value)){
     Object.keys(value).map((keyValue)=>{
-      const keyProperty = '#/'+ key +'/properties/'+ keyValue;
+      const keyProperty = '#/properties/'+ key +'/properties/'+ keyValue;
       objectArray.push({ value:value[keyValue],dataElement:keyProperty});
     });
   }
@@ -574,8 +590,9 @@ export const computeHisComponentValues=(data,schemas)=>{
   schemas.forEach((schema)=>{
     const extractedItemData = extractData(data,schema.items);
     let acc = accumulatorSchema(extractedItemData);
-    if (schema.items.length > 0){      
-      schemaData.push({ name: schema.name, y: (acc/(schema.items.length)) });
+    if (schema.items.length > 0){   
+      const averageAcc = acc/(schema.items.length);   
+      schemaData.push({ name: schema.name, y: parseFloat(averageAcc.toFixed(2))  });
     }
     else{
       schemaData.push({ name: schema.name, y: acc });

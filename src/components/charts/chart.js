@@ -45,7 +45,6 @@ export const addChartSeries=(options,series,update)=>{
     }
   }
   else{
-    console.log("not defined",options);
     return {
       ...options,
       series:[series]

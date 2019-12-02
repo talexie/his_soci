@@ -1,14 +1,12 @@
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
-import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
-import Chip from '@material-ui/core/Chip';
+import TextField from '@material-ui/core/TextField';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -80,17 +78,20 @@ const MultipleSelect =({ data, getData=(event)=>{},multiple,label,...rest })=> {
    }
  }
   return (
-    <div className={classes.root}>
-      <FormControl className={classes.formControl}>
+    <div className={ classes.root } style={{ paddingTop: '1.5em' }} >
         <InputLabel htmlFor="select-multiple-checkbox">{ label }</InputLabel>
-        <Select
+        <TextField
+          className={ classes.formControl }
+          select
           multiple={ multiple?'false':multiple }
+          margin="normal"
           variant="outlined"
           value={selectOption}
           onChange={handleChange}
           input={<Input id="select-multiple-checkbox" />}
-          renderValue={selected => getSelected(selected,multiple)}
-          MenuProps={MenuProps}
+          SelectProps={
+            MenuProps
+          }
         >
           {data.map(name => (
             <MenuItem key={name} value={name}>
@@ -98,8 +99,7 @@ const MultipleSelect =({ data, getData=(event)=>{},multiple,label,...rest })=> {
               <ListItemText primary={name} />
             </MenuItem>
           ))}
-        </Select>
-      </FormControl>
+        </TextField>
     </div>
   );
 }

@@ -78,7 +78,7 @@ export const HisDocumentation = (props) => {
                     >
                         <img
                             alt="HIS Stages ToolKit"
-                            src="/static/images/logos/his_stages_logo.png"
+                            src="static/images/logos/his_stages_logo.png"
                         />
                     </Grid>
                     <Grid 

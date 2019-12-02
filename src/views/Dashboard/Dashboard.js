@@ -7,7 +7,8 @@ import {
   HSTabular,
   HSTasksProgress,
   HSAssessmentCompletion,
-  HSTotalAssessments
+  HSTotalAssessments,
+  HSDataTable,
 } from '.';
 import { UrlContext } from '../../App';
 
@@ -79,7 +80,7 @@ const Dashboard = () => {
       text:""
     }
   };
-  const [assessment,setAssessment] = useState({ assessments: {} });
+  const [assessment,setAssessment] = useState({ assessments: {},assessmentRows:[] });
   const [voptions,setVOptions] = useState({ current: initOptions, table: initOptions });
   const [subOptions, setSubOptions] = useState({subcurrent: initOptions, subTable: initOptions });
   const [domainOptions, setDomainOptions] = useState({domainCurrent: initOptions, domainTable: initOptions });
@@ -159,7 +160,8 @@ const Dashboard = () => {
 
     setAssessment(()=>{
       return {
-        assessments: assessmentsSeries
+        assessments: assessmentsSeries,
+        assessmentRows: tableAssessments
       };
     });
     setVOptions(()=>{
@@ -185,13 +187,13 @@ const Dashboard = () => {
       return {
         total: getTotalAssessments(assessments.assessments,userStore.current[0].location, userStore.current[0].period),
         value: getProgress(userAssessment),
-        completed:  getTotalAssessments(assessments.assessments,userStore.current[0].location, userStore.current[0].period,'COMPLETED')
+        completed:  getCompletedAssessments(assessments.assessments,userStore.current[0].location, userStore.current[0].period,'COMPLETED')
       }      
     })
     return;
   }
   useEffect((ev)=>{
-    console.log("Dashboard loaded.");
+    console.log("Dashboard loaded.",assessment.assessmentRows);
     drawChart(ev);
   },[]);
   return (
@@ -256,6 +258,17 @@ const Dashboard = () => {
               xs={12}
             >
                <HSTabular hisDomainsTable={ domainOptions.domainTable } hisComponentsTable={ subOptions.subTable } hisSubComponentsTable= { voptions.table} />
+            </Grid>
+          </Grid>
+          <Grid item container spacing={4}>
+            <Grid
+              item
+              lg={12}
+              md={12}
+              xl={12}
+              xs={12}
+            >
+               <HSDataTable hisStagesData={ assessment.assessmentRows } />
             </Grid>
           </Grid>
         </Grid>
