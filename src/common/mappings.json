@@ -1,0 +1,1035 @@
+{
+    "mappings": [
+      {
+        "code": "HIS_SOCIBAssessment ID",
+        "name": "HIS_SOCI: (B): Assessment ID",
+        "id": "Y469EVli6Wa",
+        "property": "#/properties/tracking/properties/id"
+      },
+      {
+        "code": "HIS_SOCIBAssessmentStartDate",
+        "name": "HIS_SOCI: (B): Assessment Start Date",
+        "id": "Pf7is2bHcNf",
+        "property": "#/properties/tracking/properties/date"
+      },
+      {
+        "code": "HIS_SOCIBCompletedBy",
+        "name": "HIS_SOCI: (B): Completed By",
+        "id": "dbbRxzKY8Fa",
+        "property": "#/properties/tracking/properties/username"
+      },
+      {
+        "code": "HIS_SOCIBCompletedByID",
+        "name": "HIS_SOCI: (B): Completed By ID",
+        "id": "FxOZkWEVWhk",
+        "property": "#/properties/tracking/properties/userid"
+      },
+      {
+        "code": "HIS_SOCIBConsensusAssessment ID",
+        "name": "HIS_SOCI: (B): Consensus Assessment ID (Reference)",
+        "id": "bH6flUzIo0p",
+        "property": "#/properties/background/properties/reference"
+      },
+      {
+        "code": "HIS_SOCIBLocation",
+        "name": "HIS_SOCI: (B): Location",
+        "id": "ZGArLBIbeBm",
+        "property": "#/properties/tracking/properties/location"
+      },
+      {
+        "code": "HIS_SOCIBPeriod",
+        "name": "HIS_SOCI: (B): Period",
+        "id": "fGIvVsixFCz",
+        "property": "#/properties/tracking/properties/period"
+      },
+      {
+        "code": "HIS_SOCIBRespondentType",
+        "name": "HIS_SOCI: (B): RespondentType",
+        "id": "KgAo8tsUwxC",
+        "property": "#/properties/tracking/properties/respondentType"
+      },
+      {
+        "code": "HIS_SOCIBStatus",
+        "name": "HIS_SOCI: (B): Status",
+        "id": "LS420b5eQfm",
+        "property": "#/properties/tracking/properties/status"
+      },
+      {
+        "code": "HIS_SOCIBMainChallenge",
+        "name": "HIS_SOCI: (B): What is the main challenge you hope to address with this assessment (e.g., to improve monitoring and review of MCH services)?",
+        "id": "qmYWpwodH9z",
+        "property": "#/properties/background/properties/mainChallenge"
+      },
+      {
+        "code": "HIS_SOCIBPurpose",
+        "name": "HIS_SOCI: (B): What is the purpose of the HIS you will assess (e.g., to monitor and review implementation of maternal and child health [MCH] services)?Please attach any supporting documentation describing the HIS purpose.",
+        "id": "jQ0AeZ5BvlH",
+        "property": "#/properties/background/properties/purpose"
+      },
+      {
+        "code": "HIS_SOCIBHisType",
+        "name": "HIS_SOCI: (B): Which HIS are you assessing?",
+        "id": "heu7IEEg8AR",
+        "property": "#/properties/background/properties/hisType"
+      },
+      {
+        "id": "OsHQKbLrXQe",
+        "code": "HIS_SOCI30",
+        "name": "HIS_SOCI: (C): Aggregate data exchange",
+        "property": "#/properties/aggregate_data_exchange/properties/current"
+      },
+      {
+        "id": "ZAvV07oJgPp",
+        "code": "HIS_SOCI108",
+        "name": "HIS_SOCI: (C): Aggregate data exchange (Comment)",
+        "property": "#/properties/aggregate_data_exchange/properties/comments"
+      },
+      {
+        "id": "CjkaZQ6Xc8N",
+        "code": "HIS_SOCI186",
+        "name": "HIS_SOCI: (C): Aggregate data exchange (Evidence)",
+        "property": "#/properties/aggregate_data_exchange/properties/evidence"
+      },
+      {
+        "id": "uvkFroHEyGu",
+        "code": "HIS_SOCI20",
+        "name": "HIS_SOCI: (C): Business continuity and processes and policies",
+        "property": "#/properties/business_continuity_processes_policies/properties/current"
+      },
+      {
+        "id": "UsZIPZRYvLr",
+        "code": "HIS_SOCI98",
+        "name": "HIS_SOCI: (C): Business continuity and processes and policies (Comment)",
+        "property": "#/properties/business_continuity_processes_policies/properties/comments"
+      },
+      {
+        "id": "s5xpBWuvMDv",
+        "code": "HIS_SOCI176",
+        "name": "HIS_SOCI: (C): Business continuity and processes and policies (Evidence)",
+        "property": "#/properties/business_continuity_processes_policies/properties/evidence"
+      },
+      {
+        "id": "uhfZczbkIee",
+        "code": "HIS_SOCI31",
+        "name": "HIS_SOCI: (C): Commodity management data exchange",
+        "property": "#/properties/commodity_management_data_exchange/properties/current"
+      },
+      {
+        "id": "FzzUl2utM4Y",
+        "code": "HIS_SOCI109",
+        "name": "HIS_SOCI: (C): Commodity management data exchange (Comment)",
+        "property": "#/properties/commodity_management_data_exchange/properties/comments"
+      },
+      {
+        "id": "qxnhv4h9uv7",
+        "code": "HIS_SOCI187",
+        "name": "HIS_SOCI: (C): Commodity management data exchange (Evidence)",
+        "property": "#/properties/commodity_management_data_exchange/properties/evidence"
+      },
+      {
+        "id": "g28LIeEdG2E",
+        "code": "HIS_SOCI42",
+        "name": "HIS_SOCI: (C): Data collection alignment with workflow",
+        "property": "#/properties/data_collection_alignment_workflow/properties/current"
+      },
+      {
+        "id": "AWTPjDwqt1m",
+        "code": "HIS_SOCI120",
+        "name": "HIS_SOCI: (C): Data collection alignment with workflow (Comment)",
+        "property": "#/properties/data_collection_alignment_workflow/properties/comments"
+      },
+      {
+        "id": "LV4TrpN216L",
+        "code": "HIS_SOCI198",
+        "name": "HIS_SOCI: (C): Data collection alignment with workflow (Evidence)",
+        "property": "#/properties/data_collection_alignment_workflow/properties/evidence"
+      },
+      {
+        "id": "zxTcKmKzwIF",
+        "code": "HIS_SOCI23",
+        "name": "HIS_SOCI: (C): Data exchange standards",
+        "property": "#/properties/data_exchange_standards/properties/current"
+      },
+      {
+        "id": "Fp12MCtNaqj",
+        "code": "HIS_SOCI101",
+        "name": "HIS_SOCI: (C): Data exchange standards (Comment)",
+        "property": "#/properties/data_exchange_standards/properties/comments"
+      },
+      {
+        "id": "MxD2dFsbKO2",
+        "code": "HIS_SOCI179",
+        "name": "HIS_SOCI: (C): Data exchange standards (Evidence)",
+        "property": "#/properties/data_exchange_standards/properties/evidence"
+      },
+      {
+        "id": "Q8YnOpCjxel",
+        "code": "HIS_SOCI34",
+        "name": "HIS_SOCI: (C): Data management",
+        "property": "#/properties/data_management/properties/current"
+      },
+      {
+        "id": "QhT22Kw9brG",
+        "code": "HIS_SOCI112",
+        "name": "HIS_SOCI: (C): Data management (Comment)",
+        "property": "#/properties/data_management/properties/comments"
+      },
+      {
+        "id": "iDzhOCKrdJh",
+        "code": "HIS_SOCI190",
+        "name": "HIS_SOCI: (C): Data management (Evidence)",
+        "property": "#/properties/data_management/properties/evidence"
+      },
+      {
+        "id": "vqILTKlyhNV",
+        "code": "HIS_SOCI33",
+        "name": "HIS_SOCI: (C): Data quality assurance and quality control",
+        "property": "#/properties/data_quality_assurance_quality_control/properties/current"
+      },
+      {
+        "id": "yShnbU9sqNJ",
+        "code": "HIS_SOCI111",
+        "name": "HIS_SOCI: (C): Data quality assurance and quality control (Comment)",
+        "property": "#/properties/data_quality_assurance_quality_control/properties/comments"
+      },
+      {
+        "id": "Wj26iKatTJ8",
+        "code": "HIS_SOCI189",
+        "name": "HIS_SOCI: (C): Data quality assurance and quality control (Evidence)",
+        "property": "#/properties/data_quality_assurance_quality_control/properties/evidence"
+      },
+      {
+        "id": "uchc7u81WVU",
+        "code": "HIS_SOCI32",
+        "name": "HIS_SOCI: (C): Data security exchange",
+        "property": "#/properties/data_security_exchange/properties/current"
+      },
+      {
+        "id": "M1XPrPCZFCI",
+        "code": "HIS_SOCI110",
+        "name": "HIS_SOCI: (C): Data security exchange (Comment)",
+        "property": "#/properties/data_security_exchange/properties/comments"
+      },
+      {
+        "id": "CfNCPPjCXG9",
+        "code": "HIS_SOCI188",
+        "name": "HIS_SOCI: (C): Data security exchange (Evidence)",
+        "property": "#/properties/data_security_exchange/properties/evidence"
+      },
+      {
+        "id": "UWEedVYFWoy",
+        "code": "HIS_SOCI22",
+        "name": "HIS_SOCI: (C): Data set definitions (clinical and indicator)",
+        "property": "#/properties/dataset_definitions/properties/current"
+      },
+      {
+        "id": "cb6a6U1o1Pl",
+        "code": "HIS_SOCI100",
+        "name": "HIS_SOCI: (C): Data set definitions (clinical and indicator) (Comment)",
+        "property": "#/properties/dataset_definitions/properties/comments"
+      },
+      {
+        "id": "xi5pYA7DDg3",
+        "code": "HIS_SOCI178",
+        "name": "HIS_SOCI: (C): Data set definitions (clinical and indicator) (Evidence)",
+        "property": "#/properties/dataset_definitions/properties/evidence"
+      },
+      {
+        "id": "wozZIQzV4dR",
+        "code": "HIS_SOCI39",
+        "name": "HIS_SOCI: (C): Data synthesis and communication",
+        "property": "#/properties/data_synthesis_communication/properties/current"
+      },
+      {
+        "id": "ZK0tFEM97Qj",
+        "code": "HIS_SOCI117",
+        "name": "HIS_SOCI: (C): Data synthesis and communication (Comment)",
+        "property": "#/properties/data_synthesis_communication/properties/comments"
+      },
+      {
+        "id": "hOwBFBuP2RQ",
+        "code": "HIS_SOCI195",
+        "name": "HIS_SOCI: (C): Data synthesis and communication (Evidence)",
+        "property": "#/properties/data_synthesis_communication/properties/evidence"
+      },
+      {
+        "id": "HY5UulwZRYg",
+        "code": "HIS_SOCI35",
+        "name": "HIS_SOCI: (C): Data use availability strategy",
+        "property": "#/properties/data_use_availability_strategy/properties/current"
+      },
+      {
+        "id": "OofAXlXaEQV",
+        "code": "HIS_SOCI113",
+        "name": "HIS_SOCI: (C): Data use availability strategy (Comment)",
+        "property": "#/properties/data_use_availability_strategy/properties/comments"
+      },
+      {
+        "id": "mN72PEWyg3l",
+        "code": "HIS_SOCI191",
+        "name": "HIS_SOCI: (C): Data use availability strategy (Evidence)",
+        "property": "#/properties/data_use_availability_strategy/properties/evidence"
+      },
+      {
+        "id": "Beya0JBCkJr",
+        "code": "HIS_SOCI37",
+        "name": "HIS_SOCI: (C): Data use competencies",
+        "property": "#/properties/data_use_competencies/properties/current"
+      },
+      {
+        "id": "CLGPRAHMPfK",
+        "code": "HIS_SOCI115",
+        "name": "HIS_SOCI: (C): Data use competencies (Comment)",
+        "property": "#/properties/data_use_competencies/properties/comments"
+      },
+      {
+        "id": "yXPZggjoETG",
+        "code": "HIS_SOCI193",
+        "name": "HIS_SOCI: (C): Data use competencies (Evidence)",
+        "property": "#/properties/data_use_competencies/properties/evidence"
+      },
+      {
+        "id": "yOO0Brhzjk3",
+        "code": "HIS_SOCI41",
+        "name": "HIS_SOCI: (C): Data use impact",
+        "property": "#/properties/data_use_impact/properties/current"
+      },
+      {
+        "id": "eA99bo7goq6",
+        "code": "HIS_SOCI119",
+        "name": "HIS_SOCI: (C): Data use impact (Comment)",
+        "property": "#/properties/data_use_impact/properties/comments"
+      },
+      {
+        "id": "x5rXGGDeNJv",
+        "code": "HIS_SOCI197",
+        "name": "HIS_SOCI: (C): Data use impact (Evidence)",
+        "property": "#/properties/data_use_impact/properties/evidence"
+      },
+      {
+        "id": "hNXgmsYG5lf",
+        "code": "HIS_SOCI43",
+        "name": "HIS_SOCI: (C): Decision support (clinical or other)",
+        "property": "#/properties/decision_support_clinical_other/properties/current"
+      },
+      {
+        "id": "T8atIZHFLI9",
+        "code": "HIS_SOCI121",
+        "name": "HIS_SOCI: (C): Decision support (clinical or other) (Comment)",
+        "property": "#/properties/decision_support_clinical_other/properties/comments"
+      },
+      {
+        "id": "j9iirnkSlyG",
+        "code": "HIS_SOCI199",
+        "name": "HIS_SOCI: (C): Decision support (clinical or other) (Evidence)",
+        "property": "#/properties/decision_support_clinical_other/properties/evidence"
+      },
+      {
+        "id": "frNn5L8g0P8",
+        "code": "HIS_SOCI04",
+        "name": "HIS_SOCI: (C): Domain or Subcomponent of Expertise"
+      },
+      {
+        "id": "BPCzjovgxcI",
+        "code": "HIS_SOCI28",
+        "name": "HIS_SOCI: (C): Enterprise architecture",
+        "property": "#/properties/enterprise_architecture/properties/current"
+      },
+      {
+        "id": "fGbKh8OCDV7",
+        "code": "HIS_SOCI106",
+        "name": "HIS_SOCI: (C): Enterprise architecture (Comment)",
+        "property": "#/properties/enterprise_architecture/properties/comments"
+      },
+      {
+        "id": "OpoMR0znC3x",
+        "code": "HIS_SOCI184",
+        "name": "HIS_SOCI: (C): Enterprise architecture (Evidence)",
+        "property": "#/properties/enterprise_architecture/properties/evidence"
+      },
+      {
+        "id": "SY2LxWAjkSb",
+        "code": "HIS_SOCI07",
+        "name": "HIS_SOCI: (C): Existence of HIS policies and legislation",
+        "property": "#/properties/his_policy_regulation/properties/current"
+      },
+      {
+        "id": "AcohOi5PMv6",
+        "code": "HIS_SOCI85",
+        "name": "HIS_SOCI: (C): Existence of HIS policies and legislation (Comment)",
+        "property": "#/properties/his_policy_regulation/properties/comments"
+      },
+      {
+        "id": "iAR0fDiMpF5",
+        "code": "HIS_SOCI163",
+        "name": "HIS_SOCI: (C): Existence of HIS policies and legislation (Evidence)",
+        "property": "#/properties/his_policy_regulation/properties/evidence"
+      },
+      {
+        "id": "D6uhhlVtMy6",
+        "code": "HIS_SOCI02",
+        "name": "HIS_SOCI: (C): First Name",
+        "property": "#/properties/stakeholders/properties/firstname"
+      },
+      {
+        "id": "fCaL1rcuzul",
+        "code": "HIS_SOCI18",
+        "name": "HIS_SOCI: (C): Hardware",
+        "property": "#/properties/hardware/properties/current"
+      },
+      {
+        "id": "SgwUuT2aE95",
+        "code": "HIS_SOCI96",
+        "name": "HIS_SOCI: (C): Hardware (Comment)",
+        "property": "#/properties/hardware/properties/comments"
+      },
+      {
+        "id": "bhPtlWYoMPH",
+        "code": "HIS_SOCI174",
+        "name": "HIS_SOCI: (C): Hardware (Evidence)",
+        "property": "#/properties/hardware/properties/evidence"
+      },
+      {
+        "id": "x7nAB541T1x",
+        "code": "HIS_SOCI11",
+        "name": "HIS_SOCI: (C): HIS competencies (knowledge, skills, and abilities)",
+        "property": "#/properties/his_competencies/properties/current"
+      },
+      {
+        "id": "ZdjLpznGBpR",
+        "code": "HIS_SOCI89",
+        "name": "HIS_SOCI: (C): HIS competencies (knowledge, skills, and abilities) (Comment)",
+        "property": "#/properties/his_competencies/properties/comments"
+      },
+      {
+        "id": "vfegpxrKEG9",
+        "code": "HIS_SOCI167",
+        "name": "HIS_SOCI: (C): HIS competencies (knowledge, skills, and abilities) (Evidence)",
+        "property": "#/properties/his_competencies/properties/evidence"
+      },
+      {
+        "id": "LACeAVjpiGU",
+        "code": "HIS_SOCI14",
+        "name": "HIS_SOCI: (C): HIS financing plan",
+        "property": "#/properties/his_financing_plan/properties/current"
+      },
+      {
+        "id": "N8F5ibqr9js",
+        "code": "HIS_SOCI92",
+        "name": "HIS_SOCI: (C): HIS financing plan (Comment)",
+        "property": "#/properties/his_financing_plan/properties/comments"
+      },
+      {
+        "id": "ofpnig0UsUc",
+        "code": "HIS_SOCI170",
+        "name": "HIS_SOCI: (C): HIS financing plan (Evidence)",
+        "property": "#/properties/his_financing_plan/properties/evidence"
+      },
+      {
+        "id": "uiyIIeOjRgK",
+        "code": "HIS_SOCI09",
+        "name": "HIS_SOCI: (C): HIS leadership and coordination",
+        "property": "#/properties/his_leadership_coordination/properties/current"
+      },
+      {
+        "id": "hZUQWa4WnwG",
+        "code": "HIS_SOCI87",
+        "name": "HIS_SOCI: (C): HIS leadership and coordination (Comment)",
+        "property": "#/properties/his_leadership_coordination/properties/comments"
+      },
+      {
+        "id": "nfSfiSZWm8W",
+        "code": "HIS_SOCI165",
+        "name": "HIS_SOCI: (C): HIS leadership and coordination (Evidence)",
+        "property": "#/properties/his_leadership_coordination/properties/evidence"
+      },
+      {
+        "id": "dFDAcKGuNLi",
+        "code": "HIS_SOCI10",
+        "name": "HIS_SOCI: (C): HIS organization structure and function",
+        "property": "#/properties/his_organization_structure_function/properties/current"
+      },
+      {
+        "id": "UMPBPkFpgPP",
+        "code": "HIS_SOCI88",
+        "name": "HIS_SOCI: (C): HIS organization structure and function (Comment)",
+        "property": "#/properties/his_organization_structure_function/properties/comments"
+      },
+      {
+        "id": "Ek8nAg726ym",
+        "code": "HIS_SOCI166",
+        "name": "HIS_SOCI: (C): HIS organization structure and function (Evidence)",
+        "property": "#/properties/his_organization_structure_function/properties/evidence"
+      },
+      {
+        "id": "l0DZ8MaKUTm",
+        "code": "HIS_SOCI21",
+        "name": "HIS_SOCI: (C): HIS standard guidelines",
+        "property": "#/properties/his_standard_guidelines/properties/current"
+      },
+      {
+        "id": "OPH7Psq8wPa",
+        "code": "HIS_SOCI99",
+        "name": "HIS_SOCI: (C): HIS standard guidelines (Comment)",
+        "property": "#/properties/his_standard_guidelines/properties/comments"
+      },
+      {
+        "id": "PjiOSLl0bje",
+        "code": "HIS_SOCI177",
+        "name": "HIS_SOCI: (C): HIS standard guidelines (Evidence)",
+        "property": "#/properties/his_standard_guidelines/properties/evidence"
+      },
+      {
+        "id": "iMAJEGTPmW2",
+        "code": "HIS_SOCI05",
+        "name": "HIS_SOCI: (C): HIS strategy",
+        "property": "#/properties/his_strategic_planning/properties/current"
+      },
+      {
+        "id": "W7fwiGszOxz",
+        "code": "HIS_SOCI83",
+        "name": "HIS_SOCI: (C): HIS strategy (Comment)",
+        "property": "#/properties/his_strategic_planning/properties/comments"
+      },
+      {
+        "id": "odGk61FaJv9",
+        "code": "HIS_SOCI161",
+        "name": "HIS_SOCI: (C): HIS strategy (Evidence)",
+        "property": "#/properties/his_strategic_planning/properties/evidence"
+      },
+      {
+        "id": "UJUnS6Vs4da",
+        "code": "HIS_SOCI12",
+        "name": "HIS_SOCI: (C): HIS training and education (includes continuous professional development)",
+        "property": "#/properties/his_training_education/properties/current"
+      },
+      {
+        "id": "N65bFlbseab",
+        "code": "HIS_SOCI90",
+        "name": "HIS_SOCI: (C): HIS training and education (includes continuous professional development) (Comment)",
+        "property": "#/properties/his_training_education/properties/comments"
+      },
+      {
+        "id": "sbk1utFWXqP",
+        "code": "HIS_SOCI168",
+        "name": "HIS_SOCI: (C): HIS training and education (includes continuous professional development) (Evidence)",
+        "property": "#/properties/his_training_education/properties/evidence"
+      },
+      {
+        "id": "XUHHLTHCRiJ",
+        "code": "HIS_SOCI13",
+        "name": "HIS_SOCI: (C): HR policy",
+        "property": "#/properties/hr_policy/properties/current"
+      },
+      {
+        "id": "nhqhTWKNR3k",
+        "code": "HIS_SOCI91",
+        "name": "HIS_SOCI: (C): HR policy (Comment)",
+        "property": "#/properties/hr_policy/properties/comments"
+      },
+      {
+        "id": "bRoMTR8b3ws",
+        "code": "HIS_SOCI169",
+        "name": "HIS_SOCI: (C): HR policy (Evidence)",
+        "property": "#/properties/hr_policy/properties/evidence"
+      },
+      {
+        "id": "qnMfW3j4Lzw",
+        "code": "HIS_SOCI17",
+        "name": "HIS_SOCI: (C): ICT business infrastructure",
+        "property": "#/properties/ict_business_infrastructure/properties/current"
+      },
+      {
+        "id": "R4ZYKOU3FuL",
+        "code": "HIS_SOCI95",
+        "name": "HIS_SOCI: (C): ICT business infrastructure (Comment)",
+        "property": "#/properties/ict_business_infrastructure/properties/comments"
+      },
+      {
+        "id": "SH55BHzXaK5",
+        "code": "HIS_SOCI173",
+        "name": "HIS_SOCI: (C): ICT business infrastructure (Evidence)",
+        "property": "#/properties/ict_business_infrastructure/properties/evidence"
+      },
+      {
+        "id": "LFLlCBCMfmV",
+        "code": "HIS_SOCI25",
+        "name": "HIS_SOCI: (C): Indicator registry",
+        "property": "#/properties/indicator_registry/properties/current"
+      },
+      {
+        "id": "uWlQuxQtUBK",
+        "code": "HIS_SOCI103",
+        "name": "HIS_SOCI: (C): Indicator registry (Comment)",
+        "property": "#/properties/indicator_registry/properties/comments"
+      },
+      {
+        "id": "JSh0TyBJ3CR",
+        "code": "HIS_SOCI181",
+        "name": "HIS_SOCI: (C): Indicator registry (Evidence)",
+        "property": "#/properties/indicator_registry/properties/evidence"
+      },
+      {
+        "id": "F8tWUNEwDGy",
+        "code": "HIS_SOCI36",
+        "name": "HIS_SOCI: (C): Information/data availability",
+        "property": "#/properties/information_data_availability/properties/current"
+      },
+      {
+        "id": "ATIQa7i17la",
+        "code": "HIS_SOCI114",
+        "name": "HIS_SOCI: (C): Information/data availability (Comment)",
+        "property": "#/properties/information_data_availability/properties/comments"
+      },
+      {
+        "id": "fOO6GmRoWTQ",
+        "code": "HIS_SOCI192",
+        "name": "HIS_SOCI: (C): Information/data availability (Evidence)",
+        "property": "#/properties/information_data_availability/properties/evidence"
+      },
+      {
+        "id": "ysGuJK56RgI",
+        "code": "HIS_SOCI01",
+        "name": "HIS_SOCI: (C): Last Name",
+        "property": "#/properties/stakeholders/properties/surname"
+      },
+      {
+        "id": "IW34zilhVs5",
+        "code": "HIS_SOCI24",
+        "name": "HIS_SOCI: (C): Master facility list",
+        "property": "#/properties/master_facility_list/properties/current"
+      },
+      {
+        "id": "gpN6LglceXF",
+        "code": "HIS_SOCI102",
+        "name": "HIS_SOCI: (C): Master facility list (Comment)",
+        "property": "#/properties/master_facility_list/properties/comments"
+      },
+      {
+        "id": "YfkR7dv6MZu",
+        "code": "HIS_SOCI180",
+        "name": "HIS_SOCI: (C): Master facility list (Evidence)",
+        "property": "#/properties/master_facility_list/properties/evidence"
+      },
+      {
+        "id": "p7htz19SjoJ",
+        "code": "HIS_SOCI06",
+        "name": "HIS_SOCI: (C): M&E plan",
+        "property": "#/properties/me_plan/properties/current"
+      },
+      {
+        "id": "fVvTPHCQMH7",
+        "code": "HIS_SOCI84",
+        "name": "HIS_SOCI: (C): M&E plan (Comment)",
+        "property": "#/properties/me_plan/properties/comments"
+      },
+      {
+        "id": "Xc2YimPezXT",
+        "code": "HIS_SOCI162",
+        "name": "HIS_SOCI: (C): M&E plan (Evidence)",
+        "property": "#/properties/me_plan/properties/evidence"
+      },
+      {
+        "id": "LMtuVfSt47y",
+        "code": "HIS_SOCI19",
+        "name": "HIS_SOCI: (C): Networks and Internet connectivity",
+        "property": "#/properties/networks_internet_connectivity/properties/current"
+      },
+      {
+        "id": "TmrIQ7oTOMa",
+        "code": "HIS_SOCI97",
+        "name": "HIS_SOCI: (C): Networks and Internet connectivity (Comment)",
+        "property": "#/properties/networks_internet_connectivity/properties/comments"
+      },
+      {
+        "id": "m2K7ydeJUQU",
+        "code": "HIS_SOCI175",
+        "name": "HIS_SOCI: (C): Networks and Internet connectivity (Evidence)",
+        "property": "#/properties/networks_internet_connectivity/properties/evidence"
+      },
+      {
+        "id": "x3jTviWWpra",
+        "code": "HIS_SOCI03",
+        "name": "HIS_SOCI: (C): Organization",
+        "property": "#/properties/stakeholders/properties/organization"
+      },
+      {
+        "id": "MYIrsOIzZyz",
+        "code": "HIS_SOCI29",
+        "name": "HIS_SOCI: (C): Person data exchange",
+        "property": "#/properties/person_data_exchange/properties/current"
+      },
+      {
+        "id": "N9Bl6g1CjdU",
+        "code": "HIS_SOCI107",
+        "name": "HIS_SOCI: (C): Person data exchange (Comment)",
+        "property": "#/properties/person_data_exchange/properties/comments"
+      },
+      {
+        "id": "nQEBQFFW4q2",
+        "code": "HIS_SOCI185",
+        "name": "HIS_SOCI: (C): Person data exchange (Evidence)",
+        "property": "#/properties/person_data_exchange/properties/evidence"
+      },
+      {
+        "id": "Ht1pnq1AQqi",
+        "code": "HIS_SOCI08",
+        "name": "HIS_SOCI: (C): Policy compliance enforcement",
+        "property": "#/properties/policy_compliance_enforcement/properties/current"
+      },
+      {
+        "id": "ncwlI5QoVoh",
+        "code": "HIS_SOCI86",
+        "name": "HIS_SOCI: (C): Policy compliance enforcement (Comment)",
+        "property": "#/properties/policy_compliance_enforcement/properties/comments"
+      },
+      {
+        "id": "vtjqJOXksZH",
+        "code": "HIS_SOCI164",
+        "name": "HIS_SOCI: (C): Policy compliance enforcement (Evidence)",
+        "property": "#/properties/policy_compliance_enforcement/properties/evidence"
+      },
+      {
+        "id": "zb321y3jaOM",
+        "code": "HIS_SOCI16",
+        "name": "HIS_SOCI: (C): Reliable power/electricity",
+        "property": "#/properties/reliable_power_electricity/properties/current"
+      },
+      {
+        "id": "YtpkE7z4L0b",
+        "code": "HIS_SOCI94",
+        "name": "HIS_SOCI: (C): Reliable power/electricity (Comment)",
+        "property": "#/properties/reliable_power_electricity/properties/comments"
+      },
+      {
+        "id": "LA5jKYrliQN",
+        "code": "HIS_SOCI172",
+        "name": "HIS_SOCI: (C): Reliable power/electricity (Evidence)",
+        "property": "#/properties/reliable_power_electricity/properties/evidence"
+      },
+      {
+        "id": "cJzq6Ck6WEM",
+        "code": "HIS_SOCI40",
+        "name": "HIS_SOCI: (C): Reporting and analytics features",
+        "property": "#/properties/reporting_analytics_features/properties/current"
+      },
+      {
+        "id": "uOJlRiYHrUF",
+        "code": "HIS_SOCI118",
+        "name": "HIS_SOCI: (C): Reporting and analytics features (Comment)",
+        "property": "#/properties/reporting_analytics_features/properties/comments"
+      },
+      {
+        "id": "qeXSkPngn9S",
+        "code": "HIS_SOCI196",
+        "name": "HIS_SOCI: (C): Reporting and analytics features (Evidence)",
+        "property": "#/properties/reporting_analytics_features/properties/evidence"
+      },
+      {
+        "id": "HOLHFAGLjpO",
+        "code": "HIS_SOCI15",
+        "name": "HIS_SOCI: (C): Resource mobilization",
+        "property": "#/properties/resource_mobilization/properties/current"
+      },
+      {
+        "id": "OWUw5GvYyKB",
+        "code": "HIS_SOCI93",
+        "name": "HIS_SOCI: (C): Resource mobilization (Comment)",
+        "property": "#/properties/resource_mobilization/properties/comments"
+      },
+      {
+        "id": "W1ILwcdoKtK",
+        "code": "HIS_SOCI171",
+        "name": "HIS_SOCI: (C): Resource mobilization (Evidence)",
+        "property": "#/properties/resource_mobilization/properties/evidence"
+      },
+      {
+        "id": "pWM0Q55JgxU",
+        "code": "HIS_SOCI26",
+        "name": "HIS_SOCI: (C): Terminology management",
+        "property": "#/properties/terminology_management/properties/current"
+      },
+      {
+        "id": "TLyna8JjlIv",
+        "code": "HIS_SOCI104",
+        "name": "HIS_SOCI: (C): Terminology management (Comment)",
+        "property": "#/properties/terminology_management/properties/comments"
+      },
+      {
+        "id": "TANYIv1cPE9",
+        "code": "HIS_SOCI182",
+        "name": "HIS_SOCI: (C): Terminology management (Evidence)",
+        "property": "#/properties/terminology_management/properties/evidence"
+      },
+      {
+        "id": "PDImMKflR8F",
+        "code": "HIS_SOCI27",
+        "name": "HIS_SOCI: (C): Unique person identity management",
+        "property": "#/properties/unique_person_identity_management/properties/current"
+      },
+      {
+        "id": "BI9dctJlTBv",
+        "code": "HIS_SOCI105",
+        "name": "HIS_SOCI: (C): Unique person identity management (Comment)",
+        "property": "#/properties/unique_person_identity_management/properties/comments"
+      },
+      {
+        "id": "TpRO6JILCpz",
+        "code": "HIS_SOCI183",
+        "name": "HIS_SOCI: (C): Unique person identity management (Evidence)",
+        "property": "#/properties/unique_person_identity_management/properties/evidence"
+      },
+      {
+        "id": "UhClJigpnLa",
+        "code": "HIS_SOCI38",
+        "name": "HIS_SOCI: (C): User/stakeholder engagement",
+        "property": "#/properties/user_stakeholder_engagement/properties/current"
+      },
+      {
+        "id": "ojfip9Qocqd",
+        "code": "HIS_SOCI116",
+        "name": "HIS_SOCI: (C): User/stakeholder engagement (Comment)",
+        "property": "#/properties/user_stakeholder_engagement/properties/comments"
+      },
+      {
+        "id": "bdryeLvcA2h",
+        "code": "HIS_SOCI194",
+        "name": "HIS_SOCI: (C): User/stakeholder engagement (Evidence)",
+        "property": "#/properties/user_stakeholder_engagement/properties/evidence"
+      },
+      {
+        "id": "ntwM4qUQdNV",
+        "code": "HIS_SOCI69",
+        "name": "HIS_SOCI: (G): Aggregate data exchange",
+        "property": "#/properties/aggregate_data_exchange/properties/future"
+      },
+      {
+        "id": "Lz3rBSV5rSF",
+        "code": "HIS_SOCI59",
+        "name": "HIS_SOCI: (G): Business continuity and processes and policies",
+        "property": "#/properties/business_continuity_processes_policies/properties/future"
+      },
+      {
+        "id": "YNojVboXS7J",
+        "code": "HIS_SOCI70",
+        "name": "HIS_SOCI: (G): Commodity management data exchange",
+        "property": "#/properties/commodity_management_data_exchange/properties/future"
+      },
+      {
+        "id": "W45HcWdcNdV",
+        "code": "HIS_SOCI81",
+        "name": "HIS_SOCI: (G): Data collection alignment with workflow",
+        "property": "#/properties/data_collection_alignment_workflow/properties/future"
+      },
+      {
+        "id": "YYBVgTMY2OS",
+        "code": "HIS_SOCI62",
+        "name": "HIS_SOCI: (G): Data exchange standards",
+        "property": "#/properties/data_exchange_standards/properties/future"
+      },
+      {
+        "id": "zmDh6okkt5T",
+        "code": "HIS_SOCI73",
+        "name": "HIS_SOCI: (G): Data management",
+        "property": "#/properties/data_management/properties/future"
+      },
+      {
+        "id": "gTs69ctBrBx",
+        "code": "HIS_SOCI72",
+        "name": "HIS_SOCI: (G): Data quality assurance and quality control",
+        "property": "#/properties/data_quality_assurance_quality_control/properties/future"
+      },
+      {
+        "id": "gipB7xzqUei",
+        "code": "HIS_SOCI71",
+        "name": "HIS_SOCI: (G): Data security exchange",
+        "property": "#/properties/data_security_exchange/properties/future"
+      },
+      {
+        "id": "fQbBEeaWe8v",
+        "code": "HIS_SOCI61",
+        "name": "HIS_SOCI: (G): Data set definitions (clinical and indicator)",
+        "property": "#/properties/dataset_definitions/properties/future"
+      },
+      {
+        "id": "q97kXx3YzSs",
+        "code": "HIS_SOCI78",
+        "name": "HIS_SOCI: (G): Data synthesis and communication",
+        "property": "#/properties/data_synthesis_communication/properties/future"
+      },
+      {
+        "id": "JXBvxvoC5Vc",
+        "code": "HIS_SOCI74",
+        "name": "HIS_SOCI: (G): Data use availability strategy",
+        "property": "#/properties/data_use_availability_strategy/properties/future"
+      },
+      {
+        "id": "lin9Bk14rb1",
+        "code": "HIS_SOCI76",
+        "name": "HIS_SOCI: (G): Data use competencies",
+        "property": "#/properties/data_use_competencies/properties/future"
+      },
+      {
+        "id": "yWwCU3UA0mC",
+        "code": "HIS_SOCI80",
+        "name": "HIS_SOCI: (G): Data use impact",
+        "property": "#/properties/data_use_impact/properties/future"
+      },
+      {
+        "id": "YzinMusGRn7",
+        "code": "HIS_SOCI82",
+        "name": "HIS_SOCI: (G): Decision support (clinical or other)",
+        "property": "#/properties/decision_support_clinical_other/properties/future"
+      },
+      {
+        "id": "n1FicbEsxSp",
+        "code": "HIS_SOCI67",
+        "name": "HIS_SOCI: (G): Enterprise architecture",
+        "property": "#/properties/enterprise_architecture/properties/future"
+      },
+      {
+        "id": "f3PbECbRTQU",
+        "code": "HIS_SOCI46",
+        "name": "HIS_SOCI: (G): Existence of HIS policies and legislation",
+        "property": "#/properties/his_policy_regulation/properties/future"
+      },
+      {
+        "id": "ktcVnfLqtfc",
+        "code": "HIS_SOCI57",
+        "name": "HIS_SOCI: (G): Hardware",
+        "property": "#/properties/hardware/properties/future"
+      },
+      {
+        "id": "yKv8UgqLDIB",
+        "code": "HIS_SOCI50",
+        "name": "HIS_SOCI: (G): HIS competencies (knowledge, skills, and abilities)",
+        "property": "#/properties/his_competencies/properties/future"
+      },
+      {
+        "id": "Wp0XyhTtplg",
+        "code": "HIS_SOCI53",
+        "name": "HIS_SOCI: (G): HIS financing plan",
+        "property": "#/properties/his_financing_plan/properties/future"
+      },
+      {
+        "id": "PbKVsOYPXNQ",
+        "code": "HIS_SOCI48",
+        "name": "HIS_SOCI: (G): HIS leadership and coordination",
+        "property": "#/properties/his_leadership_coordination/properties/future"
+      },
+      {
+        "id": "rlxc75EkPLt",
+        "code": "HIS_SOCI49",
+        "name": "HIS_SOCI: (G): HIS organization structure and function",
+        "property": "#/properties/his_organization_structure_function/properties/future"
+      },
+      {
+        "id": "cpDLmYk0iBH",
+        "code": "HIS_SOCI60",
+        "name": "HIS_SOCI: (G): HIS standard guidelines",
+        "property": "#/properties/his_standard_guidelines/properties/future"
+      },
+      {
+        "id": "UmzY73qc0fo",
+        "code": "HIS_SOCI44",
+        "name": "HIS_SOCI: (G): HIS strategy",
+        "property": "#/properties/his_strategic_planning/properties/future"
+      },
+      {
+        "id": "CKcBZFSu8Di",
+        "code": "HIS_SOCI51",
+        "name": "HIS_SOCI: (G): HIS training and education (includes continuous professional development)",
+        "property": "#/properties/his_training_education/properties/future"
+      },
+      {
+        "id": "OBk3HBASkN6",
+        "code": "HIS_SOCI52",
+        "name": "HIS_SOCI: (G): HR policy",
+        "property": "#/properties/hr_policy/properties/future"
+      },
+      {
+        "id": "T0B5G0SF4VC",
+        "code": "HIS_SOCI56",
+        "name": "HIS_SOCI: (G): ICT business infrastructure",
+        "property": "#/properties/ict_business_infrastructure/properties/future"
+      },
+      {
+        "id": "ccLTiM7Ugqb",
+        "code": "HIS_SOCI64",
+        "name": "HIS_SOCI: (G): Indicator registry",
+        "property": "#/properties/indicator_registry/properties/future"
+      },
+      {
+        "id": "x2q4OPiprky",
+        "code": "HIS_SOCI75",
+        "name": "HIS_SOCI: (G): Information/data availability",
+        "property": "#/properties/information_data_availability/properties/future"
+      },
+      {
+        "id": "xaULSyeP1rU",
+        "code": "HIS_SOCI63",
+        "name": "HIS_SOCI: (G): Master facility list",
+        "property": "#/properties/master_facility_list/properties/future"
+      },
+      {
+        "id": "uyBsTCfiVzf",
+        "code": "HIS_SOCI45",
+        "name": "HIS_SOCI: (G): M&E plan",
+        "property": "#/properties/me_plan/properties/future"
+      },
+      {
+        "id": "q8BuDZJk5QQ",
+        "code": "HIS_SOCI58",
+        "name": "HIS_SOCI: (G): Networks and Internet connectivity",
+        "property": "#/properties/networks_internet_connectivity/properties/future"
+      },
+      {
+        "id": "YW0Y0jgIIz3",
+        "code": "HIS_SOCI68",
+        "name": "HIS_SOCI: (G): Person data exchange",
+        "property": "#/properties/person_data_exchange/properties/future"
+      },
+      {
+        "id": "DDkOhQ8cjAM",
+        "code": "HIS_SOCI47",
+        "name": "HIS_SOCI: (G): Policy compliance enforcement",
+        "property": "#/properties/policy_compliance_enforcement/properties/future"
+      },
+      {
+        "id": "OgvVscLzLAv",
+        "code": "HIS_SOCI55",
+        "name": "HIS_SOCI: (G): Reliable power/electricity",
+        "property": "#/properties/reliable_power_electricity/properties/future"
+      },
+      {
+        "id": "hzSbVBF9qad",
+        "code": "HIS_SOCI79",
+        "name": "HIS_SOCI: (G): Reporting and analytics features",
+        "property": "#/properties/reporting_analytics_features/properties/future"
+      },
+      {
+        "id": "a3wY6fESLLL",
+        "code": "HIS_SOCI54",
+        "name": "HIS_SOCI: (G): Resource mobilization",
+        "property": "#/properties/resource_mobilization/properties/future"
+      },
+      {
+        "id": "srOZMano491",
+        "code": "HIS_SOCI65",
+        "name": "HIS_SOCI: (G): Terminology management",
+        "property": "#/properties/terminology_management/properties/future"
+      },
+      {
+        "id": "kJi73vAuxQa",
+        "code": "HIS_SOCI66",
+        "name": "HIS_SOCI: (G): Unique person identity management",
+        "property": "#/properties/unique_person_identity_management/properties/future"
+      },
+      {
+        "id": "YCs6hViOy3A",
+        "code": "HIS_SOCI77",
+        "name": "HIS_SOCI: (G): User/stakeholder engagement",
+        "property": "#/properties/user_stakeholder_engagement/properties/future"
+      }
+    ]
+  }

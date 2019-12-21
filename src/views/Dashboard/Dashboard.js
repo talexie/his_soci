@@ -246,7 +246,7 @@ const Dashboard = () => {
               xl={12}
               xs={12}
             >
-              <HSVisualizer hisDomains={ domainOptions.domainCurrent } hisComponents={ subOptions.subcurrent } hisSubComponents= { voptions.current} />
+               <HSDataTable hisStagesData={ assessment.assessmentRows } />
             </Grid>
           </Grid>
           <Grid item container spacing={4}>
@@ -268,9 +268,10 @@ const Dashboard = () => {
               xl={12}
               xs={12}
             >
-               <HSDataTable hisStagesData={ assessment.assessmentRows } />
+              <HSVisualizer hisDomains={ domainOptions.domainCurrent } hisComponents={ subOptions.subcurrent } hisSubComponents= { voptions.current} />
             </Grid>
           </Grid>
+
         </Grid>
       </Grid>
     </div>

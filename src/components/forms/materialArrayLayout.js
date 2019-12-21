@@ -104,13 +104,13 @@ export const MaterialArrayLayout =
               const childPath = composePaths(path, `${index}`);
               return (
                   <div key= { index }>
-                    <Grid container alignItems={'center'}>
+                    <Grid container alignItems={'center'} spacing={ 10 }>
                       <Grid item xs={1}>
                         <Avatar aria-label='Index'>
                           {index + 1}
                         </Avatar>
                       </Grid>
-                      <Grid item xs={10}>
+                      <Grid item xs={10}>                        
                         <JsonFormsDispatch
                           index={index}
                           schema={schema}

@@ -1,9 +1,7 @@
 import {
   mapStateToLayoutProps,
   rankWith,
-  uiTypeIs,
   optionIs,
-  and,
 } from "@jsonforms/core";
 import { MaterialLayoutRenderer } from "@jsonforms/material-renderers";
 import {
@@ -19,7 +17,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import merge from 'lodash/merge';
 
 const useStyles = makeStyles(theme => ({
@@ -76,9 +73,7 @@ const CustomGroupRenderer = props => {
     visible, 
     renderers, 
     data,
-    id, 
     errors,
-    config
   } = props;
   const [expanded, setExpanded] = useState(false);
   const [defaultExpanded, setDefaultExpanded] = useState(true);

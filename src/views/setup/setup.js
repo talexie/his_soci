@@ -60,6 +60,7 @@ const HisSetup = (props) => {
     programStage:'hKuDUonVytS',
     orgUnit:'wMpIrpoib8b',
     status: 'COMPLETED',
+    eventDate: moment().format('YYYY-MM-DD'),
   }
   const schema = HisConfigSchema.properties.hisstages;
   const uiSchema = HisConfigSchema.assessmentUiSchema;
@@ -112,6 +113,7 @@ const HisSetup = (props) => {
       const setupStore =  await getDataStoreValue(d2,'his_soci_tool','setup');
       // Check equality if setup store has id in respondents, assessment id with get(id,assessment);
       const assessment = checkAssessmentByRespondent(setupStore.setup,query.get("id"),query.get("assessment"));
+      defaultData = assessment;
       if (userStore.current[0].respondentType === 'Consensus'){
         defaultData = { 
           tracking:{ 

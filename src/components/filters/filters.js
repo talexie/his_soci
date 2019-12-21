@@ -88,6 +88,7 @@ const MultipleSelect =({ data, getData=(event)=>{},multiple,label,...rest })=> {
           variant="outlined"
           value={selectOption}
           onChange={handleChange}
+          placeholder ={ label }
           input={<Input id="select-multiple-checkbox" />}
           SelectProps={
             MenuProps

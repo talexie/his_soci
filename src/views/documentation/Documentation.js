@@ -152,7 +152,7 @@ export const HisDocumentation = (props) => {
                 >
                     <img
                         alt="USAID"
-                        src="/static/images/logos/usaid_hdc_measure.png"
+                        src="static/images/logos/usaid_hdc_measure.png"
                     />
                 </Grid>
             </Grid>	

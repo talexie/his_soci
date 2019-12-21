@@ -3,6 +3,7 @@ import isPlainObject from 'lodash/isPlainObject';
 import concat from 'lodash/concat';
 import intersection from 'lodash/intersection';
 import isNull from 'lodash/isNull';
+import isArray from 'lodash/isArray';
 
 /**
  * Check if respondent id exist in an assessment and return assessment and respondent
@@ -139,8 +140,17 @@ const getValue=(value,key)=>{
   let objectArray= [];
   if(isPlainObject(value)){
     Object.keys(value).map((keyValue)=>{
-      const keyProperty = '#/properties/'+ key +'/properties/'+ keyValue;
-      objectArray.push({ value:value[keyValue],dataElement:keyProperty});
+      if(keyValue !== 'event') {
+        const keyProperty = '#/properties/'+ key +'/properties/'+ keyValue;
+        if(isArray(value[keyValue])){
+          value[keyValue].map((innerKeyValue)=>{
+            return getValue(innerKeyValue,keyValue);
+          });
+        }
+        else{
+          objectArray.push({ value:value[keyValue],dataElement:keyProperty});
+        }  
+      }    
     });
   }
   else{
@@ -235,8 +245,10 @@ export const updateUserDataStore= (d2,namespace,key,data)=>{
 **/
  export const getUserDataStoreValue= async (d2, namespace, key)=>{
   let values = {};
-  const nsp = await d2.currentUser.dataStore.get(namespace);
-  values= await getDataStoreKey(nsp,key);
+  if(!isNull(d2.currentUser.dataStore)){
+    const nsp = await d2.currentUser.dataStore.get(namespace);
+    values= await getDataStoreKey(nsp,key);
+  }
   return values;
 }
 /**
@@ -278,12 +290,15 @@ export const updateDataStore= (d2,namespace,key,data,dataType)=>{
 export const getMappings= (mappings,data)=>{
   data.events.forEach((event)=>{
     return event.dataValues.map((value)=>{
+      if(value.value === undefined){
+        value.value = "";
+      }
       mappings.mappings.forEach((mapping)=>{
         if(mapping.property === value.dataElement){
           value.dataElement = mapping.id;
         }
       });
-      return event;
+      return event;     
     });
   });
   return data;
@@ -295,8 +310,10 @@ export const getMappings= (mappings,data)=>{
   **/
 export const getDataStoreValue= async (d2, namespace, key)=>{
   let values = {};
-  const nsp = await d2.dataStore.get(namespace);
-  values= await getDataStoreKey(nsp,key);
+  if(!isNull(d2.dataStore)){
+    const nsp = await d2.dataStore.get(namespace);
+    values= await getDataStoreKey(nsp,key);
+  }
   return values;
 }
 /**

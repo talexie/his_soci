@@ -29,7 +29,8 @@ const HisAdmin = (props) => {
     program:'EQnIPsQzZ8R',
     programStage:'hKuDUonVytS',
     orgUnit:'wMpIrpoib8b',
-    status: 'ACTIVE'
+    status: 'ACTIVE',
+    eventDate: moment().format('YYYY-MM-DD'),
   }
   const schema = HisConfigSchema.properties.hissetup;
   const uiSchema = HisConfigSchema.setupUiSchema;
