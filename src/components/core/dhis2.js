@@ -4,7 +4,45 @@ import concat from 'lodash/concat';
 import intersection from 'lodash/intersection';
 import isNull from 'lodash/isNull';
 import isArray from 'lodash/isArray';
-
+/**
+ * Get symbols
+ * @param {*} currentUser 
+ * @param {*} key
+ */
+export const getSymbolValues=(currentUser,key)=>{
+  const keyValues = Object.getOwnPropertySymbols(currentUser[key]);
+  for ( let keyValue of keyValues){
+    if ((keyValue.toString()).indexOf(key) > -1){
+      return currentUser[key][keyValue];
+    }
+  } 
+}
+/**
+ * Check if user is admin or assessment admin
+ * @param {*} d2 
+ */
+export const userIsAdmin=async(d2)=>{
+  let adminConfig = { 
+    isAdmin: false,
+    isAssessmentAdmin: false
+  }
+  const userAuthorities = getSymbolValues(d2.currentUser,'authorities');
+  const userGroups = await d2.Api.getApi().get('me?filter=userGroups.code:ilike:his_soci_admin&paging=false&fields=id,userGroups[id,name,code]');
+  const selectedUserGroups = userGroups['userGroups'];
+  if (selectedUserGroups.length > 0){
+    for(let group of selectedUserGroups){
+      if(group.code.toLowerCase() === 'his_soci_admin'){
+        adminConfig.isAssessmentAdmin = true
+      }
+    }
+  } 
+  for(let val of userAuthorities){
+    if(val === 'ALL'){
+      adminConfig.isAdmin = true;
+    }
+  }  
+  return adminConfig;
+}
 /**
  * Check if respondent id exist in an assessment and return assessment and respondent
  * @param { string } assessmentId Assessment Id

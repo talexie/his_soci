@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -9,6 +9,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import CollectionsIcon from '@material-ui/icons/Collections';
 
 import { Profile, SidebarNav } from '.';
+import { UrlContext } from '../../App';
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -37,30 +38,39 @@ const Sidebar = props => {
   const { open, variant, onClose, className, ...rest } = props;
 
   const classes = useStyles();
+  const contextValue = useContext(UrlContext);
 
   const pages = [
     {
       title: 'Dashboard',
       href: '/dashboard',
-      icon: <DashboardIcon />
+      icon: <DashboardIcon />,
+      isAdminVisible: true,
+      isAssessmentAdminVisible: true
     },
     {
       title: 'Assessment',
       href: '/setup',
-      icon: <PeopleIcon />
+      icon: <PeopleIcon />,
+      isAdminVisible: true,
+      isAssessmentAdminVisible: true
     },
     {
       title: 'Setup',
       href: '/admin',
-      icon: <SettingsIcon />
+      icon: <SettingsIcon />,
+      isAdminVisible: contextValue.isAdmin,
+      isAssessmentAdminVisible: contextValue.isAssessmentAdmin
     },
     {
       title: 'Documentation',
       href: '/documentation',
-      icon: <CollectionsIcon />
+      icon: <CollectionsIcon />,
+      isAdminVisible: true,
+      isAssessmentAdminVisible: true
     },
   ];
-
+   
   return (
     <Drawer
       anchor="left"

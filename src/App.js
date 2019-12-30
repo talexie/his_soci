@@ -16,13 +16,17 @@ validate.validators = {
 
 export const UrlContext = React.createContext({
   d2: null,
-  apiEngineUrl:null
+  apiEngineUrl:null,
+  isAdmin: false,
+  isAssessmentAdmin: false,
 });
 
 const App = ( props ) => {
   let urls = {
     d2: props.d2,
-    apiEngineUrl: props.apiEngineUrl
+    apiEngineUrl: props.apiEngineUrl,
+    isAdmin: props.isAdmin,
+    isAssessmentAdmin: props.isAssessmentAdmin,
   };
   return (
     <ThemeProvider theme={theme}>

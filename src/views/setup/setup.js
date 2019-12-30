@@ -114,28 +114,41 @@ const HisSetup = (props) => {
       // Check equality if setup store has id in respondents, assessment id with get(id,assessment);
       const assessment = checkAssessmentByRespondent(setupStore.setup,query.get("id"),query.get("assessment"));
       defaultData = assessment;
-      if (userStore.current[0].respondentType === 'Consensus'){
-        defaultData = { 
-          tracking:{ 
-            id: userStore.current[0].id,
-            userid: userStore.current[0].userid,
-            username: userStore.current[0].username, 
-            location: userStore.current[0].location,
-            period: userStore.current[0].period,
-            status: 'STARTED',
-            respondentType: 'Consensus',
-            date: userStore.current[0].date,
-          },
-          background:{
-            event: userStore.current[0].event,
-            reference: userStore.current[0].reference,
-            hisType: userStore.current[0].hisType,
-            purpose: userStore.current[0].purpose,
-            mainChallenge: userStore.current[0].mainChallenge,
-            stakeholders: userStore.current[0].respondents,
-            coverage: userStore.current[0].coverage,
-          }
-        };
+      if(userStore.current[0] !== undefined){
+        if (userStore.current[0].respondentType === 'Consensus'){
+          defaultData = { 
+            tracking:{ 
+              id: userStore.current[0].id,
+              userid: userStore.current[0].userid,
+              username: userStore.current[0].username, 
+              location: userStore.current[0].location,
+              period: userStore.current[0].period,
+              status: 'STARTED',
+              respondentType: 'Consensus',
+              date: userStore.current[0].date,
+            },
+            background:{
+              event: userStore.current[0].event,
+              reference: userStore.current[0].reference,
+              hisType: userStore.current[0].hisType,
+              purpose: userStore.current[0].purpose,
+              mainChallenge: userStore.current[0].mainChallenge,
+              stakeholders: userStore.current[0].respondents,
+              coverage: userStore.current[0].coverage,
+            }
+          };
+        }
+        else{
+          defaultData.tracking.location = assessment.location;
+          defaultData.tracking.period = assessment.period;
+          defaultData.background.hisType = assessment.hisType;
+          defaultData.background.purpose = assessment.purpose;
+          defaultData.background.mainChallenge = assessment.mainChallenge;
+          defaultData.background.stakeholders = assessment.respondents;
+          defaultData.background.event = currentEvents.event;
+          defaultData.background.stakeholders = assessment.respondents;
+          defaultData.background.coverage = assessment.coverage;
+        }
       }
       else{
         defaultData.tracking.location = assessment.location;
