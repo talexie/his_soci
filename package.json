@@ -8,6 +8,8 @@
   "scripts": {
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
+    "build:dev": "node scripts/watch.js",
+    "build-dev": "yarn start --writeToDisk",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prestart": "npm run localize",
@@ -76,6 +78,7 @@
     "prettier": "^1.17.1",
     "prettier-eslint": "^8.8.2",
     "prettier-eslint-cli": "^4.7.1",
+    "rewire": "^4.0.1",
     "typescript": "^3.5.1"
   }
 }

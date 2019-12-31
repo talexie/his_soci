@@ -10,7 +10,6 @@ import {
   computeLabel,
   isPlainLabel,
   optionIs,
-  appliedUiSchemaOptions,
 } from '@jsonforms/core';
 import merge from 'lodash/merge';
 import { Control } from '@jsonforms/react';
@@ -21,11 +20,11 @@ import { Hidden } from '@material-ui/core';
  * Default tester for integer controls.
  * @type {RankedTester}
  */
-export const RatingControlTester: RankedTester =
+export const RatingControlTester =
   rankWith(Number.MAX_VALUE, optionIs('rating',true));
 
 
-export class RatingControl extends Control<ControlProps, ControlState> {
+export class RatingControl extends Control {
 
   /**
    * @inheritDoc
@@ -41,7 +40,6 @@ export class RatingControl extends Control<ControlProps, ControlState> {
        required,
        path,
        handleChange,
-       data,
        config
      } = this.props;
      const isValid = errors.length === 0;
@@ -50,7 +48,7 @@ export class RatingControl extends Control<ControlProps, ControlState> {
        config,
        this.props.uischema.options
      );
-     const onChange = (ev: any) => handleChange(path, ev.target.value);
+     //const onChange = (ev) => handleChange(path, ev.target.value);
      const fieldType = schema.format === 'password'?'password':'text';
      const maxLength = schema.maxLength;
      const showDescription = !isDescriptionHidden(
@@ -76,7 +74,7 @@ export class RatingControl extends Control<ControlProps, ControlState> {
             fullWidth={!appliedUiSchemaOptions.trim  || maxLength === undefined}
             helperText={!isValid ? errors : showDescription ? description : null}
             value={this.props.data}
-            onClick={(ev: any) => {
+            onClick={(ev) => {
               this.props.handleChange(this.props.path, Number(ev.value));
             }}
 

@@ -1225,17 +1225,9 @@ export const frsSchema = {
                 scope: '#/properties/background/properties/hisType',
                 options:{
                   custom: true,
+                  readOnly:true,
                   variant: 'outlined'
                 },
-                "rule": {
-                  "effect": "HIDE",
-                  "condition": {
-                    "scope": "#/properties/tracking/properties/respondentType",
-                    "schema": {
-                      "const": "Self"
-                    }
-                  }
-                }
               },
               {
                 type:'Control',
@@ -1244,18 +1236,10 @@ export const frsSchema = {
                 options:{
                   custom: true,
                   multi: true,
+                  readOnly:true,
                   rows:2,
                   variant: 'outlined'
                 },
-                "rule": {
-                  "effect": "HIDE",
-                  "condition": {
-                    "scope": "#/properties/tracking/properties/respondentType",
-                    "schema": {
-                      "const": "Self"
-                    }
-                  }
-                }
               },
               {
                 type:'Control',
@@ -1264,18 +1248,10 @@ export const frsSchema = {
                 options:{
                   custom: true,
                   multi: true,
+                  readOnly:true,
                   rows: 2,
                   variant: 'outlined'
                 },
-                "rule": {
-                  "effect": "HIDE",
-                  "condition": {
-                    "scope": "#/properties/tracking/properties/respondentType",
-                    "schema": {
-                      "const": "Self"
-                    }
-                  }
-                }
               },
               {
                 type:'Group',
@@ -1300,15 +1276,6 @@ export const frsSchema = {
                               readOnly:true,
                               variant: 'outlined'
                             },
-                            "rule": {
-                              "effect": "HIDE",
-                              "condition": {
-                                "scope": "#/properties/tracking/properties/respondentType",
-                                "schema": {
-                                  "const": "Self"
-                                }
-                              }
-                            }
                           },
                           {
                             type:'Control',
@@ -1319,15 +1286,6 @@ export const frsSchema = {
                               readOnly:true,
                               variant: 'outlined'
                             },
-                            "rule": {
-                              "effect": "HIDE",
-                              "condition": {
-                                "scope": "#/properties/tracking/properties/respondentType",
-                                "schema": {
-                                  "const": "Self"
-                                }
-                              }
-                            }
                           },
                           {
                             type:'Control',
@@ -1338,15 +1296,6 @@ export const frsSchema = {
                               readOnly:true,
                               variant: 'outlined'
                             },
-                            "rule": {
-                              "effect": "HIDE",
-                              "condition": {
-                                "scope": "#/properties/tracking/properties/respondentType",
-                                "schema": {
-                                  "const": "Self"
-                                }
-                              }
-                            }
                           },
                           {
                             type:'Control',
@@ -1370,15 +1319,6 @@ export const frsSchema = {
                         ]
                       }
                     },
-                    "rule": {
-                      "effect": "HIDE",
-                      "condition": {
-                        "scope": "#/properties/tracking/properties/respondentType",
-                        "schema": {
-                          "const": "Self"
-                        }
-                      }
-                    }
                   },
                   {
                     type:'Control',
@@ -1466,15 +1406,6 @@ export const frsSchema = {
                         ]
                       }
                     },
-                    "rule": {
-                      "effect": "HIDE",
-                      "condition": {
-                        "scope": "#/properties/tracking/properties/respondentType",
-                        "schema": {
-                          "const": "Self"
-                        }
-                      }
-                    }
                   }
                 ]
               }

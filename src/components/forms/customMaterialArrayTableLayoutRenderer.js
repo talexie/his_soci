@@ -1,15 +1,13 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   rankWith,
   optionIs,
   or,
-  ArrayLayoutProps,
-  findUISchema,
 } from "@jsonforms/core";
 import {
   Hidden,
 } from "@material-ui/core";
-import { withJsonFormsArrayLayoutProps,JsonFormsDispatch, } from '@jsonforms/react';
+import { withJsonFormsArrayLayoutProps,} from '@jsonforms/react';
 import { CustomMaterialArrayLayout } from './customMaterialArrayTableLayout';
 
 
@@ -22,17 +20,8 @@ export const CustomMaterialArrayTableRendererTester =
   rankWith(Number.MAX_VALUE, checkArrayTableControl );
 
 export const CustomMaterialArrayTableRenderer =
-  ({ uischema, schema, path, visible, renderers, enabled, id, label, rootSchema, data, errors,addItem, childPath,uischemas,createDefault }: ArrayLayoutProps)=>{
-    const [showForm,setShowForm] = useState(false);
-    const foundUISchema = findUISchema(
-       uischemas,
-       schema,
-       uischema.scope,
-       path,
-       undefined,
-       uischema,
-       rootSchema
-     );
+  ({ uischema, schema, path, visible, renderers, enabled, id, rootSchema, data, errors,addItem })=>{
+
     const addItemCb = useCallback((p, value) => addItem(p, value), [addItem]);
 
     useEffect(()=>{

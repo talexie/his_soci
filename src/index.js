@@ -57,10 +57,9 @@ const initApp = async () => {
     let d2 = null;
     let isAdmin= false;
     let isAssessmentAdmin = false;
-    console.log("d2",await init(config));
-    //d2 = await init(config);
+    d2 = await init(config);
     try{
-      d2 = await init(config);
+      //d2 = await init(config);
       const userSettings = await getUserSettings();
       
       configI18n(userSettings);
@@ -84,10 +83,10 @@ const initApp = async () => {
     catch(error){
       console.log("Unable to load DHIS2, App is not installed in DHIS2");
       // Check if user is admin or assessment admin
-      //const adminConfig = await userIsAdmin(d2);
-      //console.log('admin',adminConfig);
-      //isAdmin = adminConfig.isAdmin;
-      //isAssessmentAdmin = adminConfig.isAssessmentAdmin;
+      const adminConfig = await userIsAdmin(d2);
+      console.log('admin',adminConfig);
+      isAdmin = adminConfig.isAdmin;
+      isAssessmentAdmin = adminConfig.isAssessmentAdmin;
       ReactDOM.render(
         <App baseUrl={baseUrl} d2={ d2 } apiEngineUrl
         ={ apiEngineUrl} isAdmin= { isAdmin } isAssessmentAdmin ={ isAssessmentAdmin } />, document.getElementById('root')

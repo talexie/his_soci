@@ -125,10 +125,10 @@ const CustomGroupRenderer = props => {
             </Paper>
           )
           :(<ExpansionPanel defaultExpanded={ defaultExpanded } expanded={expanded === path } onChange={handleChange(path)}>
-            <ExpansionPanelSummary expandIcon={ uischema.level ==1 ?<ExpandMoreIcon />:"" }>
+            <ExpansionPanelSummary expandIcon={ uischema.level === 1 ?<ExpandMoreIcon />:"" }>
               <div className={ classes.label}>
                 <Typography className={ classes.heading} >{uischema.label}</Typography>
-                <Typography variant={'h6'}>{uischema.extraText===undefined?'':[uischema.extraText]}</Typography>
+                <Typography variant={'h6'}>{uischema.extraText === undefined?'':[uischema.extraText]}</Typography>
               </div>
               <div className={ classes.column}>
                 <Typography className={ classes.secondaryHeading}>

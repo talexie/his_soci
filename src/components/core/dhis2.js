@@ -73,17 +73,29 @@ export const checkAssessmentByRespondent=(assessments,assessmentId,respondentId)
   return newAssessment;
 }
 /**
+ * Filter current assessment from all assessments
+ * @param { string } assessmentId Assessment Id
+ * @param { array } assessments All existing assessments in the data store
+ * @returns { array }
+ */
+export const filterAssessmentById=(assessments,assessmentId)=>{
+  return assessments.filter((assessment)=>{
+    if ( assessment.tracking !== undefined){
+      return (assessment.tracking.id === assessmentId);
+    }    
+  });
+}
+/**
  * Filter current assessments from all assessments
  * @param { string } assessmentId Assessment Id
  * @returns { array }
  */
 export const filterAssessment=(assessments,assessmentId)=>{
-  const currentAssessment = assessments.filter((assessment)=>{
+  return assessments.filter((assessment)=>{
     if ( assessment.background !== undefined){
       return (assessment.background.reference === assessmentId)
     }    
   });
-  return currentAssessment;
 }
 /**
  * Filter data by parameter
@@ -165,6 +177,7 @@ export const createEvent=(data)=>{
     data.map((value)=>{
       Object.keys(value).map((keyValue)=>{
         event.dataValues=concat(event.dataValues,getValue(value[keyValue],keyValue));
+        return event.dataValues;
       });
     });
   }
@@ -187,7 +200,8 @@ const getValue=(value,key)=>{
         }
         else{
           objectArray.push({ value:value[keyValue],dataElement:keyProperty});
-        }  
+        } 
+        return; 
       }    
     });
   }

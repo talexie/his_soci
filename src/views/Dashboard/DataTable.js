@@ -54,7 +54,7 @@ const SubDomainTableRow=({ row,nextRow,className,visible })=>{
     row !== undefined?row.map( (subdomain)=> {      
       return (
         <>
-          <TableRow className = { className } key={subdomain.name}>
+          <TableRow className = { className } key={ subdomain.name }>
             <TableCell component="th" scope="row">
               {subdomain.name}
             </TableCell>

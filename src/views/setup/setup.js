@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback, useContext, } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import { HisJsonForm ,HisConfigSchema, UserButton,createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, getUserDataStoreValue,checkAssessmentByRespondent } from 'components';
+import { HisJsonForm ,HisConfigSchema, UserButton,createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, getUserDataStoreValue,checkAssessmentByRespondent,updateUserDataStore,filterAssessmentById } from 'components';
 import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
+import concat from 'lodash/concat';
 import { useLocation } from 'react-router-dom';
 import { generateUid } from 'd2/uid';
 import moment from 'moment';
@@ -39,11 +40,11 @@ const HisSetup = (props) => {
       period: "",
       status: 'STARTED',
       date: moment().format('YYYY-MM-DD'),
-      background:{
-        reference: query.get("assessment"),
-        stakeholders: [],
-        coverage: []
-      }
+    },
+    background:{
+      reference: query.get("assessment"),
+      stakeholders: [],
+      coverage: []
     }
   };
   const classes = useStyles();
@@ -52,7 +53,6 @@ const HisSetup = (props) => {
   const [completed,setCompleted] = useState(false);
   const [isLoading,setIsLoading] = useState(false);
   const [uStore,setUstore] = useState({ userStore:{ defaultData: defaultData }});
-
 
   const currentEvents = {
     event: generateUid(),
@@ -64,8 +64,6 @@ const HisSetup = (props) => {
   }
   const schema = HisConfigSchema.properties.hisstages;
   const uiSchema = HisConfigSchema.assessmentUiSchema;
-
-
   
   const getSubmittedData =(dataSaved)=>{
     formStatus = { 'open': true,'submitted':false };
@@ -102,6 +100,7 @@ const HisSetup = (props) => {
     const mappings = await getDataStoreValue(d2,'his_soci_tool','mappings');
     const mappedEvents =getMappings(mappings,dhis2Events);
     updateDataStore(d2,'his_soci_tool','assessments',tableData,'assessments');
+    updateUserDataStore(d2,'his_soci_tool','assessments',tableData);
     api.post('events',mappedEvents);
     setCompleted(true);
   },[]);
@@ -109,11 +108,13 @@ const HisSetup = (props) => {
   useEffect(()=>{
     const initializeForm=async()=>{
       setIsLoading(true);
-      userStore = await getUserDataStoreValue(d2,'his_soci_tool','assessments'); 
+      userStore = await getUserDataStoreValue(d2,'his_soci_tool','assessments');
       const setupStore =  await getDataStoreValue(d2,'his_soci_tool','setup');
+      const assessmentsStore =  await getDataStoreValue(d2,'his_soci_tool','assessments');
+      
       // Check equality if setup store has id in respondents, assessment id with get(id,assessment);
-      const assessment = checkAssessmentByRespondent(setupStore.setup,query.get("id"),query.get("assessment"));
-      defaultData = assessment;
+      const assessment = checkAssessmentByRespondent(setupStore.setup,query.get("assessment"),query.get("id"));
+      const existingAssessment = filterAssessmentById(assessmentsStore.assessments,query.get("id"));
       if(userStore.current[0] !== undefined){
         if (userStore.current[0].respondentType === 'Consensus'){
           defaultData = { 
@@ -161,7 +162,7 @@ const HisSetup = (props) => {
         defaultData.background.stakeholders = assessment.respondents;
         defaultData.background.coverage = assessment.coverage;
       }
-      userStore.defaultData = defaultData;
+      userStore.defaultData = merge(defaultData,existingAssessment[0]);
       setUstore(()=>{
         return {
           userStore: userStore 

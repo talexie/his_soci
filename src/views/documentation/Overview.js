@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const HisOverview = (props) => {
-    const clasess = useStyles();
+    //const classes = useStyles();
     return (
         <div>
             <Grid container spacing={2} direction="column" justify="space-around">
