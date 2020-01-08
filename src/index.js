@@ -32,7 +32,6 @@ const initApp = async () => {
             manifest.manifest_generated_at
         }`
     );
-    console.log('Env:',process.env.NODE_ENV);
     const isProd = process.env.NODE_ENV === 'production';
 
     /*if (
@@ -57,9 +56,9 @@ const initApp = async () => {
     let d2 = null;
     let isAdmin= false;
     let isAssessmentAdmin = false;
-    d2 = await init(config);
+    //d2 = await init(config);
     try{
-      //d2 = await init(config);
+      d2 = await init(config);
       const userSettings = await getUserSettings();
       
       configI18n(userSettings);
@@ -72,7 +71,6 @@ const initApp = async () => {
 
       // Check if user is admin or assessment admin
       const adminConfig = await userIsAdmin(d2);
-      console.log('admin',adminConfig);
       isAdmin = adminConfig.isAdmin;
       isAssessmentAdmin = adminConfig.isAssessmentAdmin;
       ReactDOM.render(
@@ -83,10 +81,10 @@ const initApp = async () => {
     catch(error){
       console.log("Unable to load DHIS2, App is not installed in DHIS2");
       // Check if user is admin or assessment admin
-      const adminConfig = await userIsAdmin(d2);
-      console.log('admin',adminConfig);
+      /*const adminConfig = await userIsAdmin(d2);
       isAdmin = adminConfig.isAdmin;
       isAssessmentAdmin = adminConfig.isAssessmentAdmin;
+      */
       ReactDOM.render(
         <App baseUrl={baseUrl} d2={ d2 } apiEngineUrl
         ={ apiEngineUrl} isAdmin= { isAdmin } isAssessmentAdmin ={ isAssessmentAdmin } />, document.getElementById('root')

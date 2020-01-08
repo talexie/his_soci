@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/styles';
 import { HisJsonForm ,HisConfigSchema, UserButton,createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, getUserDataStoreValue,checkAssessmentByRespondent,updateUserDataStore,filterAssessmentById } from 'components';
 import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
-import concat from 'lodash/concat';
 import { useLocation } from 'react-router-dom';
 import { generateUid } from 'd2/uid';
 import moment from 'moment';
@@ -18,6 +17,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 let tableData = [];
+let data = [];
 // A custom hook that builds on useLocation to parse
 // the query string for you.
 const useQuery=()=>{
@@ -30,7 +30,7 @@ const HisSetup = (props) => {
   const api = d2.Api.getApi();
 
   let formStatus = { 'open': true,'submitted':false };
-  let data = [];
+
   let userStore = {};
   let defaultData = { 
     tracking:{ 
@@ -49,9 +49,10 @@ const HisSetup = (props) => {
   };
   const classes = useStyles();
   const [value,setValue] = useState(formStatus);
-  const [state,setState] = useState([]);
+  const [submission,setSubmission] = useState({ data:[],defaultData:defaultData });
   const [completed,setCompleted] = useState(false);
   const [isLoading,setIsLoading] = useState(false);
+  const [status,setStatus] = useState('PENDING');
   const [uStore,setUstore] = useState({ userStore:{ defaultData: defaultData }});
 
   const currentEvents = {
@@ -70,109 +71,134 @@ const HisSetup = (props) => {
     data = dataSaved;
     return { data:data,formStatus:formStatus}
   }
-  const handleChange = useCallback(async(event) => {
+  const handleChange = async(currentStatus) => {
     formStatus = { 'open': false,'submitted':false };
-    await setValue(formStatus);
-    tableData[0].tracking.userid = d2.currentUser.id;
-    tableData[0].tracking.username = d2.currentUser.username;
-    tableData[0].tracking.status = 'PENDING';
-  },[]);
-
-  const save = useCallback(async(event) => {
-    formStatus = { 'open': true,'submitted':false };
-    tableData.push(data.data);
-    console.log("data",data);
-    setState(data);
     setValue(formStatus);
+    setStatus(currentStatus);
+    tableData.push(data.data);
+    console.log("Tdata",data, " status:",status);
+    /*tableData[0].tracking.userid = d2.currentUser.id;
+    tableData[0].tracking.username = d2.currentUser.username;
+    tableData[0].tracking.status = 'PENDING';*/
+    save(tableData,status);
+  };
+
+  const save = async(values,status) => {
+    //formStatus = { 'open': true,'submitted':false };
+    //tableData.push(data.data);
+    console.log("data",data);
+    setSubmission(()=>{
+      return {
+        data: data.data,
+        defaultData:data.data
+      }
+    });
+    
 
     /**
     Creating Data Api
     **/
-    const events = merge({},currentEvents,createEvent(tableData));
+    const events = merge({},currentEvents,createEvent(values));
     const dhis2Events = createDataValues({events:[]},events);
 
     /*
     post data to DHIS2
     */
-    tableData[0].tracking.userid = d2.currentUser.id;
-    tableData[0].tracking.username = d2.currentUser.username;
-    tableData[0].tracking.status = 'COMPLETED';
+    values[0].tracking.userid = d2.currentUser.id;
+    values[0].tracking.username = d2.currentUser.username;
+    values[0].tracking.status = status;
     const mappings = await getDataStoreValue(d2,'his_soci_tool','mappings');
     const mappedEvents =getMappings(mappings,dhis2Events);
-    updateDataStore(d2,'his_soci_tool','assessments',tableData,'assessments');
-    updateUserDataStore(d2,'his_soci_tool','assessments',tableData);
+    updateDataStore(d2,'his_soci_tool','assessments',values,'assessments');
+    updateUserDataStore(d2,'his_soci_tool','assessments',values);
     api.post('events',mappedEvents);
-    setCompleted(true);
-  },[]);
+    console.log("submission",submission, " data: ",data);
+    setValue({ 'open': true,'submitted':false });
+    if (status === 'COMPLETED'){
+      setCompleted(true);
+    }
+    userStore.defaultData = values;
+    setUstore(()=>{
+      return {
+        userStore: userStore 
+      };
+    });
+
+  };
+  const initializeForm=useCallback(async()=>{
+    setIsLoading(true);
+    userStore = await getUserDataStoreValue(d2,'his_soci_tool','assessments');
+    const setupStore =  await getDataStoreValue(d2,'his_soci_tool','setup');
+    const assessmentsStore =  await getDataStoreValue(d2,'his_soci_tool','assessments');
     
-  useEffect(()=>{
-    const initializeForm=async()=>{
-      setIsLoading(true);
-      userStore = await getUserDataStoreValue(d2,'his_soci_tool','assessments');
-      const setupStore =  await getDataStoreValue(d2,'his_soci_tool','setup');
-      const assessmentsStore =  await getDataStoreValue(d2,'his_soci_tool','assessments');
-      
-      // Check equality if setup store has id in respondents, assessment id with get(id,assessment);
-      const assessment = checkAssessmentByRespondent(setupStore.setup,query.get("assessment"),query.get("id"));
-      const existingAssessment = filterAssessmentById(assessmentsStore.assessments,query.get("id"));
-      if(userStore.current[0] !== undefined){
-        if (userStore.current[0].respondentType === 'Consensus'){
-          defaultData = { 
-            tracking:{ 
-              id: userStore.current[0].id,
-              userid: userStore.current[0].userid,
-              username: userStore.current[0].username, 
-              location: userStore.current[0].location,
-              period: userStore.current[0].period,
-              status: 'STARTED',
-              respondentType: 'Consensus',
-              date: userStore.current[0].date,
-            },
-            background:{
-              event: userStore.current[0].event,
-              reference: userStore.current[0].reference,
-              hisType: userStore.current[0].hisType,
-              purpose: userStore.current[0].purpose,
-              mainChallenge: userStore.current[0].mainChallenge,
-              stakeholders: userStore.current[0].respondents,
-              coverage: userStore.current[0].coverage,
-            }
-          };
-        }
-        else{
-          defaultData.tracking.location = assessment.location;
-          defaultData.tracking.period = assessment.period;
-          defaultData.background.hisType = assessment.hisType;
-          defaultData.background.purpose = assessment.purpose;
-          defaultData.background.mainChallenge = assessment.mainChallenge;
-          defaultData.background.stakeholders = assessment.respondents;
-          defaultData.background.event = currentEvents.event;
-          defaultData.background.stakeholders = assessment.respondents;
-          defaultData.background.coverage = assessment.coverage;
-        }
+    // Check equality if setup store has id in respondents, assessment id with get(id,assessment);
+    const assessment = checkAssessmentByRespondent(setupStore.setup,query.get("assessment"),query.get("id"));
+    const existingAssessment = filterAssessmentById(assessmentsStore.assessments,query.get("id"));
+    if(userStore.current[0] !== undefined){
+      if (userStore.current[0].respondentType === 'Consensus'){
+        defaultData = { 
+          tracking:{ 
+            id: userStore.current[0].id,
+            userid: userStore.current[0].userid,
+            username: userStore.current[0].username, 
+            location: userStore.current[0].location,
+            period: userStore.current[0].period,
+            status: 'STARTED',
+            respondentType: 'Consensus',
+            date: userStore.current[0].date,
+          },
+          background:{
+            event: userStore.current[0].event,
+            reference: userStore.current[0].reference,
+            hisType: userStore.current[0].hisType,
+            purpose: userStore.current[0].purpose,
+            mainChallenge: userStore.current[0].mainChallenge,
+            stakeholders: userStore.current[0].respondents,
+            coverage: userStore.current[0].coverage,
+          }
+        };
+        userStore.defaultData = merge(userStore.current[0],defaultData);
       }
-      else{
+      else
+      {
         defaultData.tracking.location = assessment.location;
         defaultData.tracking.period = assessment.period;
         defaultData.background.hisType = assessment.hisType;
         defaultData.background.purpose = assessment.purpose;
         defaultData.background.mainChallenge = assessment.mainChallenge;
         defaultData.background.stakeholders = assessment.respondents;
-        defaultData.background.event = currentEvents.event;
+        defaultData.background.event = userStore.current[0].event;
         defaultData.background.stakeholders = assessment.respondents;
         defaultData.background.coverage = assessment.coverage;
+        userStore.defaultData = merge(userStore.current[0],defaultData);
       }
-      userStore.defaultData = merge(defaultData,existingAssessment[0]);
-      setUstore(()=>{
-        return {
-          userStore: userStore 
-        };
-      });
-      setIsLoading(false);
-      return userStore;
     }
-    initializeForm();
+    else
+    {
+      defaultData.tracking.location = assessment.location;
+      defaultData.tracking.period = assessment.period;
+      defaultData.background.hisType = assessment.hisType;
+      defaultData.background.purpose = assessment.purpose;
+      defaultData.background.mainChallenge = assessment.mainChallenge;
+      defaultData.background.stakeholders = assessment.respondents;
+      defaultData.background.event = currentEvents.event;
+      defaultData.background.stakeholders = assessment.respondents;
+      defaultData.background.coverage = assessment.coverage;
+    }
+    userStore.defaultData = merge(defaultData,existingAssessment[0]);
+    console.log("userStore",userStore);
+    console.log("userStore",existingAssessment);
+    setUstore(()=>{
+      return {
+        userStore: userStore 
+      };
+    });
+    setIsLoading(false);
+    return userStore;
   },[]);
+  useEffect(()=>{
+    initializeForm();
+  },[initializeForm]);
   return (
     <div className={classes.root}>
       { 
@@ -180,8 +206,8 @@ const HisSetup = (props) => {
           <HisJsonForm title={ 'HIS SOCI Assessment' } data={ uStore.userStore.defaultData } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
         </div>
       }
-      <UserButton disabled = { completed } color="primary" variant="contained" value="Save Draft" getFormData={ handleChange }/>
-      <UserButton disabled = { completed } color="primary" variant="contained" value="Complete" getFormData={ (ev)=>save(ev) }/>
+      <UserButton disabled = { completed } color="primary" variant="contained" value="Save Draft" getFormData={ ()=>handleChange('PENDING') }/>
+      <UserButton disabled = { completed } color="primary" variant="contained" value="Complete" getFormData={ ()=>handleChange('COMPLETED') }/>
     </div>
   );
 };

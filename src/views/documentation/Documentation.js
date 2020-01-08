@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
+import { NavLink as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/styles';
-import {
-    Grid,
-    Divider,
-} from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -29,8 +28,6 @@ export const TabPanel=(props)=>{
   );
 }
 
-
-
 const a11yProps=(index)=> {
   return {
     id: `nav-tab-${index}`,
@@ -55,8 +52,25 @@ const useStyles = makeStyles(theme => ({
     },
     content: {
         marginTop: theme.spacing(2)
-    }
+    },
+    button: {
+        color: colors.blueGrey[800],
+        padding: '10px 8px',
+        justifyContent: 'flex-start',
+        textTransform: 'none',
+        letterSpacing: 0,
+        width: '100%',
+        fontWeight: theme.typography.fontWeightMedium
+    },
 }));
+const CustomRouterLink = forwardRef((props, ref) => (
+    <div
+      ref={ref}
+      style={{ flexGrow: 1 }}
+    >
+      <RouterLink {...props} />
+    </div>
+  ));
 
 export const HisDocumentation = (props) => {
     const classes = useStyles();
@@ -154,6 +168,21 @@ export const HisDocumentation = (props) => {
                         alt="USAID"
                         src="static/images/logos/usaid_hdc_measure.png"
                     />
+                </Grid>
+                <Grid 
+                    lg={4}
+                    sm={6}
+                    xl={4}
+                    xs={12}
+                    item>
+                    <Button
+                        className={classes.button}
+                        component={CustomRouterLink}
+                        to={"/setup"}
+                    >
+                        <span>Continue</span>
+
+                    </Button>
                 </Grid>
             </Grid>	
         </div>

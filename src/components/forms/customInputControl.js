@@ -52,7 +52,17 @@ export class customInputControl extends Control {
       config,
       this.props.uischema.options
     );
-    const onChange = (ev) => handleChange(path, ev.target.value);
+    const toNumber = (value) =>
+    value === '' ? undefined : parseInt(value, 10);
+
+    const onChange = (ev) => {
+      if(schema.type === 'integer'){
+        handleChange(path, toNumber(ev.target.value));
+      }
+      else{
+        handleChange(path, ev.target.value)
+      }      
+    };
     const fieldType = schema.format === 'password'?'password':'text';
     const readOnly = schema.readOnly  || appliedUiSchemaOptions.readOnly;
     const maxLength = schema.maxLength;

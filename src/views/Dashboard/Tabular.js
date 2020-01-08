@@ -110,10 +110,10 @@ const HSTabular = ({ hisDomainsTable, hisComponentsTable, hisSubComponentsTable,
     if (hisDomainsTable !== undefined){
       const domainCurrentStatusSeries = createHisSociChart(hisDomainsTable.current,"HIS Current Domains",'column');
       const domainGoalStatusSeries = createHisSociChart(hisDomainsTable.goal,"HIS Goal Domains",'column');    
-      const updatedDomainOptionsTable = addChartSeries(changeChartTitle(tableOptions,'HIS Current versus Goal Domains'),domainCurrentStatusSeries,false);
+      const updatedDomainOptionsTable = addChartSeries(changeChartTitle(tableOptions,'HIS Domains: Current and Goal status'),domainCurrentStatusSeries,false);
       setDomainDataTableOptions( () => {
         return {
-          domainTable: changeChartTitle(tableOptions,'HIS Current versus Goal Domains'),
+          domainTable: changeChartTitle(tableOptions,'HIS Domains: Current and Goal status'),
         };
       });
     }

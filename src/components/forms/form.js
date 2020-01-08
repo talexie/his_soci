@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import { Actions, jsonformsReducer, createAjv,JsonFormsState, getData, getDefaultData } from '@jsonforms/core';
+import { Actions, jsonformsReducer, createAjv, getData, getDefaultData } from '@jsonforms/core';
 import { materialCells, materialRenderers } from '@jsonforms/material-renderers';
-import { JsonFormsDispatch,JsonFormsReduxContext, JsonForms } from '@jsonforms/react';
-import { Button } from '@material-ui/core';
+import { JsonFormsDispatch,JsonFormsReduxContext, } from '@jsonforms/react';
 import withStyles from "@material-ui/core/styles/withStyles";
 import createStyles from "@material-ui/core/styles/createStyles";
 
@@ -15,7 +14,6 @@ import customInputFileControl, { customInputFileControlTester } from './customFi
 import customInputControl, { customInputControlTester } from './customInputControl';
 import CustomSelectControl, { CustomSelectControlTester } from './customSelectControl';
 import CustomRadioGroupControl, { CustomRadioGroupControlTester } from './customRadioGroupControl';
-import CustomMaterialArrayTableRenderer, { CustomMaterialArrayTableRendererTester } from './customMaterialArrayTableLayoutRenderer';
 import CustomGroupRenderer, { CustomGroupRendererTester } from './customGroupRenderer';
 import cMaterialArrayLayoutRenderer, { cMaterialArrayLayoutRendererTester } from './materialArrayLayoutRenderer';
 
@@ -24,9 +22,9 @@ const styles = createStyles({
     padding: '1em'
   },
 });
-const saveFormData = (state: JsonFormsState) => {
-  let jsonFormState:any = state.getState();
-  return { data: getData(state.getState()),defaultData: getDefaultData(state.getState()),errors: state.getState().jsonforms.core.errors,core:state.getState().jsonforms,schema:state.getState().jsonforms.core.schema,uischema:state.getState().jsonforms.core.uischema };
+const saveFormData = (state) => {
+  let jsonFormState = state.getState();
+  return { data: getData(jsonFormState),defaultData: getDefaultData(jsonFormState),errors: jsonFormState.jsonforms.core.errors,core:jsonFormState.jsonforms,schema:jsonFormState.jsonforms.core.schema,uischema:jsonFormState.jsonforms.core.uischema };
 };
 // create store for the form
 const store = createStore(
@@ -53,15 +51,9 @@ class HisJsonForm extends Component {
 
   }
   componentDidMount(){
-    this.setState(
-      {
-        data: this.state.data
-      },
-      (prevState)=>{}
-    );
   }
   render() {
-    const { title,data,schema,uiSchema,getSubmittedData} = this.state;
+    const { title,schema,uiSchema,getSubmittedData} = this.state;
     store.dispatch(Actions.init(this.props.data, schema, uiSchema,ajv));
     store.dispatch(Actions.registerRenderer(RatingControlTester, RatingControl));
     store.dispatch(Actions.registerRenderer(customInputControlTester, customInputControl));

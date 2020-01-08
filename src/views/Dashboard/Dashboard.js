@@ -130,7 +130,7 @@ const Dashboard = () => {
     const assessments = await getDataStoreValue(d2,'his_soci_tool','assessments');
     const userStore = await getUserDataStoreValue(d2,'his_soci_tool','assessments');
     let userAssessment = []
-    if(userStore.current[0] !== undefined){
+    if(userStore.current !== undefined){
       userAssessment = filterAssessment(assessments.assessments,userStore.current[0].id);
     }  
     const assessmentsSeries = getDataForChart(userAssessment);
@@ -142,8 +142,8 @@ const Dashboard = () => {
     const domainCurrentStatusSeries = createHisSociChart(assessmentsSeries.domain.current,"HIS Current Domains",'line');
     const domainGoalStatusSeries = createHisSociChart(assessmentsSeries.domain.goal,"HIS Goal Domains",'line');    
     const updatedOptions = addChartSeries(changeChartTitle(initOptions,'HIS Current versus Goal Status Breakdown'),currentStatusSeries,false);
-    const updatedSubOptions = addChartSeries(changeChartTitle(initOptions,'HIS Current versus Goal Components'),subCurrentStatusSeries,false);
-    const updatedDomainOptions = addChartSeries(changeChartTitle(initOptions,'HIS Current versus Goal Domains'),domainCurrentStatusSeries,false);
+    const updatedSubOptions = addChartSeries(changeChartTitle(initOptions,'HIS Components: Current and Goal status'),subCurrentStatusSeries,false);
+    const updatedDomainOptions = addChartSeries(changeChartTitle(initOptions,'HIS Domains: Current and Goal status'),domainCurrentStatusSeries,false);
     
     // Column charts
     const currentStatusSeriesTable = createHisSociChart(assessmentsSeries.current,"HIS Current Status",'column');
@@ -152,11 +152,11 @@ const Dashboard = () => {
     
     const subCurrentStatusSeriesTable = createHisSociChart(assessmentsSeries.component.current,"HIS Current Subcomponents",'column');
     const subGoalStatusSeriesTable = createHisSociChart(assessmentsSeries.component.goal,"HIS Goal Subcomponents",'column');
-    const updatedSubOptionsTable = addChartSeries(changeChartTitle(initOptions,'HIS Current versus Goal Components'),subCurrentStatusSeriesTable,false);
+    const updatedSubOptionsTable = addChartSeries(changeChartTitle(initOptions,'HIS Components: Current and Goal status'),subCurrentStatusSeriesTable,false);
     
     const domainCurrentStatusSeriesTable = createHisSociChart(assessmentsSeries.domain.current,"HIS Current Domains",'column');
     const domainGoalStatusSeriesTable = createHisSociChart(assessmentsSeries.domain.goal,"HIS Goal Domains",'column');
-    const updatedDomainOptionsTable = addChartSeries(changeChartTitle(initOptions,'HIS Current versus Goal Domains'),domainCurrentStatusSeriesTable,false);
+    const updatedDomainOptionsTable = addChartSeries(changeChartTitle(initOptions,'HIS Domains: Current and Goal status'),domainCurrentStatusSeriesTable,false);
 
     setAssessment(()=>{
       return {
@@ -184,11 +184,20 @@ const Dashboard = () => {
       };
     });
     setProgress(()=>{
-      return {
-        total: getTotalAssessments(assessments.assessments,userStore.current[0].location, userStore.current[0].period),
-        value: getProgress(userAssessment),
-        completed:  getCompletedAssessments(assessments.assessments,userStore.current[0].location, userStore.current[0].period,'COMPLETED')
-      }      
+      if (userStore.current !== undefined){
+        return {
+          total: getTotalAssessments(assessments.assessments,userStore.current[0].location, userStore.current[0].period),
+          value: getProgress(userAssessment),
+          completed:  getCompletedAssessments(assessments.assessments,userStore.current[0].location, userStore.current[0].period,'COMPLETED')
+        }  
+      }
+      else{
+        return {
+          total: [],
+          value: 0,
+          completed: []
+        }
+      }    
     })
     return;
   }

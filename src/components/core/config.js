@@ -32,7 +32,7 @@ export const frsSchema = {
         id:{ type: 'string',readOnly:true},
         status: { type: 'string'},
         date: { type: 'string', format:'date'},
-        period:{  type: 'string',enum:['2018','2019']},
+        period:{  type: 'string',enum:['2018','2019','2020']},
         location: { type: 'string',enum:['Uganda','Kenya','Rwanda','Burundi','Tanzania']},
         hisType: { type: 'string'},
         purpose: { type: 'string'},

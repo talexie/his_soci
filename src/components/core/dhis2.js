@@ -173,12 +173,14 @@ export const createEvent=(data)=>{
   let event = {
     dataValues:[]
   };
-  if(data !== undefined){
+  if((data !== undefined) && (data.length > 0)){
     data.map((value)=>{
-      Object.keys(value).map((keyValue)=>{
-        event.dataValues=concat(event.dataValues,getValue(value[keyValue],keyValue));
-        return event.dataValues;
-      });
+      if(value !== undefined){
+        Object.keys(value).map((keyValue)=>{
+          event.dataValues=concat(event.dataValues,getValue(value[keyValue],keyValue));
+          return event.dataValues;
+        });
+      }
     });
   }
   return event;
@@ -226,8 +228,8 @@ export const sendMessage=(data,sendType,sender,api,messageType)=>{
     "messageConversations":[]
   };
   data.respondents.forEach((dv)=>{
-    const message = "Please complete assessment for " + data.location + " for period " + data.period + ".<br><a href='"+api +"/api/apps/HIS-SOCI-tool/index.html#/setup?id="+ dv.id+"&assessment="+ data.id +"'>"+
-    api +"/api/apps/HIS-SOCI-tool/index.html#/setup?id="+ dv.id+"&assessment="+ data.id +"</a>";
+    const message = "Please complete assessment for " + data.location + " for period " + data.period + ". "+
+    api +"/api/apps/HIS-SOCI-tool/index.html#/setup?id="+ dv.id+"&assessment="+ data.id +"";
     const subject = data.location + " Assessment ("+ dv.id +")";
     notifications.programMessages.push(createMessage([dv.emailAddress],sender,subject,sendType,message,dv.event));
     conversations.messageConversations.push({ 
@@ -297,7 +299,7 @@ export const updateUserDataStore= (d2,namespace,key,data)=>{
 **/
  export const getUserDataStoreValue= async (d2, namespace, key)=>{
   let values = {};
-  if(!isNull(d2.currentUser.dataStore)){
+  if(!isNull(d2)){
     const nsp = await d2.currentUser.dataStore.get(namespace);
     values= await getDataStoreKey(nsp,key);
   }
@@ -362,7 +364,7 @@ export const getMappings= (mappings,data)=>{
   **/
 export const getDataStoreValue= async (d2, namespace, key)=>{
   let values = {};
-  if(!isNull(d2.dataStore)){
+  if(!isNull(d2)){
     const nsp = await d2.dataStore.get(namespace);
     values= await getDataStoreKey(nsp,key);
   }
