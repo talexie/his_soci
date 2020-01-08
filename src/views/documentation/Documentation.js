@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { NavLink as RouterLink } from 'react-router-dom';
+import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 import { makeStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
@@ -8,9 +8,15 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { HisOverview } from './Overview';
-
+import { UserButton } from 'components';
+// A custom hook that builds on useLocation to parse
+// the query string for you.
+const useQuery=()=>{
+    return new URLSearchParams(useLocation().search);
+}
 export const TabPanel=(props)=>{
   const { children, value, index, ...other } = props;
 
@@ -54,12 +60,13 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(2)
     },
     button: {
-        color: colors.blueGrey[800],
         padding: '10px 8px',
         justifyContent: 'flex-start',
         textTransform: 'none',
         letterSpacing: 0,
         width: '100%',
+        backgroundColor:'#3f51b5',
+        color: '#fff',
         fontWeight: theme.typography.fontWeightMedium
     },
 }));
@@ -74,6 +81,7 @@ const CustomRouterLink = forwardRef((props, ref) => (
 
 export const HisDocumentation = (props) => {
     const classes = useStyles();
+    const query = useQuery();
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -177,8 +185,9 @@ export const HisDocumentation = (props) => {
                     item>
                     <Button
                         className={classes.button}
+                        color = "primary"
                         component={CustomRouterLink}
-                        to={"/setup"}
+                        to={`/setup?id=${query.get('id')}&assessment=${query.get('assessment')}&continue=true`}
                     >
                         <span>Continue</span>
 

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import { HisJsonForm ,HisConfigSchema, UserButton,createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, getUserDataStoreValue,checkAssessmentByRespondent,updateUserDataStore,filterAssessmentById } from 'components';
 import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Redirect } from 'react-router-dom';
 import { generateUid } from 'd2/uid';
 import moment from 'moment';
 
@@ -24,7 +24,7 @@ const useQuery=()=>{
   return new URLSearchParams(useLocation().search);
 }
 const HisSetup = (props) => {
-  let query = useQuery();
+  const query = useQuery();
   const urlContextValue = useContext(UrlContext);
   const d2 = urlContextValue.d2;
   const api = d2.Api.getApi();
@@ -200,15 +200,21 @@ const HisSetup = (props) => {
     initializeForm();
   },[initializeForm]);
   return (
-    <div className={classes.root}>
-      { 
-        <div className={classes.content}>
-          <HisJsonForm title={ 'HIS SOCI Assessment' } data={ uStore.userStore.defaultData } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
-        </div>
-      }
-      <UserButton disabled = { completed } color="primary" variant="contained" value="Save Draft" getFormData={ ()=>handleChange('PENDING') }/>
-      <UserButton disabled = { completed } color="primary" variant="contained" value="Complete" getFormData={ ()=>handleChange('COMPLETED') }/>
-    </div>
+    query.get('continue')?
+    (
+      <div className={classes.root}>
+        { 
+          <div className={classes.content}>
+            <HisJsonForm title={ 'HIS SOCI Assessment' } data={ uStore.userStore.defaultData } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
+          </div>
+        }
+        <UserButton disabled = { completed } color="primary" variant="contained" value="Save Draft" getFormData={ ()=>handleChange('PENDING') }/>
+        <UserButton disabled = { completed } color="primary" variant="contained" value="Complete" getFormData={ ()=>handleChange('COMPLETED') }/>
+      </div>
+    ):
+    (
+      <Redirect to={ `/documentation?id=${query.get("id")}&assessment=${query.get("assessment")}&continue=false`} />
+    )
   );
 };
 

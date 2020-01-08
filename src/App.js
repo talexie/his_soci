@@ -17,6 +17,7 @@ validate.validators = {
 export const UrlContext = React.createContext({
   d2: null,
   apiEngineUrl:null,
+  dhis2Url: null,
   isAdmin: false,
   isAssessmentAdmin: false,
 });
@@ -25,6 +26,7 @@ const App = ( props ) => {
   let urls = {
     d2: props.d2,
     apiEngineUrl: props.apiEngineUrl,
+    dhis2Url:props.baseUrl,
     isAdmin: props.isAdmin,
     isAssessmentAdmin: props.isAssessmentAdmin,
   };
