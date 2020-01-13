@@ -31,6 +31,7 @@ const HisAdmin = (props) => {
     orgUnit:'wMpIrpoib8b',
     status: 'ACTIVE',
     eventDate: moment().format('YYYY-MM-DD'),
+    completedDate: moment().format('YYYY-MM-DD'),
   }
   const schema = HisConfigSchema.properties.hissetup;
   const uiSchema = HisConfigSchema.setupUiSchema;
@@ -91,7 +92,7 @@ const HisAdmin = (props) => {
     /**
     Creating Data Api
     **/
-    const events = merge({},currentEvents,createEvent([initialAssessments]));
+    const events = merge(currentEvents,createEvent([initialAssessments]));
     const dhis2Events = createDataValues({events:[]},events);
 
     /*
@@ -115,7 +116,7 @@ const HisAdmin = (props) => {
           <HisJsonForm title={ 'Create HIS SOCI Assessment' } data={ defaultData } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
         </div>
       }
-      <UserButton color="primary" variant="contained" value="Create" getFormData={ (ev)=>save(ev) }/>
+      <UserButton disabled = { completed } color="primary" variant="contained" value="Create" getFormData={ (ev)=>save(ev) }/>
     </div>
   );
 };

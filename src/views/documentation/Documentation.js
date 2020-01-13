@@ -11,7 +11,7 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { HisOverview } from './Overview';
-import { UserButton } from 'components';
+import { HisOverviewStages } from './Stages';
 // A custom hook that builds on useLocation to parse
 // the query string for you.
 const useQuery=()=>{
@@ -69,6 +69,9 @@ const useStyles = makeStyles(theme => ({
         color: '#fff',
         fontWeight: theme.typography.fontWeightMedium
     },
+    image:{
+        marginTop:12,
+    }
 }));
 const CustomRouterLink = forwardRef((props, ref) => (
     <div
@@ -98,10 +101,12 @@ export const HisDocumentation = (props) => {
                         xl={3}
                         xs={12}
                     >
-                        <img
-                            alt="HIS Stages ToolKit"
-                            src="static/images/logos/his_stages_logo.png"
-                        />
+                        <div className= { classes.image }>
+                            <img
+                                alt="HIS Stages ToolKit"
+                                src="static/images/logos/his_stages_logo.png"
+                            />
+                        </div>
                     </Grid>
                     <Grid 
                         item
@@ -143,7 +148,9 @@ export const HisDocumentation = (props) => {
                             <HisOverview/>
                         </TabPanel>
                         <TabPanel value={value} index={1}>
-                            Stages Measurement Scale
+                            <h3>Health Information System (HIS) Stages of Continuous Improvement (SOCI)</h3>
+                            <span style={{ color: 'blue' }}>Click to display details</span>
+                            <HisOverviewStages/>
                         </TabPanel>
                     </div>
                 </Grid>
@@ -183,15 +190,22 @@ export const HisDocumentation = (props) => {
                     xl={4}
                     xs={12}
                     item>
-                    <Button
-                        className={classes.button}
-                        color = "primary"
-                        component={CustomRouterLink}
-                        to={`/setup?id=${query.get('id')}&assessment=${query.get('assessment')}&continue=true`}
-                    >
-                        <span>Continue</span>
+                    { (query.get('id') !== null && query.get('assessment') !==null)?
+                        (
+                            <Button
+                                className={classes.button}
+                                color = "primary"
+                                component={CustomRouterLink}
+                                to={`/setup?id=${query.get('id')}&assessment=${query.get('assessment')}&continue=true`}
+                            >
+                                <span>Continue</span>
 
-                    </Button>
+                            </Button>
+                        ):
+                        (
+                            <div></div>
+                        )
+                    }
                 </Grid>
             </Grid>	
         </div>

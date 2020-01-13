@@ -27,7 +27,7 @@ const HisSetup = (props) => {
   const query = useQuery();
   const urlContextValue = useContext(UrlContext);
   const d2 = urlContextValue.d2;
-  const api = d2.Api.getApi();
+  //const api = d2.Api.getApi();
 
   let formStatus = { 'open': true,'submitted':false };
 
@@ -62,6 +62,7 @@ const HisSetup = (props) => {
     orgUnit:'wMpIrpoib8b',
     status: 'COMPLETED',
     eventDate: moment().format('YYYY-MM-DD'),
+    completedDate: moment().format('YYYY-MM-DD'),
   }
   const schema = HisConfigSchema.properties.hisstages;
   const uiSchema = HisConfigSchema.assessmentUiSchema;
@@ -76,19 +77,22 @@ const HisSetup = (props) => {
     setValue(formStatus);
     setStatus(currentStatus);
     tableData.push(data.data);
-    console.log("Tdata",data, " status:",status);
-    /*tableData[0].tracking.userid = d2.currentUser.id;
-    tableData[0].tracking.username = d2.currentUser.username;
-    tableData[0].tracking.status = 'PENDING';*/
-    save(tableData,status);
+    save(tableData,currentStatus);
+    console.log("datax",data);
+    setUstore(()=>{
+      return {
+        ...uStore,
+        userStore: { defaultData: data }
+      };
+    });
+    return currentStatus;
   };
 
   const save = async(values,status) => {
-    //formStatus = { 'open': true,'submitted':false };
-    //tableData.push(data.data);
-    console.log("data",data);
+    const api = d2.Api.getApi();
     setSubmission(()=>{
       return {
+        ...submission,
         data: data.data,
         defaultData:data.data
       }
@@ -98,7 +102,8 @@ const HisSetup = (props) => {
     /**
     Creating Data Api
     **/
-    const events = merge({},currentEvents,createEvent(values));
+
+    const events = merge(currentEvents,createEvent(values));
     const dhis2Events = createDataValues({events:[]},events);
 
     /*
@@ -112,18 +117,20 @@ const HisSetup = (props) => {
     updateDataStore(d2,'his_soci_tool','assessments',values,'assessments');
     updateUserDataStore(d2,'his_soci_tool','assessments',values);
     api.post('events',mappedEvents);
-    console.log("submission",submission, " data: ",data);
     setValue({ 'open': true,'submitted':false });
-    if (status === 'COMPLETED'){
-      setCompleted(true);
-    }
+
     userStore.defaultData = values;
     setUstore(()=>{
       return {
-        userStore: userStore 
+        ...uStore,
+        userStore: { defaultData: data }
       };
     });
-
+    if (status === 'COMPLETED'){
+      setCompleted(true);
+      return (<Redirect to="/dashboard" />); 
+    }
+    return values;
   };
   const initializeForm=useCallback(async()=>{
     setIsLoading(true);
@@ -134,7 +141,7 @@ const HisSetup = (props) => {
     // Check equality if setup store has id in respondents, assessment id with get(id,assessment);
     const assessment = checkAssessmentByRespondent(setupStore.setup,query.get("assessment"),query.get("id"));
     const existingAssessment = filterAssessmentById(assessmentsStore.assessments,query.get("id"));
-    if(userStore.current[0] !== undefined){
+    if(userStore.current !== undefined){
       if (userStore.current[0].respondentType === 'Consensus'){
         defaultData = { 
           tracking:{ 
@@ -167,7 +174,7 @@ const HisSetup = (props) => {
         defaultData.background.purpose = assessment.purpose;
         defaultData.background.mainChallenge = assessment.mainChallenge;
         defaultData.background.stakeholders = assessment.respondents;
-        defaultData.background.event = userStore.current[0].event;
+        defaultData.background.event = userStore.current[0].event === undefined?generateUid():userStore.current[0].event;
         defaultData.background.stakeholders = assessment.respondents;
         defaultData.background.coverage = assessment.coverage;
         userStore.defaultData = merge(userStore.current[0],defaultData);
@@ -181,15 +188,15 @@ const HisSetup = (props) => {
       defaultData.background.purpose = assessment.purpose;
       defaultData.background.mainChallenge = assessment.mainChallenge;
       defaultData.background.stakeholders = assessment.respondents;
-      defaultData.background.event = currentEvents.event;
+      defaultData.background.event = generateUid();
       defaultData.background.stakeholders = assessment.respondents;
       defaultData.background.coverage = assessment.coverage;
+      userStore.defaultData = merge(defaultData,assessment);
     }
     userStore.defaultData = merge(defaultData,existingAssessment[0]);
-    console.log("userStore",userStore);
-    console.log("userStore",existingAssessment);
-    setUstore(()=>{
+    setUstore(()=>{      
       return {
+        ...uStore,
         userStore: userStore 
       };
     });
@@ -199,23 +206,34 @@ const HisSetup = (props) => {
   useEffect(()=>{
     initializeForm();
   },[initializeForm]);
-  return (
-    query.get('continue')?
-    (
+
+  if(query.get('id') === null && query.get('assessment') === null){
+    return (
       <div className={classes.root}>
-        { 
-          <div className={classes.content}>
-            <HisJsonForm title={ 'HIS SOCI Assessment' } data={ uStore.userStore.defaultData } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
-          </div>
-        }
-        <UserButton disabled = { completed } color="primary" variant="contained" value="Save Draft" getFormData={ ()=>handleChange('PENDING') }/>
-        <UserButton disabled = { completed } color="primary" variant="contained" value="Complete" getFormData={ ()=>handleChange('COMPLETED') }/>
+        <span>No assessment is available now. Consult your Data Management Team Lead to setup one.
+        You will recieve a link for the assessment.</span>
       </div>
-    ):
-    (
-      <Redirect to={ `/documentation?id=${query.get("id")}&assessment=${query.get("assessment")}&continue=false`} />
-    )
-  );
+    );
+  }
+  else{
+    return (
+      query.get('continue')?
+      (
+        <div className={classes.root}>
+          { 
+            <div className={classes.content}>
+              <HisJsonForm title={ 'HIS SOCI Assessment' } data={ uStore.userStore.defaultData } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
+            </div>
+          }
+          <UserButton disabled = { completed } color="primary" variant="contained" value="Save Draft" getFormData={ ()=>handleChange('PENDING') }/>
+          <UserButton disabled = { completed } color="primary" variant="contained" value="Complete" getFormData={ ()=>handleChange('COMPLETED')}/>
+        </div>
+      ):
+      (
+        <Redirect to={ `/documentation?id=${query.get("id")}&assessment=${query.get("assessment")}&continue=false`} />
+      )
+    );
+  }
 };
 
 export default HisSetup;

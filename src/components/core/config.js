@@ -82,7 +82,7 @@ export const frsSchema = {
             userid: { type: 'string',readOnly:true},
             respondentType: { type: 'string',readOnly:true, enum:['Self', 'Consensus'],default:"Self"},
             date: { type: 'string', format:'date',readOnly:true},
-            period:{  type: 'string',readOnly:true,enum:['2018','2019']},
+            period:{  type: 'string',readOnly:true,enum:['2018','2019','2020']},
             location: { type: 'string',readOnly:true,enum:['Uganda','Kenya','Rwanda','Burundi','Tanzania']},
           }
         },
@@ -136,15 +136,184 @@ export const frsSchema = {
               '2 = Repeatable',
               '3 = Defined',
               '4 = Managed',
-              '5 = Optimized']},
-            future: { type: 'string',
-            enum:['0 = Not Applicable', 
-              '1 = Emerging/Ad hoc',
-              '2 = Repeatable',
-              '3 = Defined',
-              '4 = Managed',
-              '5 = Optimized']},
-          }
+              '5 = Optimized']
+            },
+            future:{ 
+              type: 'string',
+              enum:[
+                '0 = Not Applicable',
+                '1 = Emerging/Ad hoc',
+                '2 = Repeatable',
+                '3 = Defined',
+                '4 = Managed',
+                '5 = Optimized'
+              ],
+              allOf:
+              [
+                {
+                  if:
+                  {
+                    properties:{
+                      current:{
+                        const: '0 = Not Applicable'
+                      }
+                    }
+                  },
+                  then:
+                  {
+                    properties:{
+                      future:{
+                        enum:[
+                          '0 = Not Applicable',
+                          '1 = Emerging/Ad hoc',
+                          '2 = Repeatable',
+                          '3 = Defined',
+                          '4 = Managed',
+                          '5 = Optimized'
+                        ],
+                      }
+                    }
+                  },
+                  else:
+                  {
+                    properties:{
+                      future:{
+                        enum:[
+                          '0 = Not Applicable',
+                          '1 = Emerging/Ad hoc',
+                          '2 = Repeatable',
+                          '3 = Defined',
+                          '4 = Managed',
+                          '5 = Optimized'
+                        ],
+                      }
+                    }
+                  }
+                },
+                {
+                  if:
+                  {
+                    properties:{
+                      current:{
+                        const: '1 = Emerging/Ad hoc'
+                      }
+                    }
+                  },
+                  then:
+                  {
+                    properties:{
+                      future:{
+                        type: 'string',
+                        enum:[
+                          '1 = Emerging/Ad hoc',
+                          '2 = Repeatable',
+                          '3 = Defined',
+                          '4 = Managed',
+                          '5 = Optimized'
+                        ],
+                      }
+                    }
+                  },
+                  else:{
+                    properties:{
+                      future:{
+                        type:'string',
+                        enum:[
+                          '1 = Emerging/Ad hoc',
+                          '2 = Repeatable',
+                          '3 = Defined',
+                          '4 = Managed',
+                          '5 = Optimized'
+                        ],
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          allOf:
+          [
+            {
+              if:
+              {
+                properties:{
+                  current:{
+                    const: '0 = Not Applicable'
+                  }
+                }
+              },
+              then:
+              {
+                properties:{
+                  future:{
+                    enum:[
+                      '0 = Not Applicable',
+                      '1 = Emerging/Ad hoc',
+                      '2 = Repeatable',
+                      '3 = Defined',
+                      '4 = Managed',
+                      '5 = Optimized'
+                    ],
+                  }
+                }
+              },
+              else:
+              {
+                properties:{
+                  future:{
+                    enum:[
+                      '0 = Not Applicable',
+                      '1 = Emerging/Ad hoc',
+                      '2 = Repeatable',
+                      '3 = Defined',
+                      '4 = Managed',
+                      '5 = Optimized'
+                    ],
+                  }
+                }
+              }
+            },
+            {
+              if:
+              {
+                properties:{
+                  current:{
+                    const: '1 = Emerging/Ad hoc'
+                  }
+                }
+              },
+              then:
+              {
+                properties:{
+                  future:{
+                    type: 'string',
+                    enum:[
+                      '1 = Emerging/Ad hoc',
+                      '2 = Repeatable',
+                      '3 = Defined',
+                      '4 = Managed',
+                      '5 = Optimized'
+                    ],
+                  }
+                }
+              },
+              else:{
+                properties:{
+                  future:{
+                    type:'string',
+                    enum:[
+                      '1 = Emerging/Ad hoc',
+                      '2 = Repeatable',
+                      '3 = Defined',
+                      '4 = Managed',
+                      '5 = Optimized'
+                    ],
+                  }
+                }
+              }
+            }
+          ]
         },
         his_strategic_planning:{
           type:'object',

@@ -7,8 +7,9 @@ import { AppBar, Toolbar } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   root: {
-    boxShadow: 'none'
-  }
+    boxShadow: 'none',
+    backgroundColor: '#ffffff',
+  },
 }));
 
 const Topbar = props => {
@@ -26,8 +27,7 @@ const Topbar = props => {
       <Toolbar>
         <RouterLink to="/">
           <img
-            alt="Logo"
-            src="/static/images/logos/logo-diteq-web.png"
+            alt="Logo" src="static/images/logos/meval_logo.png"
           />
         </RouterLink>
       </Toolbar>

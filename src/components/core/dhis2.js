@@ -4,6 +4,7 @@ import concat from 'lodash/concat';
 import intersection from 'lodash/intersection';
 import isNull from 'lodash/isNull';
 import isArray from 'lodash/isArray';
+import unionBy from 'lodash/unionBy';
 /**
  * Get symbols
  * @param {*} currentUser 
@@ -51,23 +52,25 @@ export const userIsAdmin=async(d2)=>{
  */
 export const checkAssessmentByRespondent=(assessments,assessmentId,respondentId)=>{
   let newAssessment = {};
-  const currentAssessment = assessments.filter((assessment)=>{
-    return (assessment.id === assessmentId)
-  });
-  if((currentAssessment !== undefined) && (currentAssessment.length > 0)){
-    if((currentAssessment[0].respondents.length > 0) && (currentAssessment[0] !== undefined)){
-      const currentRespondent = currentAssessment[0].respondents.filter((respondent)=>{
-        return (respondent.id === respondentId);
-      });
-      newAssessment = currentAssessment[0];
-      newAssessment.respondents= currentRespondent;
-      
-    } 
-    else {
-      newAssessment = currentAssessment[0];
-      newAssessment['respondents']= [{
-        id:currentAssessment[0].id,
-      }];
+  if (assessments !== undefined){
+    const currentAssessment = assessments.filter((assessment)=>{
+      return (assessment.id === assessmentId)
+    });
+    if((currentAssessment !== undefined) && (currentAssessment.length > 0)){
+      if((currentAssessment[0].respondents.length > 0) && (currentAssessment[0] !== undefined)){
+        const currentRespondent = currentAssessment[0].respondents.filter((respondent)=>{
+          return (respondent.id === respondentId);
+        });
+        newAssessment = currentAssessment[0];
+        newAssessment.respondents= currentRespondent;
+        
+      } 
+      else {
+        newAssessment = currentAssessment[0];
+        newAssessment['respondents']= [{
+          id:currentAssessment[0].id,
+        }];
+      }
     }
   }
   return newAssessment;
@@ -79,11 +82,16 @@ export const checkAssessmentByRespondent=(assessments,assessmentId,respondentId)
  * @returns { array }
  */
 export const filterAssessmentById=(assessments,assessmentId)=>{
-  return assessments.filter((assessment)=>{
-    if ( assessment.tracking !== undefined){
-      return (assessment.tracking.id === assessmentId);
-    }    
-  });
+  if(assessments !== undefined){
+    return assessments.filter((assessment)=>{
+      if ( assessment.tracking !== undefined){
+        return (assessment.tracking.id === assessmentId);
+      }    
+    });
+  }
+  else{
+    return [];
+  }
 }
 /**
  * Filter current assessments from all assessments
@@ -177,6 +185,9 @@ export const createEvent=(data)=>{
     data.map((value)=>{
       if(value !== undefined){
         Object.keys(value).map((keyValue)=>{
+          if((keyValue === 'background') && (value[keyValue].event !== undefined)){
+            event.event = value[keyValue].event;
+          }
           event.dataValues=concat(event.dataValues,getValue(value[keyValue],keyValue));
           return event.dataValues;
         });
@@ -204,7 +215,7 @@ const getValue=(value,key)=>{
           objectArray.push({ value:value[keyValue],dataElement:keyProperty});
         } 
         return; 
-      }    
+      }   
     });
   }
   else{
@@ -280,11 +291,12 @@ export const createUserDatastore=async (d2,namespace,key)=>{
  * @param {*} d2 
  * @param {*} namespace 
  * @param {*} key 
+ * @param {*} data
  */
 export const updateUserDataStore= (d2,namespace,key,data)=>{
   d2.currentUser.dataStore.get(namespace).then((nsp)=> {
     nsp.get(key).then(value => {
-      value.history=concat(value.history,value.current);
+      value.history=unionBy(value.current,value.history,'tracking.id');
       value.current=data;
       nsp.set(key,value);
     });
@@ -332,7 +344,7 @@ export const updateDataStore= (d2,namespace,key,data,dataType)=>{
 
       }
       else{
-        value[dataType]=concat(value[dataType],data);
+        value[dataType]=unionBy(data,value[dataType],'tracking.id');
       }
       nsp.set(key,value);
     });
