@@ -5,6 +5,7 @@ import intersection from 'lodash/intersection';
 import isNull from 'lodash/isNull';
 import isArray from 'lodash/isArray';
 import unionBy from 'lodash/unionBy';
+
 /**
  * Get symbols
  * @param {*} currentUser 
@@ -283,8 +284,9 @@ export const createUserDatastore=async (d2,namespace,key)=>{
   if (!await d2.currentUser.dataStore.has(namespace)){
     const nsp= await d2.currentUser.dataStore.create(namespace, false);
     await nsp.set(key, {'current':[],'history':[]});
+    return true;
   }
-  return;
+  return false;
 }
 /**
  * Update the user datastore
@@ -332,21 +334,22 @@ export const createDataStore= async (d2,namespace,key)=>{
         nsp.set('setup',{'setup':[]});
     });
   }
-  return;
+  return false;
 }
 /**
 Save data to datastore
 **/
-export const updateDataStore= (d2,namespace,key,data,dataType)=>{
+export const updateDataStore= (d2,namespace,key,data,dataType,mergeKey)=>{
   d2.dataStore.get(namespace).then((nsp)=> {
     nsp.get(key).then(value => {
-      if (isNull(value[dataType])){
-
+      if (!isNull(value[dataType])){
+        value[dataType]=unionBy(data,value[dataType],mergeKey);
+        nsp.set(key,value);
+        return "SUCCESS";
       }
       else{
-        value[dataType]=unionBy(data,value[dataType],'tracking.id');
+        return "FAILED";
       }
-      nsp.set(key,value);
     });
   });
 }

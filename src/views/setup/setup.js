@@ -114,7 +114,7 @@ const HisSetup = (props) => {
     values[0].tracking.status = status;
     const mappings = await getDataStoreValue(d2,'his_soci_tool','mappings');
     const mappedEvents =getMappings(mappings,dhis2Events);
-    updateDataStore(d2,'his_soci_tool','assessments',values,'assessments');
+    updateDataStore(d2,'his_soci_tool','assessments',values,'assessments','tracking.id');
     updateUserDataStore(d2,'his_soci_tool','assessments',values);
     api.post('events',mappedEvents);
     setValue({ 'open': true,'submitted':false });
@@ -205,7 +205,7 @@ const HisSetup = (props) => {
   },[]);
   useEffect(()=>{
     initializeForm();
-  },[initializeForm]);
+  },[initializeForm,status,completed]);
 
   if(query.get('id') === null && query.get('assessment') === null){
     return (
@@ -226,7 +226,7 @@ const HisSetup = (props) => {
             </div>
           }
           <UserButton disabled = { completed } color="primary" variant="contained" value="Save Draft" getFormData={ ()=>handleChange('PENDING') }/>
-          <UserButton disabled = { completed } color="primary" variant="contained" value="Complete" getFormData={ ()=>handleChange('COMPLETED')}/>
+          <UserButton disabled = { completed } color="primary" variant="contained" value="Submit" getFormData={ ()=>handleChange('COMPLETED')}/>
         </div>
       ):
       (

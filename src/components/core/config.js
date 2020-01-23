@@ -13,7 +13,7 @@ export const frsSchema = {
           '3 = Defined',
           '4 = Managed',
           '5 = Optimized']},
-        future: { type: 'string',
+        goal: { type: 'string',
         enum:['0 = Not Applicable', 
           '1 = Emerging/Ad hoc',
           '2 = Repeatable',
@@ -138,7 +138,7 @@ export const frsSchema = {
               '4 = Managed',
               '5 = Optimized']
             },
-            future:{ 
+            goal:{ 
               type: 'string',
               enum:[
                 '0 = Not Applicable',
@@ -162,7 +162,7 @@ export const frsSchema = {
                   then:
                   {
                     properties:{
-                      future:{
+                      goal:{
                         enum:[
                           '0 = Not Applicable',
                           '1 = Emerging/Ad hoc',
@@ -177,7 +177,7 @@ export const frsSchema = {
                   else:
                   {
                     properties:{
-                      future:{
+                      goal:{
                         enum:[
                           '0 = Not Applicable',
                           '1 = Emerging/Ad hoc',
@@ -202,7 +202,7 @@ export const frsSchema = {
                   then:
                   {
                     properties:{
-                      future:{
+                      goal:{
                         type: 'string',
                         enum:[
                           '1 = Emerging/Ad hoc',
@@ -216,7 +216,7 @@ export const frsSchema = {
                   },
                   else:{
                     properties:{
-                      future:{
+                      goal:{
                         type:'string',
                         enum:[
                           '1 = Emerging/Ad hoc',
@@ -246,7 +246,7 @@ export const frsSchema = {
               then:
               {
                 properties:{
-                  future:{
+                  goal:{
                     enum:[
                       '0 = Not Applicable',
                       '1 = Emerging/Ad hoc',
@@ -261,7 +261,7 @@ export const frsSchema = {
               else:
               {
                 properties:{
-                  future:{
+                  goal:{
                     enum:[
                       '0 = Not Applicable',
                       '1 = Emerging/Ad hoc',
@@ -286,7 +286,7 @@ export const frsSchema = {
               then:
               {
                 properties:{
-                  future:{
+                  goal:{
                     type: 'string',
                     enum:[
                       '1 = Emerging/Ad hoc',
@@ -300,7 +300,7 @@ export const frsSchema = {
               },
               else:{
                 properties:{
-                  future:{
+                  goal:{
                     type:'string',
                     enum:[
                       '1 = Emerging/Ad hoc',
@@ -327,7 +327,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -348,7 +348,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -369,7 +369,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -390,7 +390,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -411,7 +411,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -432,7 +432,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -453,7 +453,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -474,7 +474,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -495,7 +495,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -516,7 +516,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -537,7 +537,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -558,7 +558,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -579,7 +579,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -600,7 +600,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -621,7 +621,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -642,7 +642,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -663,7 +663,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -684,7 +684,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -705,7 +705,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -726,7 +726,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -747,7 +747,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -768,7 +768,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -789,7 +789,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -810,7 +810,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -831,7 +831,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -852,7 +852,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -873,7 +873,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -894,7 +894,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -915,7 +915,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -936,7 +936,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -957,7 +957,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -978,7 +978,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -999,7 +999,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -1020,7 +1020,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -1041,7 +1041,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -1062,7 +1062,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -1083,7 +1083,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -1104,7 +1104,7 @@ export const frsSchema = {
               '3 = Defined',
               '4 = Managed',
               '5 = Optimized']},
-            future: { type: 'string',
+            goal: { type: 'string',
             enum:['0 = Not Applicable', 
               '1 = Emerging/Ad hoc',
               '2 = Repeatable',
@@ -1617,7 +1617,7 @@ export const frsSchema = {
                 {
                   type: 'Control',
                   label: "Goal Status",
-                  scope: '#/properties/his_strategic_planning/properties/future',
+                  scope: '#/properties/his_strategic_planning/properties/goal',
                   options:{
                     select: true,
                     variant: 'outlined'
@@ -1671,7 +1671,7 @@ export const frsSchema = {
                 },
                 {
                   type: 'Control',
-                  scope: '#/properties/me_plan/properties/future',
+                  scope: '#/properties/me_plan/properties/goal',
                   options:{
                     custom: false,
                     select: true,
@@ -1730,7 +1730,7 @@ export const frsSchema = {
                 },
                 {
                   type: 'Control',
-                  scope: '#/properties/his_policy_regulation/properties/future',
+                  scope: '#/properties/his_policy_regulation/properties/goal',
                   options:{
                     custom: false,
                     select: true,
@@ -1783,7 +1783,7 @@ export const frsSchema = {
                 },
                 {
                   type: 'Control',
-                  scope: '#/properties/policy_compliance_enforcement/properties/future',
+                  scope: '#/properties/policy_compliance_enforcement/properties/goal',
                   options:{
                     custom: false,
                     select: true,
@@ -1842,7 +1842,7 @@ export const frsSchema = {
                 },
                 {
                   type: 'Control',
-                  scope: '#/properties/his_leadership_coordination/properties/future',
+                  scope: '#/properties/his_leadership_coordination/properties/goal',
                   options:{
                     custom: false,
                     select: true,
@@ -1895,7 +1895,7 @@ export const frsSchema = {
                 },
                 {
                   type: 'Control',
-                  scope: '#/properties/his_organization_structure_function/properties/future',
+                  scope: '#/properties/his_organization_structure_function/properties/goal',
                   options:{
                     custom: false,
                     select: true,
@@ -1960,7 +1960,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/his_competencies/properties/future',
+                        scope: '#/properties/his_competencies/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2017,7 +2017,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/his_training_education/properties/future',
+                        scope: '#/properties/his_training_education/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2074,7 +2074,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/hr_policy/properties/future',
+                        scope: '#/properties/hr_policy/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2137,7 +2137,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/his_financing_plan/properties/future',
+                        scope: '#/properties/his_financing_plan/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2194,7 +2194,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/resource_mobilization/properties/future',
+                        scope: '#/properties/resource_mobilization/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2263,7 +2263,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/reliable_power_electricity/properties/future',
+                        scope: '#/properties/reliable_power_electricity/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2320,7 +2320,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/ict_business_infrastructure/properties/future',
+                        scope: '#/properties/ict_business_infrastructure/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2377,7 +2377,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/hardware/properties/future',
+                        scope: '#/properties/hardware/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2440,7 +2440,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/networks_internet_connectivity/properties/future',
+                        scope: '#/properties/networks_internet_connectivity/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2503,7 +2503,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/business_continuity_processes_policies/properties/future',
+                        scope: '#/properties/business_continuity_processes_policies/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2572,7 +2572,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/his_standard_guidelines/properties/future',
+                        scope: '#/properties/his_standard_guidelines/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2629,7 +2629,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/dataset_definitions/properties/future',
+                        scope: '#/properties/dataset_definitions/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2686,7 +2686,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/data_exchange_standards/properties/future',
+                        scope: '#/properties/data_exchange_standards/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2749,7 +2749,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/master_facility_list/properties/future',
+                        scope: '#/properties/master_facility_list/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2806,7 +2806,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/indicator_registry/properties/future',
+                        scope: '#/properties/indicator_registry/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2863,7 +2863,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/terminology_management/properties/future',
+                        scope: '#/properties/terminology_management/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2920,7 +2920,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/unique_person_identity_management/properties/future',
+                        scope: '#/properties/unique_person_identity_management/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -2977,7 +2977,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/enterprise_architecture/properties/future',
+                        scope: '#/properties/enterprise_architecture/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3041,7 +3041,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/person_data_exchange/properties/future',
+                        scope: '#/properties/person_data_exchange/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3098,7 +3098,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/aggregate_data_exchange/properties/future',
+                        scope: '#/properties/aggregate_data_exchange/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3155,7 +3155,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/commodity_management_data_exchange/properties/future',
+                        scope: '#/properties/commodity_management_data_exchange/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3212,7 +3212,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/data_security_exchange/properties/future',
+                        scope: '#/properties/data_security_exchange/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3281,7 +3281,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/data_quality_assurance_quality_control/properties/future',
+                        scope: '#/properties/data_quality_assurance_quality_control/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3338,7 +3338,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/data_management/properties/future',
+                        scope: '#/properties/data_management/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3401,7 +3401,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/data_use_availability_strategy/properties/future',
+                        scope: '#/properties/data_use_availability_strategy/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3458,7 +3458,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/information_data_availability/properties/future',
+                        scope: '#/properties/information_data_availability/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3515,7 +3515,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/data_use_competencies/properties/future',
+                        scope: '#/properties/data_use_competencies/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3572,7 +3572,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/user_stakeholder_engagement/properties/future',
+                        scope: '#/properties/user_stakeholder_engagement/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3629,7 +3629,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/data_synthesis_communication/properties/future',
+                        scope: '#/properties/data_synthesis_communication/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3686,7 +3686,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/reporting_analytics_features/properties/future',
+                        scope: '#/properties/reporting_analytics_features/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3743,7 +3743,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/data_use_impact/properties/future',
+                        scope: '#/properties/data_use_impact/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3800,7 +3800,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/data_collection_alignment_workflow/properties/future',
+                        scope: '#/properties/data_collection_alignment_workflow/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'
@@ -3857,7 +3857,7 @@ export const frsSchema = {
                       {
                         type: 'Control',
                         label: "Goal Status",
-                        scope: '#/properties/decision_support_clinical_other/properties/future',
+                        scope: '#/properties/decision_support_clinical_other/properties/goal',
                         options:{
                           select: true,
                           variant: 'outlined'

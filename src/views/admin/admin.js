@@ -71,7 +71,7 @@ const HisAdmin = (props) => {
     initialAssessments.tracking.period = tableData[0].period;
     initialAssessments.tracking.location = tableData[0].location;
     initialAssessments.tracking.date = tableData[0].date;
-
+    initialAssessments.tracking.id = defaultData.id;
     initialAssessments.background.event = currentEvents.event;
     initialAssessments.background.reference = defaultData.id;
     initialAssessments.background.stakeholders = tableData[0].respondents;
@@ -88,7 +88,7 @@ const HisAdmin = (props) => {
      * Save to setup datastore key
      * 
      */
-    updateDataStore(d2,'his_soci_tool','setup',tableData,'setup');
+    updateDataStore(d2,'his_soci_tool','setup',tableData,'setup','id');
     /**
     Creating Data Api
     **/
@@ -101,7 +101,7 @@ const HisAdmin = (props) => {
 
     const mappings = await getDataStoreValue(d2,'his_soci_tool','mappings');
     const mappedEvents =getMappings(mappings,dhis2Events);
-    updateDataStore(d2,'his_soci_tool','assessments',[initialAssessments],'assessments');
+    updateDataStore(d2,'his_soci_tool','assessments',[initialAssessments],'assessments','tracking.id');
     const messages = sendMessage(tableData[0],['EMAIL'],{id:d2.currentUser.id},d2.system.systemInfo.contextPath);
     api.post('events',mappedEvents);
     api.post("messages",messages.programMessages);
@@ -116,7 +116,7 @@ const HisAdmin = (props) => {
           <HisJsonForm title={ 'Create HIS SOCI Assessment' } data={ defaultData } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
         </div>
       }
-      <UserButton disabled = { completed } color="primary" variant="contained" value="Create" getFormData={ (ev)=>save(ev) }/>
+      <UserButton disabled = { completed } color="primary" variant="contained" value="Submit" getFormData={ (ev)=>save(ev) }/>
     </div>
   );
 };
