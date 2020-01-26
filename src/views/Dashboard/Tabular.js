@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import React, { useState, useEffect, useCallback, } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -9,8 +9,8 @@ import {
   CardActions,
   Divider,
   Grid,
+  Hidden,
 } from '@material-ui/core';
-import { UrlContext } from '../../App';
 
 import {  Chart,UserButton, MultiFilter, changeChartTitle, addChartSeries, createHisSociChart } from 'components';
 
@@ -177,33 +177,35 @@ const HSTabular = ({ hisDomainsTable, hisComponentsTable, hisSubComponentsTable,
             </Card>
           </Grid>
         </Grid>
-        <Grid item container spacing={2} direction="row" justify="space-around" alignItems="center">
-          <Grid item lg={12} xs={12} md={12} xl={12}>
-            <Card className={clsx(classes.root, className)}>
-              <CardHeader
-                action={
-                  <Grid container>
-                    <Grid item>
-                      <MultiFilter label={'Chart Type' } data={ filters } getData={ getFilter} />
+        <Hidden xsUp={ true }>
+          <Grid item container spacing={2} direction="row" justify="space-around" alignItems="center">
+            <Grid item lg={12} xs={12} md={12} xl={12}>
+              <Card className={clsx(classes.root, className)}>
+                <CardHeader
+                  action={
+                    <Grid container>
+                      <Grid item>
+                        <MultiFilter label={'Chart Type' } data={ filters } getData={ getFilter} />
+                      </Grid>
+                      <Grid item>
+                        <UserButton color="primary" variant="text" value="Update" getFormData={ drawTable }/>
+                      </Grid>                 
                     </Grid>
-                    <Grid item>
-                      <UserButton color="primary" variant="text" value="Update" getFormData={ drawTable }/>
-                    </Grid>                 
-                  </Grid>
-                }
-                title={ "HIS Current Status Breakdown" }
-              />
-              <Divider />
-              <CardContent>
-                <Chart options= { hisSubComponentsTable } />
-              </CardContent>
-              <Divider />
-              <CardActions>
-                <div>{ description }</div>
-              </CardActions>
-            </Card>
-          </Grid>
+                  }
+                  title={ "HIS Current Status Breakdown" }
+                />
+                <Divider />
+                <CardContent>
+                  <Chart options= { hisSubComponentsTable } />
+                </CardContent>
+                <Divider />
+                <CardActions>
+                  <div>{ description }</div>
+                </CardActions>
+              </Card>
+            </Grid>
         </Grid>
+        </Hidden>
       </Grid>
     </div>
   );

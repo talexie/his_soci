@@ -7,6 +7,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import SettingsIcon from '@material-ui/icons/Settings';
 import CollectionsIcon from '@material-ui/icons/Collections';
+import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 
 import { Profile, SidebarNav } from '.';
 import { UrlContext } from '../../App';
@@ -39,7 +40,9 @@ const Sidebar = props => {
 
   const classes = useStyles();
   const contextValue = useContext(UrlContext);
-
+  const dhis2Link = contextValue.dhis2Url;
+  console.log("link",dhis2Link);
+  const staticLogout = `${dhis2Link}`;
   const pages = [
     {
       title: 'Dashboard',
@@ -66,6 +69,14 @@ const Sidebar = props => {
       title: 'Documentation',
       href: '/documentation',
       icon: <CollectionsIcon />,
+      isAdminVisible: true,
+      isAssessmentAdminVisible: true
+    },
+    {
+      title: 'Logout',
+      type: 'external',
+      href: staticLogout,
+      icon: <ExitToAppRoundedIcon />,
       isAdminVisible: true,
       isAssessmentAdminVisible: true
     },

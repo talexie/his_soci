@@ -41,6 +41,7 @@ const HisAdmin = (props) => {
     date:moment().format("YYYY-MM-DD"),
     status:"NOT_STARTED", 
     respondentType:"Consensus",
+    coverage:[{ id: uuid() }],
     respondents:[{ id: uuid() }] 
   };
   let initialAssessments = { 
@@ -116,7 +117,7 @@ const HisAdmin = (props) => {
           <HisJsonForm title={ 'Create HIS SOCI Assessment' } data={ defaultData } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
         </div>
       }
-      <UserButton disabled = { completed } color="primary" variant="contained" value="Submit" getFormData={ (ev)=>save(ev) }/>
+      <UserButton color="primary" variant="contained" value="Submit" getFormData={ (ev)=>save(ev) }/>
     </div>
   );
 };

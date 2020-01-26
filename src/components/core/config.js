@@ -99,6 +99,7 @@ export const frsSchema = {
               items:{
                 type: 'object',
                 properties:{
+                  id:{ type:'string'},
                   level: { type: 'string',readOnly:true, enum:['Region','District/Subcounty','Facility']},
                   totalNumber: { type: 'integer',readOnly:true},
                   hisCoverageNumber: { type: 'integer',readOnly:true},

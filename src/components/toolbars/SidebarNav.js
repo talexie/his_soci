@@ -73,10 +73,11 @@ const SidebarNav = props => {
             page.type === 'external'?
 
             (
-              <a href={page.href} target="_blank" rel="noopener noreferrer">
+              <a href={page.href} rel="noopener noreferrer">
                 <Button
                   activeclassname={classes.active}
                   className={classes.button}
+                  style={{ flexGrow: 1 }} 
                 >
                   <div className={classes.icon}>{page.icon}<span className={classes.title}>{ page.title}</span></div>
                 </Button>

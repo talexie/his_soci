@@ -9,6 +9,7 @@ import {
   CardActions,
   Divider,
   Grid,
+  Hidden
 } from '@material-ui/core';
 
 import { UrlContext } from '../../App';
@@ -119,33 +120,35 @@ const HSVisualizer = ({ hisDomains, hisComponents,hisSubComponents, className, .
             </Card>
           </Grid>
         </Grid>
-        <Grid item container spacing={2} direction="row" justify="space-around" alignItems="center">
-          <Grid item lg={12} xs={12} md={12} xl={12}>
-            <Card className={clsx(classes.chartDetailedContainer, className)}>
-              <CardHeader
-                action={
-                  <Grid container>
-                    <Grid item>
-                      <MultiFilter label={'Chart Type' } data={ filters } getData={ getFilter} />
+        <Hidden xsUp={ true }>
+          <Grid item container spacing={2} direction="row" justify="space-around" alignItems="center">
+            <Grid item lg={12} xs={12} md={12} xl={12}>
+              <Card className={clsx(classes.chartDetailedContainer, className)}>
+                <CardHeader
+                  action={
+                    <Grid container>
+                      <Grid item>
+                        <MultiFilter label={'Chart Type' } data={ filters } getData={ getFilter} />
+                      </Grid>
+                      <Grid item>
+                        <UserButton color="primary" variant="text" value="Update" getFormData={ drawChart }/>
+                      </Grid>                 
                     </Grid>
-                    <Grid item>
-                      <UserButton color="primary" variant="text" value="Update" getFormData={ drawChart }/>
-                    </Grid>                 
-                  </Grid>
-                }
-                title={ "HIS Current Status Breakdown" }
-              />
-              <Divider />
-              <CardContent>
-                <Chart options= { hisSubComponents } />
-              </CardContent>
-              <Divider />
-              <CardActions>
-                <div>{ description }</div>
-              </CardActions>
-            </Card>
+                  }
+                  title={ "HIS Current Status Breakdown" }
+                />
+                <Divider />
+                <CardContent>
+                  <Chart options= { hisSubComponents } />
+                </CardContent>
+                <Divider />
+                <CardActions>
+                  <div>{ description }</div>
+                </CardActions>
+              </Card>
+            </Grid>
           </Grid>
-        </Grid>
+        </Hidden>
       </Grid>
     </div>
   );

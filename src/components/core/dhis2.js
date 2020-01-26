@@ -5,6 +5,8 @@ import intersection from 'lodash/intersection';
 import isNull from 'lodash/isNull';
 import isArray from 'lodash/isArray';
 import unionBy from 'lodash/unionBy';
+//import { html }  from './EmailTemplate';
+import { getEmailMessage } from './EmailMessage';
 
 /**
  * Get symbols
@@ -240,8 +242,9 @@ export const sendMessage=(data,sendType,sender,api,messageType)=>{
     "messageConversations":[]
   };
   data.respondents.forEach((dv)=>{
-    const message = "Please complete assessment for " + data.location + " for period " + data.period + ". "+
-    api +"/api/apps/HIS-SOCI-tool/index.html#/setup?id="+ dv.id+"&assessment="+ data.id +"";
+    //TO DO: Fix use with EmailTemplate
+    //const message = html;
+    const message = getEmailMessage(data,dv,api);
     const subject = data.location + " Assessment ("+ dv.id +")";
     notifications.programMessages.push(createMessage([dv.emailAddress],sender,subject,sendType,message,dv.event));
     conversations.messageConversations.push({ 
