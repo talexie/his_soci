@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import { HisJsonForm ,HisConfigSchema, UserButton,createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, getUserDataStoreValue,checkAssessmentByRespondent,updateUserDataStore,filterAssessmentById } from 'components';
 import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
+import isEmpty from 'lodash/isEmpty';
 import { useLocation, Redirect } from 'react-router-dom';
 import { generateUid } from 'd2/uid';
 import moment from 'moment';
@@ -77,14 +78,13 @@ const HisSetup = (props) => {
     setValue(formStatus);
     setStatus(currentStatus);
     tableData.push(data.data);
-    save(tableData,currentStatus);
-    console.log("datax",data);
     setUstore(()=>{
       return {
         ...uStore,
         userStore: { defaultData: data }
       };
     });
+    save(tableData,currentStatus);
     return currentStatus;
   };
 
@@ -116,7 +116,7 @@ const HisSetup = (props) => {
     const mappedEvents =getMappings(mappings,dhis2Events);
     updateDataStore(d2,'his_soci_tool','assessments',values,'assessments','tracking.id');
     updateUserDataStore(d2,'his_soci_tool','assessments',values);
-    api.post('events',mappedEvents);
+    api.post('events?strategy=CREATE_AND_UPDATE',mappedEvents);
     setValue({ 'open': true,'submitted':false });
 
     userStore.defaultData = values;
@@ -128,10 +128,14 @@ const HisSetup = (props) => {
     });
     if (status === 'COMPLETED'){
       setCompleted(true);
-      return (<Redirect to="/dashboard" />); 
+      //return (<Redirect to="/dashboard" />); 
     }
+    initializeForm();
     return values;
   };
+  /**
+   * Initialize form with default or existing data
+   */
   const initializeForm=useCallback(async()=>{
     setIsLoading(true);
     userStore = await getUserDataStoreValue(d2,'his_soci_tool','assessments');
@@ -141,7 +145,7 @@ const HisSetup = (props) => {
     // Check equality if setup store has id in respondents, assessment id with get(id,assessment);
     const assessment = checkAssessmentByRespondent(setupStore.setup,query.get("assessment"),query.get("id"));
     const existingAssessment = filterAssessmentById(assessmentsStore.assessments,query.get("id"));
-    if(userStore.current !== undefined){
+    if(!isEmpty(userStore.current)){
       if (userStore.current[0].respondentType === 'Consensus'){
         defaultData = { 
           tracking:{ 
@@ -203,9 +207,10 @@ const HisSetup = (props) => {
     setIsLoading(false);
     return userStore;
   },[]);
+
   useEffect(()=>{
     initializeForm();
-  },[initializeForm,status,completed]);
+  },[initializeForm]);
 
   if(query.get('id') === null && query.get('assessment') === null){
     return (

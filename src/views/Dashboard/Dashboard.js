@@ -8,6 +8,7 @@ import {
   HSTasksProgress,
   HSAssessmentCompletion,
   HSTotalAssessments,
+  HSPercentageAssessments,
   HSDataTable,
 } from '.';
 import { UrlContext } from '../../App';
@@ -243,7 +244,7 @@ const Dashboard = () => {
             xl={3}
             xs={12}
           >
-            Percentage Completion
+            <HSPercentageAssessments completed ={  progress.completed.length } total={ progress.total.length } />
           </Grid>
         </Grid>
         <Grid item container direction="column" spacing={4}>

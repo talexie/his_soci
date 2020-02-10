@@ -5,6 +5,7 @@ import intersection from 'lodash/intersection';
 import isNull from 'lodash/isNull';
 import isArray from 'lodash/isArray';
 import unionBy from 'lodash/unionBy';
+import isEmpty from 'lodash/isEmpty';
 //import { html }  from './EmailTemplate';
 import { getEmailMessage } from './EmailMessage';
 
@@ -33,9 +34,9 @@ export const userIsAdmin=async(d2)=>{
   const userAuthorities = getSymbolValues(d2.currentUser,'authorities');
   const userGroups = await d2.Api.getApi().get('me?filter=userGroups.code:ilike:his_soci_admin&paging=false&fields=id,userGroups[id,name,code]');
   const selectedUserGroups = userGroups['userGroups'];
-  if (selectedUserGroups.length > 0){
+  if (!isEmpty(selectedUserGroups)){
     for(let group of selectedUserGroups){
-      if(group.code.toLowerCase() === 'his_soci_admin'){
+      if((group.code.toLowerCase() === 'his_soci_admin') || (group.code.toLowerCase() === 'his soci admin')){
         adminConfig.isAssessmentAdmin = true
       }
     }
@@ -59,8 +60,8 @@ export const checkAssessmentByRespondent=(assessments,assessmentId,respondentId)
     const currentAssessment = assessments.filter((assessment)=>{
       return (assessment.id === assessmentId)
     });
-    if((currentAssessment !== undefined) && (currentAssessment.length > 0)){
-      if((currentAssessment[0].respondents.length > 0) && (currentAssessment[0] !== undefined)){
+    if((currentAssessment !== undefined) && (!isEmpty(currentAssessment))){
+      if((!isEmpty(currentAssessment[0].respondents)) && (currentAssessment[0] !== undefined)){
         const currentRespondent = currentAssessment[0].respondents.filter((respondent)=>{
           return (respondent.id === respondentId);
         });
@@ -336,6 +337,7 @@ export const createDataStore= async (d2,namespace,key)=>{
         nsp.set('mappings',{'mappings':[]});
         nsp.set('setup',{'setup':[]});
     });
+    return true;
   }
   return false;
 }

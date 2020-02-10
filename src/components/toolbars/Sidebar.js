@@ -41,7 +41,6 @@ const Sidebar = props => {
   const classes = useStyles();
   const contextValue = useContext(UrlContext);
   const dhis2Link = contextValue.dhis2Url;
-  console.log("link",dhis2Link);
   const staticLogout = `${dhis2Link}`;
   const pages = [
     {

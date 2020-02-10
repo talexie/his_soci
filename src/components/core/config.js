@@ -33,7 +33,7 @@ export const frsSchema = {
         status: { type: 'string'},
         date: { type: 'string', format:'date'},
         period:{  type: 'string',enum:['2018','2019','2020']},
-        location: { type: 'string',enum:['Uganda','Kenya','Rwanda','Burundi','Tanzania']},
+        location: { type: 'string',enum:['Uganda','Kenya','Rwanda','Burundi','Tanzania',"Indonesia","USA","Ghana","Ivory Coast","Madagascar","Norway","Canada","India"]},
         hisType: { type: 'string'},
         purpose: { type: 'string'},
         mainChallenge: { type: 'string'},
@@ -83,7 +83,7 @@ export const frsSchema = {
             respondentType: { type: 'string',readOnly:true, enum:['Self', 'Consensus'],default:"Self"},
             date: { type: 'string', format:'date',readOnly:true},
             period:{  type: 'string',readOnly:true,enum:['2018','2019','2020']},
-            location: { type: 'string',readOnly:true,enum:['Uganda','Kenya','Rwanda','Burundi','Tanzania']},
+            location: { type: 'string',readOnly:true,enum:['Uganda','Kenya','Rwanda','Burundi','Tanzania',"Indonesia","USA","Ghana","Ivory Coast","Madagascar","Norway","Canada","India"]},
           }
         },
         background:{
@@ -1140,6 +1140,7 @@ export const frsSchema = {
             scope: '#/properties/location',
             options:{
               select: true,
+              sort: true,
               variant: 'outlined'
             }
           },

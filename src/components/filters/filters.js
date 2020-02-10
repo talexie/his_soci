@@ -55,7 +55,7 @@ const MultipleSelect =({ data, getData=(event)=>{},multiple,label,...rest })=> {
   const [selectOption, setSelectOption] = React.useState([]);
 
   const handleChange=(event)=> {
-    setSelectOption(event.target.value);
+    setSelectOption([event.target.value].join(','));
     getData(event.target.value);
   }
 
@@ -86,7 +86,7 @@ const MultipleSelect =({ data, getData=(event)=>{},multiple,label,...rest })=> {
           multiple={ multiple?'false':multiple }
           margin="normal"
           variant="outlined"
-          value={selectOption}
+          value={selectOption || ''}
           onChange={handleChange}
           placeholder ={ label }
           input={<Input id="select-multiple-checkbox" />}

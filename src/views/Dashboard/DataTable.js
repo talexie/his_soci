@@ -51,7 +51,7 @@ const useStyles = makeStyles(() => ({
 const SubDomainTableRow=({ row,nextRow,className,visible })=>{
   const classes = useStyles();
   return (
-    row !== undefined?row.map( (subdomain)=> {      
+    row !== undefined?row.map( (subdomain,i)=> {      
       return (
         <>
           <TableRow className = { className } key={ subdomain.name }>
@@ -65,7 +65,7 @@ const SubDomainTableRow=({ row,nextRow,className,visible })=>{
               {subdomain.goal[0].y}
             </TableCell>
           </TableRow>
-          <SubDomainTableRow key={"next-"+subdomain.name } visible = { true } className = { classes.subcomponent } row={ subdomain[nextRow] }/>
+          <SubDomainTableRow key={"next-"+subdomain.name+"-"+i } visible = { true } className = { classes.subcomponent } row={ subdomain[nextRow] }/>
         </>
         )
     }):
@@ -151,10 +151,10 @@ const HSDataTable = ({ hisStagesData, className, ...rest }) => {
                   </TableHead>
                   <TableBody>
                     { 
-                      tableRows.rows.map(row => {
+                      tableRows.rows.map((row,i) => {
                         return (
                           <>
-                            <TableRow className= { classes.domain } key={row.name}>
+                            <TableRow className= { classes.domain } key={row.name+"-"+i}>
                               <TableCell component="th" scope="row">
                                 {row.name}
                               </TableCell>
@@ -166,7 +166,7 @@ const HSDataTable = ({ hisStagesData, className, ...rest }) => {
                               </TableCell>
 
                             </TableRow>
-                            <SubDomainTableRow visible={ true } className = { classes.subdomain } row={ row.subdomains } nextRow= {'subcomponents'}/>
+                            <SubDomainTableRow key={row.name+"-sub"+i } visible={ true } className = { classes.subdomain } row={ row.subdomains } nextRow= {'subcomponents'}/>
                           </>
                         )                        
                       })

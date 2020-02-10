@@ -64,10 +64,10 @@ const initApp = async () => {
       configI18n(userSettings);
 
       // Create datastore if it does not exist
-      createDataStore(d2,'his_soci_tool','assessments');
+      await createDataStore(d2,'his_soci_tool','assessments');
 
       // Create user datastore for user tracking
-      createUserDatastore(d2,'his_soci_tool','assessments');
+      await createUserDatastore(d2,'his_soci_tool','assessments');
 
       // Check if user is admin or assessment admin
       const adminConfig = await userIsAdmin(d2);
