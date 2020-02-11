@@ -7,6 +7,8 @@ import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
 import { generateUid } from 'd2/uid';
 import moment from 'moment';
+import has from 'lodash/has';
+import isEmpty from 'lodash/isEmpty';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,14 +59,33 @@ const HisAdmin = (props) => {
     data = dataSaved;
     return { data:data,formStatus:formStatus}
   }
-
+  const addId=(data)=>{
+    if(!isEmpty(data)){
+      data.map((d)=>{
+        const respondents = d.respondents;
+        if(!isEmpty(respondents)){
+          respondents.map((respondent)=>{
+            respondent.id=has(respondent,'id')?respondent.id:uuid();
+            console.log(respondent);
+            return respondent;
+          });
+          
+          d.respondents = respondents;
+          console.log(d);
+        }
+        return d;
+      });
+    }
+    return data;
+  }
   const save = useCallback(async(event) => {
     formStatus = { 'open': true,'submitted':false };
     tableData.push(data.data);
     setState(data);
     setValue(formStatus);
     tableData[0].respondentType = 'Consensus';
-    
+    tableData = addId(tableData);
+
     initialAssessments.tracking.userid = d2.currentUser.id;
     initialAssessments.tracking.username = d2.currentUser.username;
     initialAssessments.tracking.status = tableData[0].status;
