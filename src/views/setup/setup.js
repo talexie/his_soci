@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback, useContext, } from 'react';
+import React, { useEffect, useContext, useCallback } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import { HisJsonForm ,HisSociSchema,HisSociUiSchema, UserButton,createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, getUserDataStoreValue,checkAssessmentByRespondent,updateUserDataStore,filterAssessmentById } from 'components';
+import { HisJsonForm ,HisSociSchema,HisSociUiSchema,getDataStoreValue, getUserDataStoreValue,checkAssessmentByRespondent,filterAssessmentById } from 'components';
 import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
 import isEmpty from 'lodash/isEmpty';
@@ -51,73 +51,17 @@ const HisSetup = (props) => {
     }
   };
   const classes = useStyles();
-  const [submission,setSubmission] = useState({ data:[],defaultData:defaultData });
-  const [completed,setCompleted] = useState(false);
-  const [status,setStatus] = useState('PENDING');
-  const [uStore,setUstore] = useState({ userStore:{ defaultData: defaultData }});
 
-  const currentEvents = {
-    event: generateUid(),
-    program:'EQnIPsQzZ8R',
-    programStage:'hKuDUonVytS',
-    orgUnit:'wMpIrpoib8b',
-    status: 'COMPLETED',
-    eventDate: moment().format('YYYY-MM-DD'),
-    completedDate: moment().format('YYYY-MM-DD'),
-  }
+
   const schema = HisSociSchema;
   const uiSchema = HisSociUiSchema;
   
 
-  const handleChange = async(currentStatus) => {
-    setStatus(currentStatus);
-    save([hisSociData.data],currentStatus);
-    return currentStatus;
-  };
+  /*const handleChange = async() => {
+    save([hisSociData.data]);
+  };*/
 
-  const save = async(values,status) => {
-    const api = d2.Api.getApi();
-    setSubmission(()=>{
-      return {
-        ...submission,
-        data: hisSociData.data,
-        defaultData:hisSociData.data
-      }
-    });
-    
 
-    /**
-    Creating Data Api
-    **/
-
-    const events = merge(currentEvents,createEvent(values));
-    const dhis2Events = createDataValues({events:[]},events);
-
-    /*
-    post data to DHIS2
-    */
-    values[0].tracking.userid = d2.currentUser.id;
-    values[0].tracking.username = d2.currentUser.username;
-    values[0].tracking.status = status;
-    const mappings = await getDataStoreValue(d2,'his_soci_tool','mappings');
-    const mappedEvents =getMappings(mappings,dhis2Events);
-    updateDataStore(d2,'his_soci_tool','assessments',values,'assessments','tracking.id');
-    updateUserDataStore(d2,'his_soci_tool','assessments',values);
-    api.post('events?strategy=CREATE_AND_UPDATE',mappedEvents);
-    
-    hisSociData.defaultData = values;
-    setUstore(()=>{
-      return {
-        ...uStore,
-        userStore: { defaultData: hisSociData.data }
-      };
-    });
-    if (status === 'COMPLETED'){
-      setCompleted(true);
-    }
-    //initializeForm();
-    return values;
-  };
   /**
    * Initialize form with default or existing data
    */
@@ -182,13 +126,6 @@ const HisSetup = (props) => {
       userStore.defaultData = merge(defaultData,assessment);
     }
     hisSociData.defaultData = merge(defaultData,existingAssessment[0]);
-    setUstore(()=>{      
-      return {
-        ...uStore,
-        userStore: userStore 
-      };
-    });
-    return hisSociData;
   },[]);
 
   useEffect(()=>{

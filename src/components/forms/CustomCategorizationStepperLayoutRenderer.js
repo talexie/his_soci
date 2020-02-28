@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Hidden, Step, StepButton, Stepper, Button, Typography } from '@material-ui/core';
 import {
   and,
@@ -11,6 +11,11 @@ import {
 import { withJsonFormsLayoutProps } from '@jsonforms/react';
 import { MaterialLayoutRenderer } from '@jsonforms/material-renderers';
 import { makeStyles } from '@material-ui/core/styles';
+import { createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, updateUserDataStore } from 'components';
+import { UrlContext } from '../../App';
+import merge from 'lodash/merge';
+import { generateUid } from 'd2/uid';
+import moment from 'moment';
 
 export const CustomCategorizationStepperLayoutRendererTester = rankWith(
   Number.MAX_VALUE,
@@ -39,6 +44,8 @@ const useStyles = makeStyles(theme => ({
 export const CustomCategorizationStepperLayoutRenderer =(props)=>
   {
     const classes = useStyles();
+    const urlContextValue = useContext(UrlContext);
+    const d2 = urlContextValue.d2;
     const [activeCategory, setActiveCategory] = useState(0);
     const [completed, setCompleted] = useState({});
     const [review, setReview] = useState({});
@@ -56,6 +63,15 @@ export const CustomCategorizationStepperLayoutRenderer =(props)=>
     };
     const categories = categorization.elements.filter((category) => isVisible(category, data));
     const steps = categories;
+    const currentEvents = {
+        event: generateUid(),
+        program:'EQnIPsQzZ8R',
+        programStage:'hKuDUonVytS',
+        orgUnit:'wMpIrpoib8b',
+        status: 'COMPLETED',
+        eventDate: moment().format('YYYY-MM-DD'),
+        completedDate: moment().format('YYYY-MM-DD'),
+      }
 
     const handleStep = (step) => {
         setActiveCategory(step);
@@ -96,7 +112,7 @@ export const CustomCategorizationStepperLayoutRenderer =(props)=>
         const newCompleted = completed;
         newCompleted[activeCategory] = true
         setCompleted(newCompleted);
-
+        save([data]);
         setActiveCategory(newActiveStep);
         
     };
@@ -151,7 +167,31 @@ export const CustomCategorizationStepperLayoutRenderer =(props)=>
         setReview({});
         setStatus("UNDER_REVIEW");
     };
-
+    
+    const save = async(values) => {
+        const api = d2.Api.getApi();   
+    
+        /**
+        Creating Data Api
+        **/
+    
+        const events = merge(currentEvents,createEvent(values));
+        const dhis2Events = createDataValues({events:[]},events);
+    
+        /*
+        post data to DHIS2
+        */
+        values[0].tracking.userid = d2.currentUser.id;
+        values[0].tracking.username = d2.currentUser.username;
+        values[0].tracking.status = status;
+        const mappings = await getDataStoreValue(d2,'his_soci_tool','mappings');
+        const mappedEvents =getMappings(mappings,dhis2Events);
+        updateDataStore(d2,'his_soci_tool','assessments',values,'assessments','tracking.id');
+        updateUserDataStore(d2,'his_soci_tool','assessments',values);
+        api.post('events?strategy=CREATE_AND_UPDATE',mappedEvents);
+    
+        return values;
+    };
     return(
         <Hidden xsUp={!visible}>
             <Stepper activeStep={activeCategory} nonLinear alternativeLabel>
