@@ -16,7 +16,7 @@ import CustomSelectControl, { CustomSelectControlTester } from './customSelectCo
 import CustomRadioGroupControl, { CustomRadioGroupControlTester } from './customRadioGroupControl';
 import CustomGroupRenderer, { CustomGroupRendererTester } from './customGroupRenderer';
 import cMaterialArrayLayoutRenderer, { cMaterialArrayLayoutRendererTester } from './materialArrayLayoutRenderer';
-
+import CustomCategorizationStepperLayoutRenderer, { CustomCategorizationStepperLayoutRendererTester } from './CustomCategorizationStepperLayoutRenderer';
 const styles = createStyles({
   container: {
     padding: '1em'
@@ -56,6 +56,7 @@ class HisJsonForm extends Component {
     const { title,schema,uiSchema,getSubmittedData} = this.state;
     store.dispatch(Actions.init(this.props.data, schema, uiSchema,ajv));
     store.dispatch(Actions.registerRenderer(RatingControlTester, RatingControl));
+    store.dispatch(Actions.registerRenderer(CustomCategorizationStepperLayoutRendererTester,CustomCategorizationStepperLayoutRenderer));
     store.dispatch(Actions.registerRenderer(customInputControlTester, customInputControl));
     store.dispatch(Actions.registerRenderer(CustomSelectControlTester, CustomSelectControl));
     store.dispatch(Actions.registerRenderer(CustomRadioGroupControlTester, CustomRadioGroupControl));

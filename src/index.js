@@ -64,13 +64,18 @@ const initApp = async () => {
       configI18n(userSettings);
 
       // Create datastore if it does not exist
-      await createDataStore(d2,'his_soci_tool','assessments');
-
+      const dataStoreCreated = createDataStore(d2,'his_soci_tool','assessments');
+      if(!dataStoreCreated){
+        createDataStore(d2,'his_soci_tool','assessments');
+      }
       // Create user datastore for user tracking
-      await createUserDatastore(d2,'his_soci_tool','assessments');
-
+      const userStoreCreated = createUserDatastore(d2,'his_soci_tool','assessments');
+      if(!userStoreCreated){
+        createDataStore(d2,'his_soci_tool','assessments');
+      }
       // Check if user is admin or assessment admin
       const adminConfig = await userIsAdmin(d2);
+      console.log("admin:",adminConfig);
       isAdmin = adminConfig.isAdmin;
       isAssessmentAdmin = adminConfig.isAssessmentAdmin;
       ReactDOM.render(

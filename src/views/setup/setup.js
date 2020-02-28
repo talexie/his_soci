@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useContext, } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import { HisJsonForm ,HisConfigSchema, UserButton,createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, getUserDataStoreValue,checkAssessmentByRespondent,updateUserDataStore,filterAssessmentById } from 'components';
+import { HisJsonForm ,HisSociSchema,HisSociUiSchema, UserButton,createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, getUserDataStoreValue,checkAssessmentByRespondent,updateUserDataStore,filterAssessmentById } from 'components';
 import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
 import isEmpty from 'lodash/isEmpty';
@@ -17,20 +17,22 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2)
   }
 }));
-let tableData = [];
-let data = [];
+
+let hisSociData = [];
 // A custom hook that builds on useLocation to parse
 // the query string for you.
 const useQuery=()=>{
   return new URLSearchParams(useLocation().search);
+}
+const getSubmittedData =(dataSaved)=>{
+  hisSociData = dataSaved;
+  return hisSociData;
 }
 const HisSetup = (props) => {
   const query = useQuery();
   const urlContextValue = useContext(UrlContext);
   const d2 = urlContextValue.d2;
   //const api = d2.Api.getApi();
-
-  let formStatus = { 'open': true,'submitted':false };
 
   let userStore = {};
   let defaultData = { 
@@ -49,10 +51,8 @@ const HisSetup = (props) => {
     }
   };
   const classes = useStyles();
-  const [value,setValue] = useState(formStatus);
   const [submission,setSubmission] = useState({ data:[],defaultData:defaultData });
   const [completed,setCompleted] = useState(false);
-  const [isLoading,setIsLoading] = useState(false);
   const [status,setStatus] = useState('PENDING');
   const [uStore,setUstore] = useState({ userStore:{ defaultData: defaultData }});
 
@@ -65,26 +65,13 @@ const HisSetup = (props) => {
     eventDate: moment().format('YYYY-MM-DD'),
     completedDate: moment().format('YYYY-MM-DD'),
   }
-  const schema = HisConfigSchema.properties.hisstages;
-  const uiSchema = HisConfigSchema.assessmentUiSchema;
+  const schema = HisSociSchema;
+  const uiSchema = HisSociUiSchema;
   
-  const getSubmittedData =(dataSaved)=>{
-    formStatus = { 'open': true,'submitted':false };
-    data = dataSaved;
-    return { data:data,formStatus:formStatus}
-  }
+
   const handleChange = async(currentStatus) => {
-    formStatus = { 'open': false,'submitted':false };
-    setValue(formStatus);
     setStatus(currentStatus);
-    tableData.push(data.data);
-    setUstore(()=>{
-      return {
-        ...uStore,
-        userStore: { defaultData: data }
-      };
-    });
-    save(tableData,currentStatus);
+    save([hisSociData.data],currentStatus);
     return currentStatus;
   };
 
@@ -93,8 +80,8 @@ const HisSetup = (props) => {
     setSubmission(()=>{
       return {
         ...submission,
-        data: data.data,
-        defaultData:data.data
+        data: hisSociData.data,
+        defaultData:hisSociData.data
       }
     });
     
@@ -117,18 +104,16 @@ const HisSetup = (props) => {
     updateDataStore(d2,'his_soci_tool','assessments',values,'assessments','tracking.id');
     updateUserDataStore(d2,'his_soci_tool','assessments',values);
     api.post('events?strategy=CREATE_AND_UPDATE',mappedEvents);
-    setValue({ 'open': true,'submitted':false });
-
+    
     userStore.defaultData = values;
     setUstore(()=>{
       return {
         ...uStore,
-        userStore: { defaultData: data }
+        userStore: { defaultData: hisSociData.data }
       };
     });
     if (status === 'COMPLETED'){
       setCompleted(true);
-      //return (<Redirect to="/dashboard" />); 
     }
     initializeForm();
     return values;
@@ -137,7 +122,6 @@ const HisSetup = (props) => {
    * Initialize form with default or existing data
    */
   const initializeForm=useCallback(async()=>{
-    setIsLoading(true);
     userStore = await getUserDataStoreValue(d2,'his_soci_tool','assessments');
     const setupStore =  await getDataStoreValue(d2,'his_soci_tool','setup');
     const assessmentsStore =  await getDataStoreValue(d2,'his_soci_tool','assessments');
@@ -204,7 +188,6 @@ const HisSetup = (props) => {
         userStore: userStore 
       };
     });
-    setIsLoading(false);
     return userStore;
   },[]);
 

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import { HisJsonForm, HisConfigSchema, UserButton,createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, updateUserDataStore,sendMessage } from 'components';
+import { HisJsonForm, HisSociSetupSchema,HisSociSetupUiSchema, UserButton,createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, updateUserDataStore,sendMessage } from 'components';
 import uuid from 'uuid/v4';
 import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
@@ -18,12 +18,15 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2)
   }
 }));
-let tableData = [];
-
+let adminData = [];
+const getSubmittedData =(dataSaved)=>{
+  
+  adminData = dataSaved;
+  return adminData;
+}
 const HisAdmin = (props) => {
   const urlContextValue = useContext(UrlContext);
   const d2 = urlContextValue.d2;
-  let formStatus = { 'open': true,'submitted':false };
   const api = d2.Api.getApi();
   const event = generateUid();
   const currentEvents = {
@@ -35,9 +38,8 @@ const HisAdmin = (props) => {
     eventDate: moment().format('YYYY-MM-DD'),
     completedDate: moment().format('YYYY-MM-DD'),
   }
-  const schema = HisConfigSchema.properties.hissetup;
-  const uiSchema = HisConfigSchema.setupUiSchema;
-  let data = [];
+  const schema = HisSociSetupSchema;
+  const uiSchema = HisSociSetupUiSchema;
   const defaultData = { 
     id: uuid(),
     date:moment().format("YYYY-MM-DD"),
@@ -51,14 +53,8 @@ const HisAdmin = (props) => {
     background:{}
   };
   const classes = useStyles();
-  const [value,setValue] = useState(formStatus);
-  const [state,setState] = useState([]);
   const [completed,setCompleted] = useState(false);
-  const getSubmittedData =(dataSaved)=>{
-    formStatus = { 'open': true,'submitted':false };
-    data = dataSaved;
-    return { data:data,formStatus:formStatus}
-  }
+
   const addId=(data)=>{
     if(!isEmpty(data)){
       data.map((d)=>{
@@ -66,12 +62,10 @@ const HisAdmin = (props) => {
         if(!isEmpty(respondents)){
           respondents.map((respondent)=>{
             respondent.id=has(respondent,'id')?respondent.id:uuid();
-            console.log(respondent);
             return respondent;
           });
           
           d.respondents = respondents;
-          console.log(d);
         }
         return d;
       });
@@ -79,10 +73,7 @@ const HisAdmin = (props) => {
     return data;
   }
   const save = useCallback(async(event) => {
-    formStatus = { 'open': true,'submitted':false };
-    tableData.push(data.data);
-    setState(data);
-    setValue(formStatus);
+    let  tableData = [ adminData.data];
     tableData[0].respondentType = 'Consensus';
     tableData = addId(tableData);
 
