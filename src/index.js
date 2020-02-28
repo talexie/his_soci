@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import * as serviceWorker from './serviceWorker';
 import App from './App';
-import { init, getUserSettings,config, getManifest, getUserAuthorities, } from 'd2';
+import { init, getUserSettings,config, getManifest } from 'd2';
 import i18n from './locales';
 import { createDataStore,createUserDatastore } from 'components';
 import { userIsAdmin } from 'components/core/dhis2';

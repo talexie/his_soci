@@ -18,6 +18,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import merge from 'lodash/merge';
+import { ToolTip } from './ToolTip';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -114,13 +115,22 @@ const CustomGroupRenderer = props => {
                 <Grid item xs={3} className={ classes.grid}>
                   <Typography variant={'h6'} className={ classes.secondaryHeading} >{uischema.extraText===undefined?'':[uischema.extraText]}</Typography>
                 </Grid>
-                <Grid item xs={7} className={ classes.grid}>
+                <Grid item xs={6} className={ classes.grid}>
                   <div className={ classes.column}>
                     <Typography className={ classes.secondaryHeading}>
                       <MaterialLayoutRenderer {...layoutProps} />
                     </Typography>
+                    {
+                      appliedUiSchemaOptions.toolTip?
+                      (
+
+                          <ToolTip description = { appliedUiSchemaOptions.toolTip } />
+  
+                      ): (<div></div>)
+                    }
                   </div>
                 </Grid>
+                
               </Grid>
             </Paper>
           )

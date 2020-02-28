@@ -105,7 +105,7 @@ const HisSetup = (props) => {
     updateUserDataStore(d2,'his_soci_tool','assessments',values);
     api.post('events?strategy=CREATE_AND_UPDATE',mappedEvents);
     
-    userStore.defaultData = values;
+    hisSociData.defaultData = values;
     setUstore(()=>{
       return {
         ...uStore,
@@ -115,7 +115,7 @@ const HisSetup = (props) => {
     if (status === 'COMPLETED'){
       setCompleted(true);
     }
-    initializeForm();
+    //initializeForm();
     return values;
   };
   /**
@@ -152,7 +152,7 @@ const HisSetup = (props) => {
             coverage: userStore.current[0].coverage,
           }
         };
-        userStore.defaultData = merge(userStore.current[0],defaultData);
+        hisSociData.defaultData = merge(userStore.current[0],defaultData);
       }
       else
       {
@@ -165,7 +165,7 @@ const HisSetup = (props) => {
         defaultData.background.event = userStore.current[0].event === undefined?generateUid():userStore.current[0].event;
         defaultData.background.stakeholders = assessment.respondents;
         defaultData.background.coverage = assessment.coverage;
-        userStore.defaultData = merge(userStore.current[0],defaultData);
+        hisSociData.defaultData = merge(userStore.current[0],defaultData);
       }
     }
     else
@@ -181,14 +181,14 @@ const HisSetup = (props) => {
       defaultData.background.coverage = assessment.coverage;
       userStore.defaultData = merge(defaultData,assessment);
     }
-    userStore.defaultData = merge(defaultData,existingAssessment[0]);
+    hisSociData.defaultData = merge(defaultData,existingAssessment[0]);
     setUstore(()=>{      
       return {
         ...uStore,
         userStore: userStore 
       };
     });
-    return userStore;
+    return hisSociData;
   },[]);
 
   useEffect(()=>{
@@ -210,11 +210,9 @@ const HisSetup = (props) => {
         <div className={classes.root}>
           { 
             <div className={classes.content}>
-              <HisJsonForm title={ 'HIS SOCI Assessment' } data={ uStore.userStore.defaultData } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
+              <HisJsonForm title={ 'HIS SOCI Assessment' } data={ hisSociData.defaultData } schema={ schema } uiSchema= { uiSchema } getSubmittedData={ getSubmittedData }/>
             </div>
           }
-          <UserButton disabled = { completed } color="primary" variant="contained" value="Save Draft" getFormData={ ()=>handleChange('PENDING') }/>
-          <UserButton disabled = { completed } color="primary" variant="contained" value="Submit" getFormData={ ()=>handleChange('COMPLETED')}/>
         </div>
       ):
       (

@@ -33,7 +33,7 @@ export const userIsAdmin=async(d2)=>{
   }
   const userAuthorities = getSymbolValues(d2.currentUser,'authorities');
   const userGroups = await d2.Api.getApi().get('me?filter=userGroups.code:ilike:his_soci_admin&paging=false&fields=id,userGroups[id,name,code]');
-  const selectedUserGroups = userGroups['userGroups'];
+  const selectedUserGroups = userGroups.userGroups;
   if (!isEmpty(selectedUserGroups)){
     for(let group of selectedUserGroups){
       if((group.code.toLowerCase() === 'his_soci_admin') || (group.code.toLowerCase() === 'his soci admin')){
