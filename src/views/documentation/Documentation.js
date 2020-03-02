@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { HisOverview } from './Overview';
 import { HisOverviewStages } from './Stages';
+import { HisStagesProgression } from './StagesProgression';
 // A custom hook that builds on useLocation to parse
 // the query string for you.
 const useQuery=()=>{
@@ -71,6 +72,8 @@ const useStyles = makeStyles(theme => ({
     },
     image:{
         marginTop:12,
+        maxWidth:'179px',
+        maxHeight:'150px'
     }
 }));
 const CustomRouterLink = forwardRef((props, ref) => (
@@ -102,7 +105,7 @@ export const HisDocumentation = (props) => {
                         xs={12}
                     >
                         <div className= { classes.image }>
-                            <img
+                            <img className= { classes.image }
                                 alt="HIS Stages ToolKit"
                                 src="static/images/logos/his_stages_logo.png"
                             />
@@ -140,14 +143,18 @@ export const HisDocumentation = (props) => {
                             onChange={handleChange}
                             aria-label="nav tabs example"
                             >
-                            <LinkTab label="Overview" href="/" {...a11yProps(0)} />
-                            <LinkTab label="Stage Measurement Scale" href="/" {...a11yProps(1)} />
+                            <LinkTab label="Background" href="/" {...a11yProps(0)} />
+                            <LinkTab label="Stages of Progression" href="/" {...a11yProps(1)} />
+                            <LinkTab label="Stage Measurement Scale" href="/" {...a11yProps(2)} />
                             </Tabs>
                         </AppBar>
                         <TabPanel value={value} index={0}>
                             <HisOverview/>
                         </TabPanel>
                         <TabPanel value={value} index={1}>
+                            <HisStagesProgression/>
+                        </TabPanel>
+                        <TabPanel value={value} index={2}>
                             <h3>Health Information System (HIS) Stages of Continuous Improvement (SOCI)</h3>
                             <span style={{ color: 'blue' }}>Click to display details</span>
                             <HisOverviewStages/>

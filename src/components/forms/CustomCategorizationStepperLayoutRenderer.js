@@ -16,6 +16,7 @@ import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
 import { generateUid } from 'd2/uid';
 import moment from 'moment';
+import { isNull } from 'lodash/isNull';
 
 export const CustomCategorizationStepperLayoutRendererTester = rankWith(
   Number.MAX_VALUE,
@@ -169,7 +170,7 @@ export const CustomCategorizationStepperLayoutRenderer =(props)=>
     };
     
     const save = async(values) => {
-        const api = d2.Api.getApi();   
+          
     
         /**
         Creating Data Api
@@ -188,7 +189,11 @@ export const CustomCategorizationStepperLayoutRenderer =(props)=>
         const mappedEvents =getMappings(mappings,dhis2Events);
         updateDataStore(d2,'his_soci_tool','assessments',values,'assessments','tracking.id');
         updateUserDataStore(d2,'his_soci_tool','assessments',values);
-        api.post('events?strategy=CREATE_AND_UPDATE',mappedEvents);
+        if(!isNull(d2.Api)){
+            const api = d2.Api.getApi(); 
+            api.post('events?strategy=CREATE_AND_UPDATE',mappedEvents);
+        }
+       
     
         return values;
     };

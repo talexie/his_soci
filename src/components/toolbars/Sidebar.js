@@ -65,7 +65,7 @@ const Sidebar = props => {
       isAssessmentAdminVisible: contextValue.isAssessmentAdmin
     },
     {
-      title: 'Documentation',
+      title: 'Overview',
       href: '/documentation',
       icon: <CollectionsIcon />,
       isAdminVisible: true,
