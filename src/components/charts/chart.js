@@ -5,16 +5,6 @@ import HighchartsMore from 'highcharts/highcharts-more';
 
 HighchartsMore(Highcharts);
 
-const useStyles = () => ({
-  root: {},
-  chartContainer: {
-    height: 400,
-    position: 'relative'
-  },
-  actions: {
-    justifyContent: 'flex-end'
-  }
-});
 export const createChartCategories=(options,categories)=>{
   options.xAxis={}
   options.xAxis.categories= categories;

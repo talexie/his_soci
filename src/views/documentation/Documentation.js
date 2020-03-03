@@ -8,7 +8,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+import { UserButton } from 'components';
 import PropTypes from 'prop-types';
 import { HisOverview } from './Overview';
 import { HisOverviewStages } from './Stages';
@@ -60,15 +60,8 @@ const useStyles = makeStyles(theme => ({
     content: {
         marginTop: theme.spacing(2)
     },
-    button: {
-        padding: '10px 8px',
-        justifyContent: 'flex-start',
-        textTransform: 'none',
-        letterSpacing: 0,
-        width: '100%',
-        backgroundColor:'#3f51b5',
-        color: '#fff',
-        fontWeight: theme.typography.fontWeightMedium
+    continue:{
+        fontSize: 24
     },
     image:{
         marginTop:12,
@@ -199,15 +192,13 @@ export const HisDocumentation = (props) => {
                     item>
                     { (query.get('id') !== null && query.get('assessment') !==null)?
                         (
-                            <Button
-                                className={classes.button}
+                            <UserButton
+                                value ={ 'Continue'}
                                 color = "primary"
+                                variant= "contained"
                                 component={CustomRouterLink}
                                 to={`/setup?id=${query.get('id')}&assessment=${query.get('assessment')}&continue=true`}
-                            >
-                                <span>Continue</span>
-
-                            </Button>
+                            />
                         ):
                         (
                             <div></div>

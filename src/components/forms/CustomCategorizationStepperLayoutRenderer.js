@@ -50,7 +50,7 @@ export const CustomCategorizationStepperLayoutRenderer =(props)=>
     const [activeCategory, setActiveCategory] = useState(0);
     const [completed, setCompleted] = useState({});
     const [review, setReview] = useState({});
-    const [status, setStatus] = useState('IN_PROGRESS');
+    const [status, setStatus] = useState('ACTIVE');
 
     const { data, path, renderers, schema, uischema, visible } = props;
     const categorization = uischema;
@@ -178,7 +178,6 @@ export const CustomCategorizationStepperLayoutRenderer =(props)=>
     
         const events = merge(currentEvents,createEvent(values));
         const dhis2Events = createDataValues({events:[]},events);
-    
         /*
         post data to DHIS2
         */
@@ -189,10 +188,8 @@ export const CustomCategorizationStepperLayoutRenderer =(props)=>
         const mappedEvents =getMappings(mappings,dhis2Events);
         updateDataStore(d2,'his_soci_tool','assessments',values,'assessments','tracking.id');
         updateUserDataStore(d2,'his_soci_tool','assessments',values);
-        if(!isNull(d2.Api)){
-            const api = d2.Api.getApi(); 
-            api.post('events?strategy=CREATE_AND_UPDATE',mappedEvents);
-        }
+        const api = d2.Api.getApi(); 
+        api.post('events?strategy=CREATE_AND_UPDATE',mappedEvents);
        
     
         return values;

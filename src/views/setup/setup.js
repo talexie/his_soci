@@ -8,6 +8,9 @@ import isEmpty from 'lodash/isEmpty';
 import { useLocation, Redirect } from 'react-router-dom';
 import { generateUid } from 'd2/uid';
 import moment from 'moment';
+import each from 'lodash/each';
+import forIn from 'lodash/forIn';
+import has from 'lodash/has';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -56,16 +59,26 @@ const HisSetup = (props) => {
   const schema = HisSociSchema;
   const uiSchema = HisSociUiSchema;
   
-
-  /*const handleChange = async() => {
-    save([hisSociData.data]);
-  };*/
+  const updateFuture=(data)=>{
+    each(data,(value)=>{
+      forIn(value,(v,k)=>{
+        if (has(v,'future')){
+          v.goal=v['future']
+          value[k] = v;
+          delete v['future']
+          return value
+        }
+          
+      })
+    })
+   return data;
+  }
 
 
   /**
    * Initialize form with default or existing data
    */
-  const initializeForm=useCallback(async()=>{
+  const initializeForm= async()=>{
     userStore = await getUserDataStoreValue(d2,'his_soci_tool','assessments');
     const setupStore =  await getDataStoreValue(d2,'his_soci_tool','setup');
     const assessmentsStore =  await getDataStoreValue(d2,'his_soci_tool','assessments');
@@ -74,6 +87,7 @@ const HisSetup = (props) => {
     const assessment = checkAssessmentByRespondent(setupStore.setup,query.get("assessment"),query.get("id"));
     const existingAssessment = filterAssessmentById(assessmentsStore.assessments,query.get("id"));
     if(!isEmpty(userStore.current)){
+      userStore.current = updateFuture(userStore.current);
       if (userStore.current[0].respondentType === 'Consensus'){
         defaultData = { 
           tracking:{ 
@@ -123,14 +137,15 @@ const HisSetup = (props) => {
       defaultData.background.event = generateUid();
       defaultData.background.stakeholders = assessment.respondents;
       defaultData.background.coverage = assessment.coverage;
-      userStore.defaultData = merge(defaultData,assessment);
+      hisSociData.defaultData = merge(defaultData,assessment);
     }
     hisSociData.defaultData = merge(defaultData,existingAssessment[0]);
-  },[]);
+    return hisSociData;
+  }
 
   useEffect(()=>{
-    initializeForm();
-  },[initializeForm]);
+    hisSociData = initializeForm();
+  },[]);
 
   if(query.get('id') === null && query.get('assessment') === null){
     return (

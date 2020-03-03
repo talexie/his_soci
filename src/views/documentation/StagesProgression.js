@@ -6,7 +6,7 @@ import {
 
 const useStyles = makeStyles(theme => ({
     root: {
-        padding: theme.spacing(3)
+        padding: theme.spacing(2)
     },
     content: {
         marginTop: theme.spacing(2)
@@ -14,9 +14,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const HisStagesProgression = (props) => {
-    //const classes = useStyles();
+    const classes = useStyles();
     return (
-        <div>
+        <div className={ classes.root}>
             <Grid container spacing={2} direction="column" justify="space-around">
                 <Grid item>
                     <div>

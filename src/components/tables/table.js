@@ -1,13 +1,12 @@
-import React, { forwardRef, Component, useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import MaterialTable,{ MTableToolbar, MTableHeader, Paper as MTPaper} from 'material-table';
-import  { AccountCircle,Favorite,FavoriteBorder,AddBox,ArrowUpward, Check,ChevronLeft,ChevronRight, Clear,Edit,FilterList,FirstPage,LastPage,Remove,SaveAlt,Save,Search,ViewColumn,DeleteOutline,ExpandMore } from '@material-ui/icons';
+import  { AccountCircle,Favorite,FavoriteBorder,AddBox,ArrowUpward, Check,ChevronLeft,ChevronRight, Clear,Edit,FirstPage,LastPage,Remove,SaveAlt,Save,Search,ViewColumn,DeleteOutline,ExpandMore } from '@material-ui/icons';
 import clsx from 'clsx';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeStyles } from '@material-ui/styles';
 import {
   Card,
   CardContent,
-  Chip,
 } from '@material-ui/core';
 
 const tableIcons = {

@@ -41,17 +41,8 @@ const MenuProps = {
   },
 };
 
-const getStyles =(name, personName, theme)=> {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
 const MultipleSelect =({ data, getData=(event)=>{},multiple,label,...rest })=> {
   const classes = useStyles();
-  const theme = useTheme();
   const [selectOption, setSelectOption] = React.useState([]);
 
   const handleChange=(event)=> {
@@ -59,26 +50,8 @@ const MultipleSelect =({ data, getData=(event)=>{},multiple,label,...rest })=> {
     getData(event.target.value);
   }
 
-  const handleChangeMultiple=(event)=> {
-    const { options } = event.target;
-    const value = [];
-    for (let i = 0, l = options.length; i < l; i += 1) {
-      if (options[i].selected) {
-        value.push(options[i].value);
-      }
-    }
-    setSelectOption(value);
-  }
- const getSelected=(selected,multiple)=>{
-   if(multiple){
-     return selected.join(',');
-   }
-   else{
-     return [selected];
-   }
- }
   return (
-    <div className={ classes.root } style={{ paddingTop: '1.5em' }} >
+    <div className={ clsx(classes.root) } style={{ paddingTop: '1.5em' }} >
         <InputLabel htmlFor="select-multiple-checkbox">{ label }</InputLabel>
         <TextField
           className={ classes.formControl }
