@@ -104,8 +104,8 @@ const CustomGroupRenderer = props => {
       {
         appliedUiSchemaOptions.grid?
           (
-            <Paper style={{ padding: 10 }}>
-              <Grid container spacing ={3} alignItems='stretch' justify='space-between'>
+            <Paper>
+              <Grid container spacing ={0} alignItems='stretch' justify='space-between'>
                 <Grid item xs={1} className={ classes.grid}>
                   <Typography variant={'h6'} className={ classes.secondaryHeading}>{uischema.code}</Typography>
                 </Grid>
@@ -124,7 +124,7 @@ const CustomGroupRenderer = props => {
                       appliedUiSchemaOptions.toolTip?
                       (
 
-                          <ToolTip description = { appliedUiSchemaOptions.toolTip } />
+                          <ToolTip tooltip = { appliedUiSchemaOptions.toolTip } path={ path } />
   
                       ): (<div></div>)
                     }

@@ -16,7 +16,6 @@ import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
 import { generateUid } from 'd2/uid';
 import moment from 'moment';
-import { isNull } from 'lodash/isNull';
 
 export const CustomCategorizationStepperLayoutRendererTester = rankWith(
   Number.MAX_VALUE,

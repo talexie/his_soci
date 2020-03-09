@@ -4,26 +4,27 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import map from 'lodash/map';
 
 const HtmlToolTip = withStyles(theme => ({
   tooltip: {
-    backgroundColor: '#f5f5f9',
+    backgroundColor: '#ffffff',
     color: 'rgba(0, 0, 0, 0.87)',
-    maxWidth: 800,
+    maxWidth: 960,
     fontSize: theme.typography.pxToRem(12),
     border: '1px solid #dadde9',
   },
 }))(Tooltip);
 
 export const ToolTip=(props)=> {
-  const { description } = props;
+  const { tooltip,path } = props;
   return (
     <div>
       <HtmlToolTip
         title={
-          <>
-            <Typography color="inherit">{ description }</Typography>
-          </>
+          map(tooltip,(value,key)=>{
+            return (<Typography key = { 'tooltip-'+path+"-"+key } color="inherit"><h5>{ Object.keys(value) }</h5>{ value[Object.keys(value)] }</Typography>)
+          })            
         }
       >
         <Button><HelpOutlineIcon/></Button>

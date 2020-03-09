@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useCallback } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
 import { HisJsonForm ,HisSociSchema,HisSociUiSchema,getDataStoreValue, getUserDataStoreValue,checkAssessmentByRespondent,filterAssessmentById } from 'components';
@@ -140,7 +140,7 @@ const HisSetup = (props) => {
       hisSociData.defaultData = merge(defaultData,assessment);
     }
     hisSociData.defaultData = merge(defaultData,existingAssessment[0]);
-    return hisSociData;
+    //return hisSociData;
   }
 
   useEffect(()=>{

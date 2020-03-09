@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, } from 'react';
+import React, { useState,useCallback, } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -12,7 +12,7 @@ import {
   Hidden,
 } from '@material-ui/core';
 
-import {  Chart,UserButton, MultiFilter, changeChartTitle, addChartSeries, createHisSociChart } from 'components';
+import {  Chart,UserButton, MultiFilter } from 'components';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -26,65 +26,9 @@ const useStyles = makeStyles(() => ({
 }));
 const HSTabular = ({ hisDomainsTable, hisComponentsTable, hisSubComponentsTable,className, ...rest }) => {
   const classes = useStyles();
-  const tableOptions = {
-    chart: {
-      type: 'column',
-      polar: false,
-    },
-    title: {
-      text: '',
-      margin: 20
-    },
-    subtitle: {
-      text: '',
-    },
-    pane: {
-      size: '80%',
-    },
-    xAxis: {
-      type:'category',
-      tickmarkPlacement: 'on',
-      lineWidth: 0
-    },
-    yAxis: {
-      gridLineInterpolation: 'polygon',
-      min: 0,
-      max: 5,
-    },
-    plotOptions: {
-      series: {
-        pointStart: 0,
-        pointInterval: 90
-      },
-      column: {
-        pointPadding: 0,
-        groupPadding: 0
-      }
-    },
-    tooltip: {
-      shared: true,
-        pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
-    },
-    exporting:{
-      enabled: true,
-    },
-    credits:{
-      enabled: false,
-    },
-    legend: {
-        align: 'right',
-        verticalAlign: 'bottom',
-        margin: 16
-    },
-    series: [],
-    caption: {
-      text:""
-    }
-  };
 
   const filters = ['line','column','area','polar','spline'];
   const [type, setType]= useState({ doptions: {}});
-  const [domainDataTableOptions, setDomainDataTableOptions]= useState({ domainTable: tableOptions });
   const description = "";
 
   const getFilter =useCallback((ev)=>{
@@ -106,22 +50,9 @@ const HSTabular = ({ hisDomainsTable, hisComponentsTable, hisSubComponentsTable,
    * handleChange for chart re-drawing
    */
   const drawTable=async(ev)=>{
-    //getFilter(ev);
-    if (hisDomainsTable !== undefined){
-      const domainCurrentStatusSeries = createHisSociChart(hisDomainsTable.current,"HIS Current Domains",'column');
-      const domainGoalStatusSeries = createHisSociChart(hisDomainsTable.goal,"HIS Goal Domains",'column');    
-      const updatedDomainOptionsTable = addChartSeries(changeChartTitle(tableOptions,'HIS Domains: Current and Goal status'),domainCurrentStatusSeries,false);
-      setDomainDataTableOptions( () => {
-        return {
-          domainTable: changeChartTitle(tableOptions,'HIS Domains: Current and Goal status'),
-        };
-      });
-    }
+    // Re-draw
   }
 
-  useEffect((ev)=>{
-    drawTable(ev);
-  },[hisDomainsTable]);
   return (
     <div>
       <Grid container spacing={2} direction="column" justify="space-around" alignItems="center">

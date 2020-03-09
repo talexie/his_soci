@@ -16,19 +16,6 @@ Powered By [Devias Kit - Admin Dashboard](https://devias.io/products/material-re
 The documentation for the React Material Kit is can be found [here](https://github.com/talexie/his_soci).
 
 
-## File Structure
-
-Within the download you'll find the following directories and files:
-
-```
-
-```
-
-## Resources
-
-
-## Reporting Issues:
-
 ## License
 
 - Licensed under MIT
