@@ -115,7 +115,7 @@ const HisAdmin = (props) => {
     const mappings = await getDataStoreValue(d2,'his_soci_tool','mappings');
     const mappedEvents =getMappings(mappings,dhis2Events);
     updateDataStore(d2,'his_soci_tool','assessments',[initialAssessments],'assessments','tracking.id');
-    const messages = sendMessage(tableData[0],['EMAIL'],{id:d2.currentUser.id},d2.system.systemInfo.contextPath);
+    const messages = sendMessage(tableData[0],['EMAIL'],{id:d2.currentUser.id},d2.system.systemInfo.contextPath,d2.currentUser);
     api.post('events?strategy=CREATE_AND_UPDATE',mappedEvents);
     api.post("messages",messages.programMessages);
     api.post("messageConversations",messages.conversations);

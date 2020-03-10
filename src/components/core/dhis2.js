@@ -6,7 +6,6 @@ import isNull from 'lodash/isNull';
 import isArray from 'lodash/isArray';
 import unionBy from 'lodash/unionBy';
 import isEmpty from 'lodash/isEmpty';
-//import { html }  from './EmailTemplate';
 import { getEmailMessage } from './EmailMessage';
 
 /**
@@ -235,7 +234,7 @@ const getValue=(value,key)=>{
  * @param {*} recipients
  * @param {*} sender
  */
-export const sendMessage=(data,sendType,sender,api,messageType)=>{
+export const sendMessage=(data,sendType,sender,api,currentSender)=>{
   const notifications = {
     "programMessages": []      
   };
@@ -245,7 +244,7 @@ export const sendMessage=(data,sendType,sender,api,messageType)=>{
   data.respondents.forEach((dv)=>{
     //TO DO: Fix use with EmailTemplate
     //const message = html;
-    const message = getEmailMessage(data,dv,api);
+    const message = getEmailMessage(data,dv,api,currentSender);
     const subject = data.location + " Assessment ("+ dv.id +")";
     notifications.programMessages.push(createMessage([dv.emailAddress],sender,subject,sendType,message,dv.event));
     conversations.messageConversations.push({ 
