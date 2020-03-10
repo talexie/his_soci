@@ -1,4 +1,5 @@
 import { fromString } from 'html-to-text';
+import moment from 'moment';
 /**
  * Generate Email message template
  * @param { object } data Data from the assessment
