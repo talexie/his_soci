@@ -70,7 +70,11 @@ const checkSelectControl = and(optionIs('locationSelector',true),isEnumControl);
 export const CustomSelectOrgUnitControlTester =
   rankWith(Number.MAX_VALUE, checkSelectControl );
 
-
+/**
+ * The DHIS2 Organisation Unit Select Control for loading DHIS2 OrgUnit Hierarchy 
+ * if app is installed in DHIS2
+ * @param {object} props Properties of the select input control
+ */
 export const CustomSelectOrgUnitControl = (props) => {
   const {
     uischema,
@@ -84,7 +88,6 @@ export const CustomSelectOrgUnitControl = (props) => {
   const d2 = urlContextValue.d2;
   const appliedUiSchemaOptions = merge({}, config, uischema.options);
   const onChange =(ev) => {
-    update(props,'data',ev.target?ev.target.value:ev.displayName)
     handleChange(path, ev.target?ev.target.value:ev.displayName);    
   }
   const classes = useStyles();
