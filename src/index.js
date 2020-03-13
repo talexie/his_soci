@@ -34,15 +34,6 @@ const initApp = async () => {
     );
     const isProd = process.env.NODE_ENV === 'production';
 
-    /*if (
-        !isProd &&
-        (!process.env.REACT_APP_DHIS2_BASE_URL ||
-            !process.env.REACT_APP_DHIS2_AUTHORIZATION)
-    ) {
-        throw new Error(
-            'Missing env variables REACT_APP_DHIS2_BASE_URL and REACT_APP_DHIS2_AUTHORIZATION'
-        );
-    }*/
     // api config
 
     const baseUrl = isProd
@@ -52,7 +43,7 @@ const initApp = async () => {
 
     config.baseUrl = `${baseUrl}/api`;
     config.headers = isProd ? null : { Authorization: authorization };
-    config.schemas = ['userGroup'];
+    config.schemas = ['userGroup','organisationUnit'];
     let d2 = null;
     let isAdmin= false;
     let isAssessmentAdmin = false;
@@ -75,7 +66,6 @@ const initApp = async () => {
       }
       // Check if user is admin or assessment admin
       const adminConfig = await userIsAdmin(d2);
-      console.log("admin:",adminConfig);
       isAdmin = adminConfig.isAdmin;
       isAssessmentAdmin = adminConfig.isAssessmentAdmin;
       ReactDOM.render(
@@ -86,10 +76,6 @@ const initApp = async () => {
     catch(error){
       console.log("Unable to load DHIS2, App is not installed in DHIS2");
       // Check if user is admin or assessment admin
-      /*const adminConfig = await userIsAdmin(d2);
-      isAdmin = adminConfig.isAdmin;
-      isAssessmentAdmin = adminConfig.isAssessmentAdmin;
-      */
       ReactDOM.render(
         <App baseUrl={baseUrl} d2={ d2 } apiEngineUrl
         ={ apiEngineUrl} isAdmin= { isAdmin } isAssessmentAdmin ={ isAssessmentAdmin } />, document.getElementById('root')

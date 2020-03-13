@@ -24,7 +24,7 @@ export const HisSociSetupUiSchema = {
             label:'Location',
             scope: '#/properties/location',
             options:{
-              select: true,
+              locationSelector: true,
               sort: true,
               variant: 'outlined'
             }

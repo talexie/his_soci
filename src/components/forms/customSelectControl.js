@@ -3,20 +3,20 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Hidden from '@material-ui/core/Hidden';
 import TextField from '@material-ui/core/TextField';
 import {
-  RankedTester,
   rankWith,
   computeLabel,
   isDescriptionHidden,
   isPlainLabel,
   optionIs,
-  resolveSchema,
-  findMatchingUISchema,
+  isEnumControl,
+  and
 } from '@jsonforms/core';
 import { withJsonFormsControlProps } from '@jsonforms/react';
 import { areEqual } from '@jsonforms/react';
 import merge from 'lodash/merge';
+import isNull from 'lodash/isNull';
 
-const checkSelectControl = optionIs('select',true);
+const checkSelectControl = and(optionIs('select',true),isEnumControl);
 
 /**
  * Default tester for custom select controls.
@@ -40,12 +40,12 @@ export const CustomSelectControl = React.memo(( {
   errors,
   visible,
   isFocused,
-  rootSchema
+  d2
 }) => {
   const isValid = errors.length === 0;
   const appliedUiSchemaOptions = merge({}, config, uischema.options);
   const enumSchema = appliedUiSchemaOptions.sort?(schema.enum).sort():schema.enum;
-  const readOnly = schema.readOnly || appliedUiSchemaOptions.readOnly;
+  const readOnly = schema.readOnly?true:((appliedUiSchemaOptions.locationSelector && (!isNull(d2) || d2 !== undefined))?true:false);
   const maxLength = schema.maxLength;
   const showDescription = !isDescriptionHidden(
     visible,
