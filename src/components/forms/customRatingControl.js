@@ -1,10 +1,7 @@
 import React from 'react';
 import {
-  ControlProps,
-  ControlState,
   mapDispatchToControlProps,
   mapStateToControlProps,
-  RankedTester,
   rankWith,
   isDescriptionHidden,
   computeLabel,
@@ -38,8 +35,6 @@ export class RatingControl extends Control {
        description,
        visible,
        required,
-       path,
-       handleChange,
        config
      } = this.props;
      const isValid = errors.length === 0;

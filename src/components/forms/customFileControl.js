@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-  RankedTester,
   rankWith,
-  isDescriptionHidden,
   or,
   optionIs,
   schemaMatches,
@@ -30,31 +28,18 @@ export class customInputFileControl extends Control {
    */
   render() {
    const {
-      id,
-      errors,
-      schema,
-      description,
       visible,
       path,
       handleChange,
       data,
       config
     } = this.props;
-    const isValid = errors.length === 0;
     const appliedUiSchemaOptions = merge(
       {},
       config,
       this.props.uischema.options
     );
     const onChange = (ev) => handleChange(path, ev);
-    const readOnly = schema.readOnly;
-    const maxLength = schema.maxLength;
-    const showDescription = !isDescriptionHidden(
-      visible,
-      description,
-      this.state.isFocused,
-      appliedUiSchemaOptions.showUnfocusedDescription
-    );
     return (
       <div
         style={{ paddingTop: '1.5em' }}

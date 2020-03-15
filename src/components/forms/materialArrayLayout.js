@@ -12,17 +12,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ValidationIcon from '@jsonforms/material-renderers/lib/complex/ValidationIcon';
-import { makeStyles } from '@material-ui/styles';
-
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: theme.spacing(3)
-  },
-  content: {
-    marginTop: theme.spacing(2)
-  }
-}));
 
 export const MaterialArrayLayout =
   ( props ) => {
@@ -40,12 +29,9 @@ export const MaterialArrayLayout =
        rootSchema,
        renderers,
        uischemas,
-       visible,
-       key,
      } = props;
     const appliedUiSchemaOptions = merge({}, config, uischema.options);
     const readOnly = ( schema === undefined?false:schema.readOnly)  || (appliedUiSchemaOptions.readOnly ===undefined?false:appliedUiSchemaOptions.readOnly);
-    const classes = useStyles();
     return (
       <Paper style={{ padding: 10 }}>
         <Toolbar>

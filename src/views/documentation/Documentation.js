@@ -190,14 +190,14 @@ export const HisDocumentation = (props) => {
                     xl={4}
                     xs={12}
                     item>
-                    { (query.get('id') !== null && query.get('assessment') !==null)?
+                    { (query.get('id') !== null)?
                         (
                             <UserButton
                                 value ={ 'Continue'}
                                 color = "primary"
                                 variant= "contained"
                                 component={CustomRouterLink}
-                                to={`/setup?id=${query.get('id')}&assessment=${query.get('assessment')}&continue=true`}
+                                to={`/setup?id=${query.get('id')}&continue=true`}
                             />
                         ):
                         (

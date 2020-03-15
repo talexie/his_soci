@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext,useCallback } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
-
+import isEmpty from 'lodash/isEmpty';
+import filter from 'lodash/filter';
 import {
   HSVisualizer,
   HSTabular,
@@ -13,7 +14,7 @@ import {
 } from '.';
 import { UrlContext } from '../../App';
 
-import {  createHisSociChart, generateTable,hisComponentSchema, hisDomainSchema,filterAssessment,getUserDataStoreValue,changeChartTitle, changeChartType,addChartSeries, getDataStoreValue, getDataForChart, } from 'components';
+import {  createHisSociChart, generateTable,hisComponentSchema, hisDomainSchema,getUserDataStoreValue,changeChartTitle, changeChartType,addChartSeries, getDataStoreValue, getDataForChart, filterAssessmentById, } from 'components';
 
 
 const useStyles = makeStyles(theme => ({
@@ -21,11 +22,16 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(4)
   }
 }));
-
+let respondentType = 'Self';
+const getT=(responseType)=>{
+  respondentType = responseType;
+  return respondentType;
+}
 const Dashboard = () => {
   const classes = useStyles();
   const urlContextValue = useContext(UrlContext);
   const d2 = urlContextValue.d2;
+  
   const initOptions = {
     chart: {
       type: 'line',
@@ -86,14 +92,9 @@ const Dashboard = () => {
   const [subOptions, setSubOptions] = useState({subcurrent: initOptions, subTable: initOptions });
   const [domainOptions, setDomainOptions] = useState({domainCurrent: initOptions, domainTable: initOptions });
   const [progress,setProgress] = useState({ value:0,total: [],completed:[]});
-  /**
-   * Handle Change for chart re-drawing
-   */
-  const drawChart=async(ev)=>{
-    setChartOptions();
-  }
+
   const getTotalAssessments = (assessments,location, period)=>{
-    return assessments.filter((assess)=>{
+    return filter(assessments,(assess)=>{
       if (assess.tracking !== undefined){
         return ((assess.tracking.location === location) && (assess.tracking.period === period));
       }
@@ -103,7 +104,7 @@ const Dashboard = () => {
     });
   }
   const getCompletedAssessments = (assessments,location, period,status)=>{
-    return assessments.filter((assess)=>{
+    return filter(assessments,(assess)=>{
       if (assess.tracking !== undefined){
         return ((assess.tracking.location === location) && (assess.tracking.period === period) && (assess.tracking.status ===status));
       }
@@ -115,7 +116,7 @@ const Dashboard = () => {
   const getProgress = (assessment)=>{
     let progress = 0;
     if (assessment.tracking !== undefined){
-      if(assessment.tracking.status === 'STARTED'){
+      if(assessment.tracking.status === 'ACTIVE'){
         progress = 50;
       }
       else if(assessment.tracking.status === 'COMPLETED'){
@@ -127,13 +128,14 @@ const Dashboard = () => {
     }
     return progress;
   }
-  const setChartOptions=async()=>{
+  const setChartOptions= async()=>{
     const assessments = await getDataStoreValue(d2,'his_soci_tool','assessments');
     const userStore = await getUserDataStoreValue(d2,'his_soci_tool','assessments');
     let userAssessment = []
-    if(userStore.current !== undefined){
-      userAssessment = filterAssessment(assessments.assessments,userStore.current[0].id);
+    if(!isEmpty(userStore.current)){
+      userAssessment = filterAssessmentById(assessments.assessments,userStore.current[0].tracking.id);
     }  
+    
     const assessmentsSeries = getDataForChart(userAssessment);
     const tableAssessments = generateTable(assessmentsSeries,hisComponentSchema, hisDomainSchema);
     const currentStatusSeries = createHisSociChart(assessmentsSeries.current,"HIS Current Status",'line');
@@ -185,11 +187,11 @@ const Dashboard = () => {
       };
     });
     setProgress(()=>{
-      if (userStore.current !== undefined){
+      if (!isEmpty(userAssessment)){
         return {
-          total: getTotalAssessments(assessments.assessments,userStore.current[0].location, userStore.current[0].period),
-          value: getProgress(userAssessment),
-          completed:  getCompletedAssessments(assessments.assessments,userStore.current[0].location, userStore.current[0].period,'COMPLETED')
+          total: getTotalAssessments(assessments.assessments,userAssessment[0].tracking.location, userAssessment[0].tracking.period),
+          value: getProgress(userAssessment[0]),
+          completed:  getCompletedAssessments(assessments.assessments,userAssessment[0].tracking.location, userAssessment[0].tracking.period,'COMPLETED')
         }  
       }
       else{
@@ -202,8 +204,15 @@ const Dashboard = () => {
     })
     return;
   }
+    /**
+   * Handle Change for chart re-drawing
+   */
+  const drawChart=async(ev)=>{ 
+    setChartOptions();
+  }
+
   useEffect((ev)=>{
-    console.log("Dashboard loaded.",assessment.assessmentRows);
+    console.log("Dashboard loaded.");
     drawChart(ev);
   },[]);
   return (
@@ -256,7 +265,7 @@ const Dashboard = () => {
               xl={12}
               xs={12}
             >
-               <HSDataTable hisStagesData={ assessment.assessmentRows } />
+               <HSDataTable hisStagesData={ assessment.assessmentRows } getType={ getT }/>
             </Grid>
           </Grid>
           <Grid item container spacing={4}>

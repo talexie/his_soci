@@ -1,4 +1,3 @@
-import React from 'react';
 import isPlainObject from 'lodash/isPlainObject';
 import concat from 'lodash/concat';
 import intersection from 'lodash/intersection';
@@ -7,7 +6,38 @@ import isArray from 'lodash/isArray';
 import unionBy from 'lodash/unionBy';
 import isEmpty from 'lodash/isEmpty';
 import { getEmailMessage } from './EmailMessage';
-
+import filter from 'lodash/filter';
+import isUndefined from 'lodash/isUndefined';
+import forEach from 'lodash/forEach';
+import map from 'lodash/map';
+import merge from 'lodash/merge';
+/**
+ * Create assessments for respondents
+ * @param {*} assessment 
+ */
+export const createAssessments=(assessment)=>{    
+  const assessments = map(assessment.background.stakeholders,(stakeHolder)=>{
+    let selfAssessment = merge({},assessment);
+    selfAssessment.tracking.id = stakeHolder.id;
+    selfAssessment.tracking.respondentType = 'Self';
+    //selfAssessment.tracking.email = stakeHolder.emailAddress;
+    selfAssessment.background.event = stakeHolder.event;
+    return selfAssessment;
+  });
+  assessments.push(assessment);
+  return assessments;
+}
+/**
+ *Creating Data Api
+*/
+export const createEvents=(assessments,event)=>{ 
+  let dhisEvents = { events:[] };   
+  forEach(assessments,(assessment)=>{
+    const events = merge({},event,createEvent([assessment]));
+    dhisEvents = createDataValues(dhisEvents,events);
+  });
+  return dhisEvents;
+}
 /**
  * Get symbols
  * @param {*} currentUser 
@@ -85,16 +115,11 @@ export const checkAssessmentByRespondent=(assessments,assessmentId,respondentId)
  * @returns { array }
  */
 export const filterAssessmentById=(assessments,assessmentId)=>{
-  if(assessments !== undefined){
-    return assessments.filter((assessment)=>{
-      if ( assessment.tracking !== undefined){
-        return (assessment.tracking.id === assessmentId);
-      }    
-    });
-  }
-  else{
-    return [];
-  }
+  return filter(assessments,(assessment)=>{
+    if ( !isUndefined(assessment.tracking)){
+      return (assessment.tracking.id === assessmentId);
+    }    
+  });
 }
 /**
  * Filter current assessments from all assessments
@@ -102,8 +127,8 @@ export const filterAssessmentById=(assessments,assessmentId)=>{
  * @returns { array }
  */
 export const filterAssessment=(assessments,assessmentId)=>{
-  return assessments.filter((assessment)=>{
-    if ( assessment.background !== undefined){
+  return filter(assessments,(assessment)=>{
+    if ( !isUndefined(assessment.background)){
       return (assessment.background.reference === assessmentId)
     }    
   });
@@ -162,7 +187,7 @@ export const generateTable=(assessment, hisComponentSchema, hisDomainSchema)=>{
  * @param {*} domainItems Assessment components in a domain
  */
 export const getComponentsInDomain=(domainItems,subDomainSchema)=>{
-  return subDomainSchema.filter((subDomain)=>{
+  return filter(subDomainSchema,(subDomain)=>{
     const matchedItems = intersection(domainItems,subDomain.items);
     return ( matchedItems.length > 0);
   })
@@ -172,7 +197,7 @@ export const getComponentsInDomain=(domainItems,subDomainSchema)=>{
  Create events data payload for DHIS2 Event program without registration
 **/
 export const createDataValues=(currentData, event)=>{
-  if(currentData !== undefined){
+  if(isUndefined(currentData)){
     currentData.events.push(event);
   }
   return currentData;
@@ -250,7 +275,9 @@ export const sendMessage=(data,sendType,sender,api,currentSender)=>{
     conversations.messageConversations.push({ 
       text : message,
       subject: subject,
-      users: [sender]
+      users: [sender],
+      userGroups: [],
+      organisationUnits:[]
     });
   });
   return { 
@@ -649,7 +676,7 @@ export const hisDetailedSchema = [
  */
 export const getDataForChart=(data)=>{
   let chartSeries = { current:[],goal:[],component:{ subcurrent:[],subgoal:[]},domain:{ current:[],goal:[] } };
-  if(data !== undefined){
+  if(!isEmpty(data)){
     data.map((value)=>{
       Object.keys(value).map((keyValue)=>{
         if((keyValue !== 'background') || (keyValue !== 'tracking') || (keyValue !== 'id')){

@@ -1,8 +1,5 @@
 import React from 'react';
 import {
-  ControlProps,
-  ControlState,
-  RankedTester,
   rankWith,
   scopeEndsWith,
   computeLabel,

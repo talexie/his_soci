@@ -11,7 +11,7 @@ import {
 import { withJsonFormsLayoutProps } from '@jsonforms/react';
 import { MaterialLayoutRenderer } from '@jsonforms/material-renderers';
 import { makeStyles } from '@material-ui/core/styles';
-import { createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue, updateUserDataStore } from 'components';
+import { createEvent, createDataValues, updateDataStore,getMappings,getDataStoreValue,updateUserDataStore } from 'components';
 import { UrlContext } from '../../App';
 import merge from 'lodash/merge';
 import { generateUid } from 'd2/uid';
@@ -127,7 +127,7 @@ export const CustomCategorizationStepperLayoutRenderer =(props)=>
             // It's the last step, but not all steps have been reviewed,
             // find the first step that has been reviewed
             newActiveStep = steps.findIndex((step, i) => (i in review));
-            setStatus("COMPLETE");
+            setStatus("COMPLETED");
         }
         const newReview = review;
         newReview[activeCategory] = true
@@ -160,7 +160,7 @@ export const CustomCategorizationStepperLayoutRenderer =(props)=>
     const handleReset = () => {
         setActiveCategory(0);
         setCompleted({});
-        setStatus("COMPLETE");
+        setStatus("COMPLETED");
     };
     const handleReview = () => {
         setActiveCategory(0);
@@ -182,7 +182,7 @@ export const CustomCategorizationStepperLayoutRenderer =(props)=>
         */
         values[0].tracking.userid = d2.currentUser.id;
         values[0].tracking.username = d2.currentUser.username;
-        values[0].tracking.status = status;
+        values[0].tracking.status = allStepsCompleted()?'COMPLETED':(status!=='COMPLETED')?'ACTIVE':status;
         const mappings = await getDataStoreValue(d2,'his_soci_tool','mappings');
         const mappedEvents =getMappings(mappings,dhis2Events);
         updateDataStore(d2,'his_soci_tool','assessments',values,'assessments','tracking.id');

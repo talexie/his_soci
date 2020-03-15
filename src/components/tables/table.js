@@ -66,34 +66,8 @@ const SimpleTable = ( props )=> {
     isLoaded: false,
   });
   useEffect(()=>{
-    let headers = new Headers();
-    let username = "admin";
-    let password = "district";
-    let authString = `${username}:${password}`;
-    setTdata({ data: data });
-    headers.set('Authorization', 'Basic ' + btoa(authString));
-    headers.set('Access-Control-Allow-Origin', '*');
-    /*fetch(url,
-      {
-        headers:  headers,
-      })
-      .then(res => res.json())
-      .then(
-        (result: any) => {
-          setTdata({
-            data: result,
-            totalCount: result.length,
-            isLoaded: true
-          });
-        },
-        (error) => {
-          setTdata({
-            isLoaded: true,
-            error
-          });
-        }
-      );*/
-  },[]);
+    setTdata({ data: data });    
+  },[data]);
 
   return (
     <MaterialTable

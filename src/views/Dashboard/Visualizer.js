@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -12,7 +12,7 @@ import {
   Hidden
 } from '@material-ui/core';
 
-import { UrlContext } from '../../App';
+//import { UrlContext } from '../../App';
 
 import {  Chart, UserButton, MultiFilter, changeChartType } from 'components';
 
@@ -31,8 +31,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 const HSVisualizer = ({ hisDomains, hisComponents,hisSubComponents, className, ...rest }) => {
-  const urlContextValue = useContext(UrlContext);
-  const d2 = urlContextValue.d2;
+  //const urlContextValue = useContext(UrlContext);
   const classes = useStyles();
   const filters = ['line','column','area','polar'];
   const [type, setType]= useState('line');
@@ -52,19 +51,19 @@ const HSVisualizer = ({ hisDomains, hisComponents,hisSubComponents, className, .
         setType(ev);
       }
     }
-
-  },[]);
+  
+  },[type]);
 
  
   /**
    * handleChange for chart re-drawing
    */
-  const drawChart=async(ev)=>{
+  const drawChart=useCallback(async(ev)=>{
     getFilter(ev);
-  }
+  },[getFilter]);
   useEffect((ev)=>{
-    drawChart(ev);
-  },[hisDomains,hisSubComponents,hisComponents]);
+    drawChart(ev);    
+  },[hisDomains,hisSubComponents,hisComponents,drawChart]);
   return (
     <div>
       <Grid container spacing={2} direction="column" justify="space-around" alignItems="center">

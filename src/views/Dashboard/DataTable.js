@@ -79,10 +79,11 @@ const SubDomainTableRow=({ row,nextRow,className,visible })=>{
   )
 }
 
-const HSDataTable = ({ hisStagesData, className, ...rest }) => {
+const HSDataTable = ({ hisStagesData, className,getType=()=>{}, ...rest }) => {
   const classes = useStyles();
-  const filters = ['Self','Consensus','All'];
+  const filters = ['Self','Consensus'];
   const [type, setType]= useState('Self');
+  
   const [tableRows, setTableRows] = useState({ rows: hisStagesData });
   const getFilter =useCallback((ev)=>{
     if(ev !== undefined){
@@ -98,13 +99,13 @@ const HSDataTable = ({ hisStagesData, className, ...rest }) => {
       }
     }
 
-  },[]);
+  },[type]);
 
  
   /**
    * handleChange for chart re-drawing
    */
-  const createTable=async(ev)=>{
+  const createTable=useCallback(async(ev)=>{
     getFilter(ev);
     const rows = hisStagesData;
     if (rows !== undefined){
@@ -114,10 +115,11 @@ const HSDataTable = ({ hisStagesData, className, ...rest }) => {
         }
       })
     }
-  }
+  },[getFilter,hisStagesData]);
   useEffect((ev)=>{
     createTable(ev);
-  },[hisStagesData]);
+    getType(type);
+  },[hisStagesData,createTable]);
  
   return (
     <div>
