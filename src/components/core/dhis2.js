@@ -280,6 +280,24 @@ export const sendMessage=(data,sendType,sender,api,currentSender)=>{
       organisationUnits:[]
     });
   });
+  /**
+   * Create Consensus email
+   */
+  const consensusRepondent = {
+    firstname: currentSender.firstName,
+    surname: currentSender.surname,
+    id: data.id
+  }
+  const consensusMessage = getEmailMessage(data,consensusRepondent,api,currentSender);
+  const consensusSubject = data.location + " Assessment ("+ data.id +")";
+  notifications.push(createMessage([currentSender.email],sender,consensusSubject,sendType,consensusMessage,data.event));
+  conversations.messageConversations.push({ 
+    text : consensusMessage,
+    subject: consensusSubject,
+    users: [sender],
+    userGroups: [],
+    organisationUnits:[]
+  });
   return { 
     "programMessages": notifications,
     "conversations":conversations

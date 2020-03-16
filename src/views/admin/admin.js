@@ -100,6 +100,7 @@ const HisAdmin = (props) => {
     initialAssessments.background.hisType = tableData[0].hisType;
     initialAssessments.background.purpose = tableData[0].purpose;
     initialAssessments.background.mainChallenge = tableData[0].mainChallenge;
+    tableData[0].event = initialAssessments.background.event;
     /**
      * Get mappings from the datastore mapping namespace
      */
