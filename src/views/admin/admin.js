@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import { HisJsonForm, HisSociSetupSchema,HisSociSetupUiSchema, UserButton,createAssessments,createEvents, updateDataStore,getMappings,getDataStoreValue,sendMessage,updateUserDataStore } from 'components';
+import { HisJsonForm, HisSociSetupSchema,HisSociSetupUiSchema, UserButton,createAssessments,createEvents, updateDataStore,getMappings,getDataStoreValue,sendMessage } from 'components';
 import uuid from 'uuid/v4';
 import { UrlContext } from '../../App';
 import { generateUid } from 'd2/uid';
@@ -115,10 +115,7 @@ const HisAdmin = (props) => {
      * 
      */
     updateDataStore(d2,'his_soci_tool','setup',tableData,'setup','id');
-    /**
-     * Save to User datastore
-     */
-    updateUserDataStore(d2,'his_soci_tool','assessments',tableData);
+
     /**
     Creating Data Api
     **/

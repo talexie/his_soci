@@ -290,7 +290,7 @@ export const sendMessage=(data,sendType,sender,api,currentSender)=>{
   }
   const consensusMessage = getEmailMessage(data,consensusRepondent,api,currentSender);
   const consensusSubject = data.location + " Assessment ("+ data.id +")";
-  notifications.push(createMessage([currentSender.email],sender,consensusSubject,sendType,consensusMessage,data.event));
+  notifications.programMessages.push(createMessage([currentSender.email],sender,consensusSubject,sendType,consensusMessage,data.event));
   conversations.messageConversations.push({ 
     text : consensusMessage,
     subject: consensusSubject,

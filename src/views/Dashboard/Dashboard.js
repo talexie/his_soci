@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Grid } from '@material-ui/core';
 import isEmpty from 'lodash/isEmpty';
 import filter from 'lodash/filter';
+import isUndefined from 'lodash/isUndefined';
 import {
   HSVisualizer,
   HSTabular,
@@ -132,7 +133,7 @@ const Dashboard = () => {
     const assessments = await getDataStoreValue(d2,'his_soci_tool','assessments');
     const userStore = await getUserDataStoreValue(d2,'his_soci_tool','assessments');
     let userAssessment = []
-    if(!isEmpty(userStore.current)){
+    if(!isEmpty(userStore.current) && !isUndefined(userStore.current[0].tracking)){
       userAssessment = filterAssessmentById(assessments.assessments,userStore.current[0].tracking.id);
     }  
     
