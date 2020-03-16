@@ -699,7 +699,7 @@ export const getDataForChart=(data)=>{
       Object.keys(value).map((keyValue)=>{
         if((keyValue !== 'background') || (keyValue !== 'tracking') || (keyValue !== 'id')){
           chartSeries.current.push({ key:keyValue, y:computeValues(value[keyValue].current) });
-          chartSeries.goal.push({key:keyValue, y:computeValues(value[keyValue].future) });
+          chartSeries.goal.push({key:keyValue, y:computeValues(value[keyValue].goal) });
          
         }
         //chartSeries.push();

@@ -3,7 +3,7 @@
   "author": "Alex Tumwesigye (Initial template from DeviasIO)",
   "email": "atumwesigye@gmail.com",
   "licence": "MIT",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "private": false,
   "scripts": {
     "start": "PORT=3001 react-scripts start",

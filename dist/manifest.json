@@ -1,6 +1,6 @@
 {
   "short_name": "HIS_SOCI",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "name": "HIS SOCI tool",
   "icons": {
     "48":"static/images/hisengine2.png","16":"static/images/hisengine2.png","128":"static/images/hisengine2.png"
@@ -18,7 +18,7 @@
     }
   },
   "dhis2":{
-    "apiVersion": "31"
+    "apiVersion": "33"
   },
   "start_url": ".",
   "homepage": ".",

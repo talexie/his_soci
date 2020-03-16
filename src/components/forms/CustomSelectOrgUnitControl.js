@@ -107,36 +107,36 @@ export const CustomSelectOrgUnitControl = (props) => {
   return (
     <Hidden xsUp={!visible}>
       <Grid container spacing= { 1 }>
+
+        {
+          appliedUiSchemaOptions.locationSelector && (!isNull(d2) || d2 !== undefined)?(
+          <Grid item className={ classes.container }>
+              <Button className={ classes.customLabel } variant="outlined" color="primary" onClick={handleClickOpen}>
+                Choose { label }
+              </Button>
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="max-width-dialog-title"
+              >
+                <DialogTitle id="max-width-dialog-title">Choose { label }</DialogTitle>
+                <DialogContent>
+                  <div className={classes.card}>
+                    <AvailableOrganisationUnitsTree d2={ d2 } onChange={ pickOrgUnit }/>
+                  </div>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose} color="primary">
+                    Close
+                  </Button>
+                </DialogActions>
+              </Dialog>
+          </Grid>
+          ):null
+        }
         <Grid item>
           <CustomSelectControl { ...props} d2= { d2 } className={ classes.root}/>
         </Grid> 
-          {
-            appliedUiSchemaOptions.locationSelector && (!isNull(d2) || d2 !== undefined)?(
-            <Grid item className={ classes.container }>
-                <Button className={ classes.customLabel } variant="outlined" color="primary" onClick={handleClickOpen}>
-                  Choose { label }
-                </Button>
-                <Dialog
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="max-width-dialog-title"
-                >
-                  <DialogTitle id="max-width-dialog-title">Choose { label }</DialogTitle>
-                  <DialogContent>
-                    <div className={classes.card}>
-                      <AvailableOrganisationUnitsTree d2={ d2 } onChange={ pickOrgUnit }/>
-                    </div>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                      Close
-                    </Button>
-                  </DialogActions>
-                </Dialog>
-            </Grid>
-            ):null
-          }
-          
       </Grid>
     </Hidden>
   )

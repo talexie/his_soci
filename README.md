@@ -13,7 +13,36 @@ Powered By [Devias Kit - Admin Dashboard](https://devias.io/products/material-re
 
 ## Documentation
 
-The documentation for the React Material Kit is can be found [here](https://github.com/talexie/his_soci).
+The documentation can be found [here](https://github.com/talexie/his_soci).
+
+## What is HIS SOCI?
+
+The HIS SOCI assessment tool measures the status and goals of an HIS across five stages, identifies gaps, and supports the
+development of roadmaps to improve HIS capabilities related to processes, people, and systems essential for achieving a country’s
+health goals. This toolkit responds to these research questions:
+
+ - 1. What are the stages of HIS development?
+ - 2. How can HIS be assessed and their maturity continuously improved to achieve better health outcomes?
+
+
+The assessment is based on a measurement scale consisting of 39 essential HIS subcomponents across five stages from emerging to
+optimized. The scale outlines key components of HIS improvement and defines attributes of each subcomponent on a five-point Likert
+scale. For more information about the full toolkit and its creation, visit:
+[https://www.measureevaluation.org/his-strengthening-resource-center/his-stages-of-continuous-improvement-toolkit](https://www.measureevaluation.org/his-strengthening-resource-center/his-stages-of-continuous-improvement-toolkit)
+
+### How do I complete the assessment?
+
+For each of the 39 subcomponents, you will be asked to determine the current and goal status of your national HIS by selecting
+appropriate response from the drop-down options. The stage for each individual subcomponent is defined in detail in the Overview
+tab, under the Stages of Progression. The User Guide details the process of completing the assessment.
+
+In order to complete this assessment, you will need to login to the web-based application built using DHIS 2 to access the
+assessment and related analytics. Please note responses from all the participants of the assessments will be aggregated and used
+to guide the stakeholder consultation process. The stakeholder consultation will discuss and interpret scores for each of the
+components and sub-components and then determine the final score. The final score will be used to develop the HIS improvement
+roadmap.
+
+
 
 
 ## License
