@@ -8,11 +8,11 @@ import map from 'lodash/map';
 
 const HtmlToolTip = withStyles(theme => ({
   tooltip: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#b6b8c0',
     color: 'rgba(0, 0, 0, 0.87)',
     maxWidth: 960,
     fontSize: theme.typography.pxToRem(12),
-    border: '1px solid #dadde9',
+    border: '1px solid #ffffff',
   },
 }))(Tooltip);
 
