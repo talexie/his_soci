@@ -1,7 +1,14 @@
 ## The HIS SOCI tool
 Powered By [Devias Kit - Admin Dashboard](https://devias.io/products/material-react-dashboard)
 
-## Quick start
+## Getting Started
+
+- Download the HIS SOCI tool (DHIS2 Web App) from [here](https://github.com/talexie/his_soci/blob/master/dist/his_soci.zip) and install into your DHIS2 system
+- Download DHIS2 HIS SOCI metadata from [here](https://github.com/talexie/his_soci/blob/master/src/common/program.json) and import into your DHIS2 system
+- Download DHIS2 HIS SOCI Datastore Mapping from [here](https://github.com/talexie/his_soci/blob/master/src/common/mappings.json)
+
+
+## Quick start for Developers
 
 - Make sure your NodeJS and npm versions are up to date for `React 16.8.6`
 
