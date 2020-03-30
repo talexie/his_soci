@@ -20,7 +20,7 @@ Powered By [Devias Kit - Admin Dashboard](https://devias.io/products/material-re
 
 ## Documentation
 
-The documentation can be found [here](https://github.com/talexie/his_soci).
+The documentation can be found [here](https://github.com/talexie/his_soci/blob/master/docs/HIS Stages of Continuous Improvement Digital Assessment Tool_MS-19-158a.pdf).
 
 ## What is HIS SOCI?
 
