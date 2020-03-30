@@ -3,9 +3,9 @@ Powered By [Devias Kit - Admin Dashboard](https://devias.io/products/material-re
 
 ## Getting Started
 
-- Download the HIS SOCI tool (DHIS2 Web App) from [here](https://github.com/talexie/his_soci/blob/master/dist/his_soci.zip) and install into your DHIS2 system
-- Download DHIS2 HIS SOCI metadata from [here](https://github.com/talexie/his_soci/blob/master/src/common/program.json) and import into your DHIS2 system
-- Download DHIS2 HIS SOCI Datastore Mapping from [here](https://github.com/talexie/his_soci/blob/master/src/common/mappings.json)
+- Download the HIS SOCI tool (DHIS2 Web App) from [his_soci.zip](https://github.com/talexie/his_soci/blob/master/dist/his_soci.zip) and install into your DHIS2 system
+- Download DHIS2 HIS SOCI metadata from [program.json](https://github.com/talexie/his_soci/blob/master/src/common/program.json) and import into your DHIS2 system
+- Download DHIS2 HIS SOCI Datastore Mapping from [mappings.json](https://github.com/talexie/his_soci/blob/master/src/common/mappings.json)
 
 
 ## Quick start for Developers
@@ -20,7 +20,7 @@ Powered By [Devias Kit - Admin Dashboard](https://devias.io/products/material-re
 
 ## Documentation
 
-The documentation can be found [here](https://github.com/talexie/his_soci/blob/master/docs/HIS_Stages_of_Continuous_Improvement_Digital_Assessment_Tool_MS-19-158a.pdf).
+The documentation can be found [HIS Stages of Continuous Improvement Digital Assessment Tool_MS-19-158a.pdf](https://github.com/talexie/his_soci/blob/master/docs/HIS_Stages_of_Continuous_Improvement_Digital_Assessment_Tool_MS-19-158a.pdf).
 
 ## What is HIS SOCI?
 
