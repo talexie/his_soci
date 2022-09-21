@@ -1,0 +1,28 @@
+{
+    "url":"https://dhis.nataaha.com",
+    "api":"https://datax.nataaha.com",
+    "dataStore":"https://192.168.92.128/api",
+    "standalone": true,
+    "defaultPage": "hissoci",
+    "loginFooter": "",
+    "loginTitle": "Login to HISSOCI",
+    "logo": "",
+    "landingPage":"",
+    "apps":[
+        {
+            "appId":"hissoci",
+            "appName":"HIS SOCI",
+            "title": "SOCI",
+            "path":"assess",
+            "homePage":"dashboard",
+            "dataStore": "alkuistore",
+            "setupStore":"alkuistore",
+            "useDefaultUiSchema": false,
+            "enableFhir": false,
+            "useDhis2Import": false,
+            "isDashboard": false,
+            "isUser": true,
+            "isAdmin": true
+        }
+    ]
+}

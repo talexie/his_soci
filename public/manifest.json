@@ -1,0 +1,30 @@
+{
+  "short_name": "HISEngine",
+  "version": "1.0.5-beta9",
+  "name": "HIS SOCI",
+  "icons": {
+    "48":"static/images/hisengine2.png",
+    "16":"static/images/hisengine2.png",
+    "128":"static/images/hisengine2.png"
+  },
+  "developer": {
+    "url": "",
+    "name": "Alex Tumwesigye",
+    "email": "atumwesigye@gmail.com"
+  },
+  "launch_path": "index.html",
+  "default_locale": "en",
+  "activities": {
+    "dhis": {
+      "href": "../../../"
+    }
+  },
+  "dhis2":{
+    "apiVersion": "33"
+  },
+  "start_url": ".",
+  "homepage": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
