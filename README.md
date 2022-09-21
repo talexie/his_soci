@@ -35,14 +35,14 @@ roadmap.
 
 
 ## Quick start for Developers
-Visit [Developer Guide](https://liascript.github.io/course/?https://github.com/talexie/his_soci/blob/master/Developer Guide.md)
+Visit ([Developer Guide](https://liascript.github.io/course/?https://github.com/talexie/his_soci/blob/master/Developer Guide.md))
 
 ## Installing
-Visit [Systems Guide](https://liascript.github.io/course/?https://github.com/talexie/his_soci/blob/master/Systems Guide.md)
+Visit ([Systems Guide](https://liascript.github.io/course/?https://github.com/talexie/his_soci/blob/master/Systems Guide.md))
 ## Documentation
 
 ## User Guide
-Visit [User Guide](https://liascript.github.io/course/?https://github.com/talexie/his_soci/blob/master/user Guide.md)
+Visit ([User Guide](https://liascript.github.io/course/?https://github.com/talexie/his_soci/blob/master/user Guide.md))
 
 The documentation can be found [HIS Stages of Continuous Improvement Digital Assessment Tool_MS-19-158a.pdf](https://github.com/talexie/his_soci/blob/master/docs/HIS_Stages_of_Continuous_Improvement_Digital_Assessment_Tool_MS-19-158a.pdf).
 
