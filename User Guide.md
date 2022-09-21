@@ -1,4 +1,4 @@
-# User Manual
+# User Guide
 # How to login
 # Accessing HIS SOCI App
 # Creating Assessment

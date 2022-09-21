@@ -1,72 +1,53 @@
-# Getting Started with HIS SOCI DHIS2 Web Application
+## The HIS SOCI tool
 
-# Developer Manual
+## What is HIS SOCI?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The HIS SOCI assessment tool measures the status and goals of an HIS across five stages, identifies gaps, and supports the
+development of roadmaps to improve HIS capabilities related to processes, people, and systems essential for achieving a country’s
+health goals. This toolkit responds to these research questions:
 
-## Available Scripts
+ - 1. What are the stages of HIS development?
+ - 2. How can HIS be assessed and their maturity continuously improved to achieve better health outcomes?
 
-In the project directory, you can run:
 
-### `yarn start`
+The assessment is based on a measurement scale consisting of 39 essential HIS subcomponents across five stages from emerging to
+optimized. The scale outlines key components of HIS improvement and defines attributes of each subcomponent on a five-point Likert
+scale. For more information about the full toolkit and its creation, visit:
+[https://www.measureevaluation.org/his-strengthening-resource-center/his-stages-of-continuous-improvement-toolkit](https://www.measureevaluation.org/his-strengthening-resource-center/his-stages-of-continuous-improvement-toolkit)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### How do I complete the assessment?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+For each of the 39 subcomponents, you will be asked to determine the current and goal status of your national HIS by selecting
+appropriate response from the drop-down options. The stage for each individual subcomponent is defined in detail in the Overview
+tab, under the Stages of Progression. The User Guide details the process of completing the assessment.
 
-### `yarn test`
+In order to complete this assessment, you will need to login to the web-based application built using DHIS 2 to access the
+assessment and related analytics. Please note responses from all the participants of the assessments will be aggregated and used
+to guide the stakeholder consultation process. The stakeholder consultation will discuss and interpret scores for each of the
+components and sub-components and then determine the final score. The final score will be used to develop the HIS improvement
+roadmap.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `yarn build`
+- Download the HIS SOCI tool (DHIS2 Web App) from [his_soci.zip](https://github.com/talexie/his_soci/blob/master/dist/his_soci.zip) and install into your DHIS2 system
+- Download DHIS2 HIS SOCI metadata from [program.json](https://github.com/talexie/his_soci/blob/master/src/common/program.json) and import into your DHIS2 system
+- Download DHIS2 HIS SOCI Datastore Mapping from [mappings.json](https://github.com/talexie/his_soci/blob/master/src/common/mappings.json)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Quick start for Developers
+Visit [Developer Guide](https://liascript.github.io/course/?https://github.com/talexie/his_soci/blob/master/Developer Guide.md)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installing
+Visit [Systems Guide](https://liascript.github.io/course/?https://github.com/talexie/his_soci/blob/master/Systems Guide.md)
+## Documentation
 
-### `yarn eject`
+## User Guide
+Visit [User Guide](https://liascript.github.io/course/?https://github.com/talexie/his_soci/blob/master/user Guide.md)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The documentation can be found [HIS Stages of Continuous Improvement Digital Assessment Tool_MS-19-158a.pdf](https://github.com/talexie/his_soci/blob/master/docs/HIS_Stages_of_Continuous_Improvement_Digital_Assessment_Tool_MS-19-158a.pdf).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Licensed under MIT
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact Us
